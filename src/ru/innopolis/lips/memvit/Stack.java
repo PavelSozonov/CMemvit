@@ -27,7 +27,7 @@ public class Stack extends ViewPart {
 		public void run() {
 			while (true) {
 				try { Thread.sleep(1000); } catch (Exception e) { }
-				Runnable task = () -> { VizualizateStackCpp();};
+				Runnable task = () -> { visualizeStackCpp();};
 				Display.getDefault().asyncExec(task);
 			}			
 		}
@@ -53,8 +53,6 @@ public class Stack extends ViewPart {
 		//Session session = CDIDebugger.getSession();
 		ICDISession session = GDBCDIDebuggerMemvit.getSession();
 		
-		
-		
 		if (session == null){return;}
 		if (session.equals(this.cdiDebugSession)){return;}
 		else{
@@ -63,7 +61,7 @@ public class Stack extends ViewPart {
 		}
 	}
 	
-	private void VizualizateStackCpp(){		
+	private void visualizeStackCpp(){		
 		tryGetCdiSession();
 		if (cdiEventListener == null){return;}
 		if (!cdiEventListener.isItUpdatedThread()){return;}
@@ -98,7 +96,7 @@ public class Stack extends ViewPart {
 		}
 	}
 	
-	private void vizualizateCdiVariables(TreeItem item, ICDIVariable[] variables){
+	private void visualizeCdiVariables(TreeItem item, ICDIVariable[] variables){
 		if (variables == null){return;}
 		for (ICDIVariable lvariable : variables){
 			Variable variable = (Variable)lvariable;	
@@ -111,8 +109,7 @@ public class Stack extends ViewPart {
 			String hexAddress = CDIEventListener.getHexAddress(variable);
 			
 			subItem.setText(0,typename + " " + QualifiedName + " : " + valuestring + " address: " + hexAddress);
-			vizualizateCdiVariables(subItem, CDIEventListener.getLocalVariablesFromValue(value));		
+			visualizeCdiVariables(subItem, CDIEventListener.getLocalVariablesFromValue(value));		
 		}
 	}
-
 }

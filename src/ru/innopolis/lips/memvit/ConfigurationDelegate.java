@@ -10,8 +10,8 @@ public class ConfigurationDelegate implements ILaunchConfigurationDelegate {
 
 	@Override
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
-		LocalCDILaunchDelegate dd = new LocalCDILaunchDelegate();
-		dd.launch(configuration, mode, launch, monitor);//.
+		LocalCDILaunchDelegate localCDI = new LocalCDILaunchDelegate();
+		localCDI.launch(configuration, mode, launch, monitor);
 	}
 
 }

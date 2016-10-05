@@ -1,6 +1,5 @@
 package ru.innopolis.lips.memvit;
 
-
 import java.util.Arrays;
 
 public class VisualizationUtils {
@@ -77,8 +76,6 @@ public class VisualizationUtils {
 			builder.append(varsTableHeader);
 		}
 		
-		
-
 		VarDescription[] nested;
 		if (vars != null) {
 			Arrays.sort(vars);

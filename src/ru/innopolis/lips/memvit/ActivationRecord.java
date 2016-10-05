@@ -28,7 +28,6 @@ public class ActivationRecord {
 	private VarDescription[] vars;
 	private VarDescription[] args;
 
-
 	public ActivationRecord(String lineNumber, String functionName, String fileName, String startAddress, String endAddress, String staticLink, 
 			VarDescription[] vars, VarDescription[] args) {
 		super();

@@ -34,8 +34,6 @@ public class MemvitConfigurationTab extends CLaunchConfigurationTab {
 	// Add text boxes to receive input parameters from the user 
 	public void createControl(Composite parent) {
 	
-	 
-		
 		// Configure the overall composite
 		Composite comp = new Composite(parent, SWT.NONE);
 		GridLayout gl = new GridLayout();
@@ -61,7 +59,6 @@ public class MemvitConfigurationTab extends CLaunchConfigurationTab {
 		debuggerText = new Text(comp, SWT.BORDER);		
 		debuggerText.addModifyListener(modifyListener);
 		debuggerText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
 		
 		// Create a label and text box for the debugger arguments
 		Label debugArgsLabel = new Label(comp, SWT.NONE);

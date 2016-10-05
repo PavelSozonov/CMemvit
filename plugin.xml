@@ -53,7 +53,7 @@
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             delegate="ru.innopolis.lips.memvit.ConfigurationDelegate"
-            id="Plugin_MemoryVizualization.launchConfigurationType"
+            id="Plugin_MemoryVisualization.launchConfigurationType"
             modes="debug"
             name="%launchConfigurationType.name"
             public="true"
@@ -65,8 +65,8 @@
          point="org.eclipse.debug.ui.launchConfigurationTabGroups">
       <launchConfigurationTabGroup
             class="ru.innopolis.lips.memvit.MemvitConfigurationTabGroup"
-            id="Plugin_MemoryVizualization.LipsTypeGroup"
-            type="Plugin_MemoryVizualization.launchConfigurationType">
+            id="Plugin_MemoryVisualization.LipsTypeGroup"
+            type="Plugin_MemoryVisualization.launchConfigurationType">
       </launchConfigurationTabGroup>
    </extension>
 

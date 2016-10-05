@@ -16,7 +16,6 @@
  * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-
 package ru.innopolis.lips.memvit;
 
 import java.util.ArrayList;
@@ -77,7 +76,6 @@ public class CDIEventListener implements ICDIEventListener{
 			} catch (CDIException e) {}
 		}	
 	}
-	
 	
 	public VarDescription[] getHeapVars() {
 		VarDescription[] arr = new VarDescription[heapVars.size()];
@@ -196,7 +194,6 @@ public class CDIEventListener implements ICDIEventListener{
 		VarDescription[] subvars = new VarDescription[tempSubvars.size()];//extra space for return value
 		tempSubvars.toArray(subvars);
 	}
-	
 	
 	public String getEaxValue(){
 		return EAXvalue;

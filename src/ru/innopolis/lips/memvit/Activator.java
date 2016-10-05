@@ -26,7 +26,7 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Viz: plugin Start!");
+		System.out.println("Vis: plugin Start!");
 		super.start(context);
 		plugin = this;
 	}
@@ -36,7 +36,7 @@ public class Activator extends AbstractUIPlugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Viz: plugin Stop!");
+		System.out.println("Vis: plugin Stop!");
 		plugin = null;
 		super.stop(context);
 	}
@@ -47,7 +47,7 @@ public class Activator extends AbstractUIPlugin {
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
-		System.out.println("Viz: plugin get Default!");
+		System.out.println("Vis: plugin get Default!");
 		return plugin;
 	}
 

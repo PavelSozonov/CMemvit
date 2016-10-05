@@ -13,10 +13,7 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.part.ViewPart;
 
-
-
 public class ProgramInfo extends ViewPart {
-
 	
 	private CDIEventListener cdiEventListener = null;
 	private ICDISession cdiDebugSession = null;
@@ -26,12 +23,11 @@ public class ProgramInfo extends ViewPart {
 		public void run() {
 			while (true) {
 				try { Thread.sleep(1000); } catch (Exception e) { }
-				Runnable task = () -> {vizualizateProgramInfoCpp();};
+				Runnable task = () -> {visualizeProgramInfoCpp();};
 				Display.getDefault().asyncExec(task);
 			}			
 		}
 	}
-	
 	
 	public ProgramInfo() {
 	}
@@ -50,7 +46,6 @@ public class ProgramInfo extends ViewPart {
 		columnName = new TreeColumn(tree, SWT.LEFT);
 		columnName.setText("");
 		columnName.setWidth(300);
-		
 		
 		this.cdiEventListener		= new CDIEventListener();
 		tryGetCdiSession();
@@ -74,8 +69,7 @@ public class ProgramInfo extends ViewPart {
 	public void setFocus() {
 	}
 
-	
-	public void vizualizateProgramInfoCpp(){
+	public void visualizeProgramInfoCpp(){
 		tryGetCdiSession();
 		if (cdiEventListener ==null){return;}
 		if (!cdiEventListener.isItUpdatedThread()){return;}
@@ -84,10 +78,7 @@ public class ProgramInfo extends ViewPart {
 		ICDIStackFrame[] frames = CDIEventListener.getStackFrames(CurrentThread);		
 		
 		for (TreeItem item : tree.getItems()){item.dispose();}
-		
-		
-		
-		
+				
 		for (ICDIStackFrame frame : frames){
 			TreeItem item = new TreeItem(tree, SWT.LEFT);
 			item.setText(0, frame.getLocator().getFile() + " / " + frame.getLocator().getFunction());	
@@ -108,8 +99,5 @@ public class ProgramInfo extends ViewPart {
 				System.out.println(instr + "  " + "0x"+instruction.getAdress().toString(16));
 			}
 		}
-
-		
 	}
-	
 }
