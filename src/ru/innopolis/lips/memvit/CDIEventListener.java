@@ -18,58 +18,87 @@
 
 package ru.innopolis.lips.memvit;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.cdt.debug.core.cdi.CDIException;
+import org.eclipse.cdt.debug.core.cdi.ICDIAddressLocation;
+import org.eclipse.cdt.debug.core.cdi.ICDICondition;
+import org.eclipse.cdt.debug.core.cdi.ICDILocator;
+import org.eclipse.cdt.debug.core.cdi.ICDISession;
+import org.eclipse.cdt.debug.core.cdi.event.ICDIBreakpointMovedEvent;
 import org.eclipse.cdt.debug.core.cdi.event.ICDIEvent;
 import org.eclipse.cdt.debug.core.cdi.event.ICDIEventListener;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIArgument;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIArgumentDescriptor;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIBreakpoint;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIExpression;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariableDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIInstruction;
 import org.eclipse.cdt.debug.core.cdi.model.ICDILocalVariable;
 import org.eclipse.cdt.debug.core.cdi.model.ICDILocalVariableDescriptor;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIMemoryBlock;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIMixedInstruction;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIObject;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegister;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegisterDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegisterGroup;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIRuntimeOptions;
+import org.eclipse.cdt.debug.core.cdi.model.ICDISharedLibrary;
+import org.eclipse.cdt.debug.core.cdi.model.ICDISignal;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIStackFrame;
 import org.eclipse.cdt.debug.core.cdi.model.ICDITarget;
+import org.eclipse.cdt.debug.core.cdi.model.ICDITargetConfiguration;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIThreadStorageDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIValue;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariable;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariableDescriptor;
-import org.eclipse.cdt.debug.mi.core.MISession;
-import org.eclipse.cdt.debug.mi.core.cdi.model.Target;
 import org.eclipse.cdt.debug.mi.core.cdi.model.Variable;
-import org.eclipse.cdt.debug.mi.core.command.CommandFactory;
-import org.eclipse.cdt.debug.mi.core.command.MIDataListChangedRegisters;
-import org.eclipse.cdt.debug.mi.core.command.MIGDBShowAddressSize;
 
-public class CDIEventListener implements ICDIEventListener{
+//import org.eclipse.cdt.debug.mi.core.command.CommandFactory;
+//import org.eclipse.cdt.debug.mi.core.command.MIDataListChangedRegisters;
+//import org.eclipse.cdt.debug.mi.core.command.MIGDBShowAddressSize;
+//import org.eclipse.core.runtime.Path;
+//import java.io.IOException;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
+//import java.nio.file.StandardOpenOption;
+//import org.eclipse.cdt.debug.mi.core.MISession;
+//import org.eclipse.cdt.debug.mi.core.cdi.model.Target;
+
+public class CDIEventListener implements ICDIEventListener {
 
 	private ICDIThread currentThread = null; 
 	private boolean itIsUpdatedThread = false;
-	
+		
 	private String EAXvalue;
 	private String EAXvaluetype;
 	
 	List<VarDescription> heapVars = new ArrayList<>();
 	
+	private Analyzer analyzer = new Analyzer();
+	
+	@Override
 	public void handleDebugEvents(ICDIEvent[] event) {
-		for (ICDIEvent ev : event){
+
+		for (ICDIEvent ev : event) {
 			ICDIObject source = ev.getSource();	
-			if (source == null){
+			if (source == null) { // when button stop pressed, fires ~4 times, after isTerminated
 				setCurrentThread(null);
 				setItIsUpdatedThread(false);
 				return;
 			}
+			
 			ICDITarget target = source.getTarget();
-			if (target.isTerminated()){
+			if (target.isTerminated()) { // when button stop pressed, fires ~2 times, before source == null
 				setCurrentThread(null);
 				setItIsUpdatedThread(false);
 				return;	
 			}
 			try {
+				analyzer.targetExploration(target);
 				ICDIThread thread = target.getCurrentThread();
 				setCurrentThread(thread);
 				setItIsUpdatedThread(true);	
@@ -87,8 +116,8 @@ public class CDIEventListener implements ICDIEventListener{
 		currentThread = thread;
 	}
 	
-	private void setItIsUpdatedThread(boolean value){
-		itIsUpdatedThread =value;
+	private void setItIsUpdatedThread(boolean value) {
+		itIsUpdatedThread = value;
 	}
 	
 	public ICDIThread getCurrentThread() {
@@ -96,7 +125,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return currentThread;		
 	}	
 	
-	public boolean isItUpdatedThread(){
+	public boolean isItUpdatedThread() {
 		return itIsUpdatedThread;
 	}
 	
@@ -170,9 +199,9 @@ public class CDIEventListener implements ICDIEventListener{
 		return records;
 	}
 	
-	private void fillVarDescriptors(VarDescription var, ICDIValue cdivalue, String startaddress, String endaddress){
+	private void fillVarDescriptors(VarDescription var, ICDIValue cdivalue, String startaddress, String endaddress) {
 		ICDIVariable[] subvariables =  CDIEventListener.getLocalVariablesFromValue(cdivalue);
-		if (subvariables == null){return;}
+		if (subvariables == null) { return; }
 		
 		ArrayList<VarDescription> tempSubvars = new ArrayList<>();
 		for (int k = 0; k < subvariables.length; k++) {
@@ -195,11 +224,11 @@ public class CDIEventListener implements ICDIEventListener{
 		tempSubvars.toArray(subvars);
 	}
 	
-	public String getEaxValue(){
+	public String getEaxValue() {
 		return EAXvalue;
 	}
 	
-	public String getEaxType(){
+	public String getEaxType() {
 		return EAXvaluetype;
 	}
 	
@@ -207,17 +236,17 @@ public class CDIEventListener implements ICDIEventListener{
 		return null;
 	}
 	
-	public static ICDIStackFrame[] getStackFrames(ICDIThread thread){
-		if (thread == null){return null;}
+	public static ICDIStackFrame[] getStackFrames(ICDIThread thread) {
+		if (thread == null) { return null; }
 		ICDIStackFrame[] Frames = new ICDIStackFrame[0];
 		try {
 			Frames = thread.getStackFrames();
-		} catch (CDIException e) {e.printStackTrace();}
+		} catch (CDIException e) { e.printStackTrace(); }
 		return Frames;
 	}
 	
-	public static ICDIStackFrame getTopStackFrame(ICDIThread thread){
-		if (thread == null){return null;}
+	public static ICDIStackFrame getTopStackFrame(ICDIThread thread) {
+		if (thread == null) { return null; }
 		ICDIStackFrame Frame = null;
 		try {
 			Frame = thread.getStackFrames()[0];
@@ -225,7 +254,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return Frame;
 	}	
 	
-	public static ICDILocalVariableDescriptor[] GetStackFrameLocalVariableDescriptors(ICDIStackFrame frame){
+	public static ICDILocalVariableDescriptor[] GetStackFrameLocalVariableDescriptors(ICDIStackFrame frame) {
 		ICDILocalVariableDescriptor[] descriptor = new ICDILocalVariableDescriptor[0];
 		try {
 			descriptor = frame.getLocalVariableDescriptors();
@@ -235,7 +264,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return descriptor;
 	}
 	
-	public static ICDIArgumentDescriptor[] getStackFrameArgumentDescriptors(ICDIStackFrame frame){
+	public static ICDIArgumentDescriptor[] getStackFrameArgumentDescriptors(ICDIStackFrame frame) {
 		ICDIArgumentDescriptor[] descriptor = new ICDIArgumentDescriptor[0];
 		try {
 			descriptor = frame.getArgumentDescriptors();
@@ -245,7 +274,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return descriptor;
 	}
 	
-	public static ICDIValue getLocalVariableValue(ICDIVariable variable){
+	public static ICDIValue getLocalVariableValue(ICDIVariable variable) {
 		ICDIValue value = null;
 		try {
 			value = variable.getValue();
@@ -255,7 +284,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return value;
 	}
 	
-	public static String getLocalVariableTypeName(ICDIVariable variable){
+	public static String getLocalVariableTypeName(ICDIVariable variable) {
 		String typeName = null;
 		try {
 			typeName = variable.getTypeName();
@@ -265,7 +294,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return typeName;
 	}
 	
-	public static String getQualifiedName(ICDIVariableDescriptor variable){
+	public static String getQualifiedName(ICDIVariableDescriptor variable) {
 		String QualifiedName = null;
 		try {
 			QualifiedName = variable.getQualifiedName();
@@ -275,9 +304,9 @@ public class CDIEventListener implements ICDIEventListener{
 		return QualifiedName;
 	}
 	
-	public static String getValueString(ICDIValue value){
+	public static String getValueString(ICDIValue value) {
 		String valuestring = "";
-		if (value == null){return valuestring;}
+		if (value == null) { return valuestring; }
 		try {
 			valuestring = value.getValueString();
 		} catch (CDIException e) {
@@ -286,9 +315,9 @@ public class CDIEventListener implements ICDIEventListener{
 		return valuestring;
 	}
 	
-	public static String getValueTypeName(ICDIValue value){
+	public static String getValueTypeName(ICDIValue value) {
 		String valueTypeName = "";
-		if (value == null){return valueTypeName;}
+		if (value == null) { return valueTypeName; }
 		try {
 			valueTypeName = value.getTypeName();
 		} catch (CDIException e) {
@@ -297,7 +326,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return valueTypeName;
 	}
 	
-	public static ICDIVariable[] getLocalVariablesFromValue(ICDIValue value){
+	public static ICDIVariable[] getLocalVariablesFromValue(ICDIValue value) {
 		ICDIVariable[] variables = null;
 		try {
 			variables = value.getVariables();
@@ -307,7 +336,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return variables;
 	}
 	
-	public static ICDILocalVariable getLocalVariable(ICDILocalVariableDescriptor descriptor){
+	public static ICDILocalVariable getLocalVariable(ICDILocalVariableDescriptor descriptor) {
 		ICDILocalVariable variable = null;
 		try {
 			 variable = descriptor.getStackFrame().createLocalVariable(descriptor);
@@ -317,7 +346,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return variable;
 	}
 	
-	public static ICDIArgument getArgument(ICDIArgumentDescriptor descriptor){
+	public static ICDIArgument getArgument(ICDIArgumentDescriptor descriptor) {
 		ICDIArgument argument = null;
 		try {
 			argument = descriptor.getStackFrame().createArgument(descriptor);
@@ -327,7 +356,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return argument;
 	}
 	
-	public static String getHexAddress (Variable variable){
+	public static String getHexAddress (Variable variable) {
 		String hexAddress = "";
 		try {
 			hexAddress = variable.getHexAddress();
@@ -337,7 +366,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return hexAddress;
 	}
 	
-	public static ICDIRegisterGroup[]  getICDIRegisterGroups (ICDIStackFrame frame){
+	public static ICDIRegisterGroup[]  getICDIRegisterGroups (ICDIStackFrame frame) {
 		ICDIRegisterGroup[] registerGroup = new ICDIRegisterGroup[0];
 		try {
 			registerGroup = frame.getThread().getTarget().getRegisterGroups();
@@ -347,7 +376,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return registerGroup;
 	}
 	
-	public static ICDIRegisterDescriptor[] getICDIRegisterDescriptors(ICDIRegisterGroup registerGroup){
+	public static ICDIRegisterDescriptor[] getICDIRegisterDescriptors(ICDIRegisterGroup registerGroup) {
 		ICDIRegisterDescriptor[] regDescriptors = new ICDIRegisterDescriptor[0];
 		try {
 			regDescriptors = registerGroup.getRegisterDescriptors();
@@ -357,7 +386,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return regDescriptors;
 	}
 	
-	public static ICDIRegister createICDIRegister(ICDIStackFrame frame, ICDIRegisterDescriptor regDescriptor){
+	public static ICDIRegister createICDIRegister(ICDIStackFrame frame, ICDIRegisterDescriptor regDescriptor) {
 		ICDIRegister register = null;
 		try {
 			register = frame.getTarget().createRegister(regDescriptor);
@@ -367,7 +396,7 @@ public class CDIEventListener implements ICDIEventListener{
 		return register;
 	}
 	
-	public static ICDIValue getRegisterValue(ICDIStackFrame frame, ICDIRegister register){
+	public static ICDIValue getRegisterValue(ICDIStackFrame frame, ICDIRegister register) {
 		ICDIValue value = null;
 		try {
 			value = register.getValue(frame);
@@ -377,27 +406,29 @@ public class CDIEventListener implements ICDIEventListener{
 		return value;
 	}
 	
-	public static ICDIValue findRegisterValueByQualifiedName(ICDIStackFrame frame, String qualifedName){
+	public static ICDIValue findRegisterValueByQualifiedName(ICDIStackFrame frame, String qualifedName) {
 		ICDIValue value = null;
 		ICDIRegisterGroup[] registerGroups = CDIEventListener.getICDIRegisterGroups(frame);
-		for (ICDIRegisterGroup registerGroup : registerGroups){
+		for (ICDIRegisterGroup registerGroup : registerGroups) {
 			ICDIRegisterDescriptor[] regDescriptors = CDIEventListener.getICDIRegisterDescriptors(registerGroup);
-			for (ICDIRegisterDescriptor regDescriptor : regDescriptors){
+			for (ICDIRegisterDescriptor regDescriptor : regDescriptors) {
 				ICDIRegister cdiRegister = CDIEventListener.createICDIRegister(frame, regDescriptor);
 				String qName = CDIEventListener.getQualifiedName(cdiRegister);
-				if (qName.equals(qualifedName)){value = CDIEventListener.getRegisterValue(frame, cdiRegister);}
+				if (qName.equals(qualifedName)) {
+					value = CDIEventListener.getRegisterValue(frame, cdiRegister);
+				}
 			}
 		}		
 		return value;
 	}
 	
-	public static ICDIInstruction[] getInstructions(ICDIStackFrame frame){
+	public static ICDIInstruction[] getInstructions(ICDIStackFrame frame) {
 		ICDIInstruction[] instructions = new ICDIInstruction[0];
 		try {
 			instructions = frame.getTarget().getInstructions(
 					frame.getLocator().getFile(), frame.getLocator().getLineNumber());
 		}
-		catch (CDIException e) {e.printStackTrace();}
+		catch (CDIException e) { e.printStackTrace(); }
 		return instructions;
 	}
 }
