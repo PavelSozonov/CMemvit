@@ -1,13 +1,13 @@
 package ru.innopolis.lips.memvit;
 
-import java.math.BigInteger;
-
 import org.eclipse.cdt.debug.core.cdi.CDIException;
 import org.eclipse.cdt.debug.core.cdi.ICDICondition;
 import org.eclipse.cdt.debug.core.cdi.ICDILocator;
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIBreakpoint;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIExpression;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariable;
+import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariableDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIInstruction;
 import org.eclipse.cdt.debug.core.cdi.model.ICDILocalVariableDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIMemoryBlock;
@@ -25,19 +25,30 @@ import org.eclipse.cdt.debug.core.cdi.model.ICDIThreadStorageDescriptor;
 public class Analyzer {
 
 	private void log(int nestingLevel, String message) {
-		LogWriter.write(nestingLevel, message);
+		FileWriter2.writeLog(nestingLevel, message);
 	}
 	
 	private void log(String message) {
-		LogWriter.write(message);
+		FileWriter2.writeLog(message);
 	}
 
 	private void log() {
-		LogWriter.write("");
+		FileWriter2.writeLog("");
 	}
 
 	public void targetExploration(ICDITarget target) throws CDIException {
 		log("EVENT");
+		log("");
+		//target.getCurrentThread().getStackFrames()[0].get
+		
+		//ICDIVariableDescriptor var = target.getGlobalVariableDescriptors(null, "main", null);
+		//log("$$$ Global var name: " + var.getName());
+		//log("$$$ Global var qalified name: " + var.getQualifiedName());
+		//ICDIType type1 = var.getType();
+		//if (type1 != null) {
+		//	log("$$$ Global var type: " + type1.getTypeName());
+		//}
+		//log("");
 		
 		// Begin breakpoints
 		log(1, "BREAKPOINTS");
@@ -108,6 +119,9 @@ public class Analyzer {
 		int expressionCount = 0;
 		for (ICDIExpression expression : expressions) {
 			log(2, "expressions[" + expressionCount + "].getExpressionText() == " + expression.getExpressionText());
+			log(2, "$$$$$$");
+			log(2, expression.getValue(target.getCurrentThread().getStackFrames()[0]).getValueString());
+			//ICDIStackFrame[] frames = target.getCurrentThread().getStackFrames();
 			// expression.getValue(context);
 			expressionCount++;
 		}
@@ -117,8 +131,16 @@ public class Analyzer {
 		// Begin global variable descriptor
 		log(1, "GLOBAL VARIABLE DESCRIPTOR");
 		log(2, "ICDIGlobalVariableDescriptor globalVariableDescriptor = target.getGlobalVariableDescriptors(filename, function, name);");
-		log(2, "Ommited\n");
-		//ICDIGlobalVariableDescriptor globalVariableDescriptor = target.getGlobalVariableDescriptors(filename, function, name);
+		log(2, "^^^");
+		ICDIStackFrame[] framesGlob = target.getCurrentThread().getStackFrames();		
+		ICDIGlobalVariableDescriptor globalVariableDescriptor = target.getGlobalVariableDescriptors(framesGlob[0].getLocator().getFile(), 
+																									framesGlob[0].getLocator().getFunction(), 
+																									"g_GLOBAL");
+		ICDIGlobalVariable gv = target.createGlobalVariable(globalVariableDescriptor);
+		log(2, "Type name: " + globalVariableDescriptor.getTypeName());
+		log(2, "Expressions length: " + target.getExpressions().length);
+		log(2, "Qualified name: " + globalVariableDescriptor.getQualifiedName());
+		log(2, "gv: " + gv.getValue().getValueString());
 		
 		// End global variable descriptor
 		
@@ -137,18 +159,18 @@ public class Analyzer {
 												instructionFrame.getLocator().getFile(), 
 												instructionFrame.getLocator().getLineNumber()
 												);
-			log(2, "frameCount == " + frameCount);
-			log(2, "ICDIInstruction[] instructions = target.getInstructions(frame.getLocator().getFile(), frame.getLocator().getLineNumber());\n");
+			log(3, "frameCount == " + frameCount);
+			log(3, "ICDIInstruction[] instructions = target.getInstructions(frame.getLocator().getFile(), frame.getLocator().getLineNumber());\n");
 
 			int instructionCount = 0;
 			for (ICDIInstruction instruction : instructions) {
-				log(3, "instructionCount == " + instructionCount);
-				log(3, "instruction.getAdress() == " + instruction.getAdress());
-				log(3, "instruction.getArgs() == " + instruction.getArgs());
-				log(3, "instruction.getFuntionName() == " + instruction.getFuntionName());
-				log(3, "instruction.getInstruction() == " + instruction.getInstruction());
-				log(3, "instruction.getOffset() == " + instruction.getOffset());
-				log(3, "instruction.getOpcode() == " + instruction.getOpcode());
+				log(4, "instructionCount == " + instructionCount);
+				log(4, "instruction.getAdress() == " + instruction.getAdress());
+				log(4, "instruction.getArgs() == " + instruction.getArgs());
+				log(4, "instruction.getFuntionName() == " + instruction.getFuntionName());
+				log(4, "instruction.getInstruction() == " + instruction.getInstruction());
+				log(4, "instruction.getOffset() == " + instruction.getOffset());
+				log(4, "instruction.getOpcode() == " + instruction.getOpcode());
 				log();
 				instructionCount++;
 			}
@@ -260,18 +282,18 @@ public class Analyzer {
 		}
 		// End signals
 
-		// Begin pathes
-		log(1, "PATHES");
-		String[] pathes = target.getSourcePaths();
-		log(2, "ICDISignal[] signals = target.getSignals();\n");
+		// Begin paths
+		log(1, "PATHS");
+		String[] paths = target.getSourcePaths();
+		log(2, "String[] paths = target.getSourcePaths();\n");
 		int pathCount = 0;
-		for (String path : pathes) {
+		for (String path : paths) {
 			log(2, "pathCount == " + pathCount);
 			log(2, "path");
 			pathCount++;
 			log();
 		}
-		// End pathes
+		// End paths
 
 		// Begin threads
 		log(1, "THREADS");

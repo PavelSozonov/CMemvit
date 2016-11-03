@@ -18,55 +18,27 @@
 
 package ru.innopolis.lips.memvit;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.cdt.debug.core.cdi.CDIException;
-import org.eclipse.cdt.debug.core.cdi.ICDIAddressLocation;
-import org.eclipse.cdt.debug.core.cdi.ICDICondition;
-import org.eclipse.cdt.debug.core.cdi.ICDILocator;
-import org.eclipse.cdt.debug.core.cdi.ICDISession;
-import org.eclipse.cdt.debug.core.cdi.event.ICDIBreakpointMovedEvent;
 import org.eclipse.cdt.debug.core.cdi.event.ICDIEvent;
 import org.eclipse.cdt.debug.core.cdi.event.ICDIEventListener;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIArgument;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIArgumentDescriptor;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIBreakpoint;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIExpression;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariableDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIInstruction;
 import org.eclipse.cdt.debug.core.cdi.model.ICDILocalVariable;
 import org.eclipse.cdt.debug.core.cdi.model.ICDILocalVariableDescriptor;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIMemoryBlock;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIMixedInstruction;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIObject;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegister;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegisterDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegisterGroup;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIRuntimeOptions;
-import org.eclipse.cdt.debug.core.cdi.model.ICDISharedLibrary;
-import org.eclipse.cdt.debug.core.cdi.model.ICDISignal;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIStackFrame;
 import org.eclipse.cdt.debug.core.cdi.model.ICDITarget;
-import org.eclipse.cdt.debug.core.cdi.model.ICDITargetConfiguration;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIThreadStorageDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIValue;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariable;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariableDescriptor;
 import org.eclipse.cdt.debug.mi.core.cdi.model.Variable;
-
-//import org.eclipse.cdt.debug.mi.core.command.CommandFactory;
-//import org.eclipse.cdt.debug.mi.core.command.MIDataListChangedRegisters;
-//import org.eclipse.cdt.debug.mi.core.command.MIGDBShowAddressSize;
-//import org.eclipse.core.runtime.Path;
-//import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Paths;
-//import java.nio.file.StandardOpenOption;
-//import org.eclipse.cdt.debug.mi.core.MISession;
-//import org.eclipse.cdt.debug.mi.core.cdi.model.Target;
 
 public class CDIEventListener implements ICDIEventListener {
 
@@ -79,6 +51,7 @@ public class CDIEventListener implements ICDIEventListener {
 	List<VarDescription> heapVars = new ArrayList<>();
 	
 	private Analyzer analyzer = new Analyzer();
+	private JsonCreator json = new JsonCreator();
 	
 	@Override
 	public void handleDebugEvents(ICDIEvent[] event) {
@@ -98,7 +71,8 @@ public class CDIEventListener implements ICDIEventListener {
 				return;	
 			}
 			try {
-				analyzer.targetExploration(target);
+				//analyzer.targetExploration(target);
+				//json.targetProcessing(target);
 				ICDIThread thread = target.getCurrentThread();
 				setCurrentThread(thread);
 				setItIsUpdatedThread(true);	
@@ -137,39 +111,39 @@ public class CDIEventListener implements ICDIEventListener {
 
 		for (int i = 0; i < frames.length; i++) {
 			
-			String functionname = frames[i].getLocator().getFunction();
-			String filename = frames[i].getLocator().getFile();
+			String functionName = frames[i].getLocator().getFunction();
+			String fileName = frames[i].getLocator().getFile();
 			ICDIValue registerBasePointer = CDIEventListener.findRegisterValueByQualifiedName(frames[i], "$rbp");
-			String startaddress = CDIEventListener.getValueString(registerBasePointer);
-			if (startaddress.length() == 0) {
+			String startAddress = CDIEventListener.getValueString(registerBasePointer);
+			if (startAddress.length() == 0) {
 				registerBasePointer = CDIEventListener.findRegisterValueByQualifiedName(frames[i], "$ebp");
-				startaddress = CDIEventListener.getValueString(registerBasePointer);
+				startAddress = CDIEventListener.getValueString(registerBasePointer);
 			}
 			
 			ICDIValue registerStackPointer = CDIEventListener.findRegisterValueByQualifiedName(frames[i], "$rsp");
-			String endaddress = CDIEventListener.getValueString(registerStackPointer);
-			if (endaddress.length() == 0) {
+			String endAddress = CDIEventListener.getValueString(registerStackPointer);
+			if (endAddress.length() == 0) {
 				registerStackPointer = CDIEventListener.findRegisterValueByQualifiedName(frames[i], "$esp");
-				endaddress = CDIEventListener.getValueString(registerStackPointer);
+				endAddress = CDIEventListener.getValueString(registerStackPointer);
 			}
 			
-			ICDILocalVariableDescriptor[] variabledescriptors = CDIEventListener.GetStackFrameLocalVariableDescriptors(frames[i]);
+			ICDILocalVariableDescriptor[] variableDescriptors = CDIEventListener.GetStackFrameLocalVariableDescriptors(frames[i]);
 			
 			ArrayList<VarDescription> tempVars = new ArrayList<>();
-			for (int k = 0; k < variabledescriptors.length; k++) {
-				ICDILocalVariable icdilovalvariable =  CDIEventListener.getLocalVariable(variabledescriptors[k]);
+			for (int k = 0; k < variableDescriptors.length; k++) {
+				ICDILocalVariable icdilovalvariable =  CDIEventListener.getLocalVariable(variableDescriptors[k]);
 				String hexaddress = CDIEventListener.getHexAddress((Variable)icdilovalvariable);
 				String typename = CDIEventListener.getLocalVariableTypeName(icdilovalvariable);
 				ICDIValue cdivalue = CDIEventListener.getLocalVariableValue(icdilovalvariable);
 				String valuestring = CDIEventListener.getValueString(cdivalue);
 				String qualifiedname = CDIEventListener.getQualifiedName(icdilovalvariable);
 				VarDescription addedVar = new VarDescription(hexaddress, typename, valuestring, qualifiedname);
-				if (hexaddress.compareTo(endaddress) >=0  && hexaddress.compareTo(startaddress) <=0 ) {
+				if (hexaddress.compareTo(endAddress) >=0  && hexaddress.compareTo(startAddress) <=0 ) {
 					tempVars.add(addedVar);
 				} else {
 					heapVars.add(addedVar);
 				}
-				fillVarDescriptors(addedVar, cdivalue, startaddress, endaddress);
+				fillVarDescriptors(addedVar, cdivalue, startAddress, endAddress);
 			}
 			VarDescription[] vars = new VarDescription[tempVars.size()];
 			tempVars.toArray(vars);
@@ -193,35 +167,37 @@ public class CDIEventListener implements ICDIEventListener {
 			
 			String curLineNumber = String.valueOf(frames[i].getLocator().getLineNumber());
 			
-			records[i] = new ActivationRecord(curLineNumber, functionname,filename,startaddress,endaddress, "Unknown (not implemented)",vars, args);
+			records[i] = new ActivationRecord(curLineNumber, functionName, fileName, startAddress, endAddress, 
+					"Unknown (not implemented)"/* String staticLink */, 
+					vars, args);
 		}
 		setItIsUpdatedThread(false);
 		return records;
 	}
 	
-	private void fillVarDescriptors(VarDescription var, ICDIValue cdivalue, String startaddress, String endaddress) {
+	private void fillVarDescriptors(VarDescription var, ICDIValue cdivalue, String startAddress, String endAddress) {
 		ICDIVariable[] subvariables =  CDIEventListener.getLocalVariablesFromValue(cdivalue);
 		if (subvariables == null) { return; }
 		
 		ArrayList<VarDescription> tempSubvars = new ArrayList<>();
 		for (int k = 0; k < subvariables.length; k++) {
 			ICDIVariable icdilovalvariable =  subvariables[k];
-			String hexaddress = CDIEventListener.getHexAddress((Variable)icdilovalvariable);
-			String typename = CDIEventListener.getLocalVariableTypeName(icdilovalvariable);
-			ICDIValue subcdivalue = CDIEventListener.getLocalVariableValue(icdilovalvariable);
-			String valuestring = CDIEventListener.getValueString(subcdivalue);
-			String qualifiedname = CDIEventListener.getQualifiedName(icdilovalvariable);
-			VarDescription addedVar = new VarDescription(hexaddress, typename, valuestring, qualifiedname);
-			if (hexaddress.compareTo(endaddress) >=0  && hexaddress.compareTo(startaddress) <=0 ) {
+			String hexAddress = CDIEventListener.getHexAddress((Variable)icdilovalvariable);
+			String typeName = CDIEventListener.getLocalVariableTypeName(icdilovalvariable);
+			ICDIValue subCDIValue = CDIEventListener.getLocalVariableValue(icdilovalvariable);
+			String valueString = CDIEventListener.getValueString(subCDIValue);
+			String qualifiedName = CDIEventListener.getQualifiedName(icdilovalvariable);
+			VarDescription addedVar = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
+			if (hexAddress.compareTo(endAddress) >= 0  && hexAddress.compareTo(startAddress) <= 0) {
 				tempSubvars.add(addedVar);
 				var.addNested(addedVar);
 			} else {
 				heapVars.add(addedVar);
 			}
-			fillVarDescriptors(addedVar, subcdivalue, startaddress, endaddress);
+			fillVarDescriptors(addedVar, subCDIValue, startAddress, endAddress);
 		}
-		VarDescription[] subvars = new VarDescription[tempSubvars.size()];//extra space for return value
-		tempSubvars.toArray(subvars);
+		VarDescription[] subVars = new VarDescription[tempSubvars.size()]; //extra space for return value
+		tempSubvars.toArray(subVars);
 	}
 	
 	public String getEaxValue() {

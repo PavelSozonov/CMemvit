@@ -1,4 +1,5 @@
 package ru.innopolis.lips.memvit;
+
 import org.eclipse.cdt.launch.internal.LocalCDILaunchDelegate;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;

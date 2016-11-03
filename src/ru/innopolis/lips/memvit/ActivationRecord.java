@@ -41,7 +41,6 @@ public class ActivationRecord {
 		this.args = args;
 	}
 	
-	// getters and setters
 	public String getFunctionName() {
 		return functionName;
 	}
