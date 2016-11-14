@@ -7,20 +7,15 @@ import org.eclipse.swt.SWT;
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.ui.part.ViewPart;
 
-//import org.eclipse.swt.widgets.TreeItem;
-//import org.eclipse.ui.part.*;
-//import java.util.ArrayList;
-//import org.eclipse.cdt.debug.core.cdi.model.ICDIValue;
-//import org.eclipse.cdt.debug.core.cdi.model.ICDIVariable;
-//import org.eclipse.cdt.debug.mi.core.cdi.Session;
-//import org.eclipse.cdt.debug.mi.core.cdi.model.Variable;
-
 public class Stack extends ViewPart {
 	
 	private CDIEventListener cdiEventListener = null;
 	private ICDISession cdiDebugSession = null;
 	private Browser browser;
 
+	/*
+	 * Each second update stack view (browser) content
+	 */
 	class RunnableForThread2 implements Runnable {
 		
 		@Override
@@ -33,24 +28,37 @@ public class Stack extends ViewPart {
 		}
 	}
 	
+	/*
+	 * Initialize cdiEventListener, create new thread for updating stack view (browser),
+	 * set initial content to stack view
+	 * 
+	 * (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
 	@Override
 	public void createPartControl(Composite parent) {
 		cdiEventListener = new CDIEventListener();
 		tryGetCdiSession();
 		
-		//TODO: add a comment
 		Runnable runnable = new RunnableForThread2();
-		Thread Thread2 = new Thread(runnable);
-		Thread2.start();
+		Thread thread2 = new Thread(runnable);
+		thread2.start();
 		
 		browser = new Browser(parent, SWT.NONE);
 		browser.setText("<html><body>Here will appear stack- and heap-related debug information</body></html>");
 	}	
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+	 */
 	@Override
 	public void setFocus() {
 	}	
 	
+	/*
+	 * If it is new debug session, add event listener
+	 */
 	private void tryGetCdiSession() {	
 		//Session session = CDIDebugger.getSession();
 		ICDISession session = GDBCDIDebuggerMemvit.getSession();
@@ -65,6 +73,9 @@ public class Stack extends ViewPart {
 		}
 	}
 	
+	/*
+	 * Get CDI session, if thread is updated, draw new data in browser.
+	 */
 	private void visualizeStackCpp() {		
 		tryGetCdiSession();
 		if (cdiEventListener == null) { return; }

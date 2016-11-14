@@ -50,8 +50,8 @@ public class CDIEventListener implements ICDIEventListener {
 	
 	List<VarDescription> heapVars = new ArrayList<>();
 	
-	private Analyzer analyzer = new Analyzer();
-	private JsonCreator json = new JsonCreator();
+	//private Analyzer analyzer = new Analyzer();
+	//private JsonCreator json = new JsonCreator();
 	
 	@Override
 	public void handleDebugEvents(ICDIEvent[] event) {
@@ -143,7 +143,7 @@ public class CDIEventListener implements ICDIEventListener {
 				} else {
 					heapVars.add(addedVar);
 				}
-				fillVarDescriptors(addedVar, cdivalue, startAddress, endAddress);
+				fillVariableDescriptors(addedVar, cdivalue, startAddress, endAddress);
 			}
 			VarDescription[] vars = new VarDescription[tempVars.size()];
 			tempVars.toArray(vars);
@@ -175,29 +175,29 @@ public class CDIEventListener implements ICDIEventListener {
 		return records;
 	}
 	
-	private void fillVarDescriptors(VarDescription var, ICDIValue cdivalue, String startAddress, String endAddress) {
-		ICDIVariable[] subvariables =  CDIEventListener.getLocalVariablesFromValue(cdivalue);
-		if (subvariables == null) { return; }
+	private void fillVariableDescriptors(VarDescription var, ICDIValue cdivalue, String startAddress, String endAddress) {
+		ICDIVariable[] subVariables =  CDIEventListener.getLocalVariablesFromValue(cdivalue);
+		if (subVariables == null) { return; }
 		
-		ArrayList<VarDescription> tempSubvars = new ArrayList<>();
-		for (int k = 0; k < subvariables.length; k++) {
-			ICDIVariable icdilovalvariable =  subvariables[k];
-			String hexAddress = CDIEventListener.getHexAddress((Variable)icdilovalvariable);
-			String typeName = CDIEventListener.getLocalVariableTypeName(icdilovalvariable);
-			ICDIValue subCDIValue = CDIEventListener.getLocalVariableValue(icdilovalvariable);
+		ArrayList<VarDescription> tempSubVars = new ArrayList<>();
+		for (int k = 0; k < subVariables.length; k++) {
+			ICDIVariable iCdiLocalVariable =  subVariables[k];
+			String hexAddress = CDIEventListener.getHexAddress((Variable)iCdiLocalVariable);
+			String typeName = CDIEventListener.getLocalVariableTypeName(iCdiLocalVariable);
+			ICDIValue subCDIValue = CDIEventListener.getLocalVariableValue(iCdiLocalVariable);
 			String valueString = CDIEventListener.getValueString(subCDIValue);
-			String qualifiedName = CDIEventListener.getQualifiedName(icdilovalvariable);
+			String qualifiedName = CDIEventListener.getQualifiedName(iCdiLocalVariable);
 			VarDescription addedVar = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
 			if (hexAddress.compareTo(endAddress) >= 0  && hexAddress.compareTo(startAddress) <= 0) {
-				tempSubvars.add(addedVar);
+				tempSubVars.add(addedVar);
 				var.addNested(addedVar);
 			} else {
 				heapVars.add(addedVar);
 			}
-			fillVarDescriptors(addedVar, subCDIValue, startAddress, endAddress);
+			fillVariableDescriptors(addedVar, subCDIValue, startAddress, endAddress);
 		}
-		VarDescription[] subVars = new VarDescription[tempSubvars.size()]; //extra space for return value
-		tempSubvars.toArray(subVars);
+		VarDescription[] subVars = new VarDescription[tempSubVars.size()]; //extra space for return value
+		tempSubVars.toArray(subVars);
 	}
 	
 	public String getEaxValue() {
