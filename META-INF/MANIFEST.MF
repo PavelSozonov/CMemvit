@@ -43,3 +43,5 @@ Import-Package: org.eclipse.cdt.core,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ru.innopolis.lips.memvit
 Require-Bundle: org.eclipse.ui
+Bundle-ClassPath: libs/json-20160810.jar,
+ .

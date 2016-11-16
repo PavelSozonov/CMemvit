@@ -1,9 +1,7 @@
 package ru.innopolis.lips.memvit;
 
 import org.eclipse.cdt.debug.core.cdi.CDIException;
-import org.eclipse.cdt.debug.core.cdi.ICDICondition;
 import org.eclipse.cdt.debug.core.cdi.ICDILocator;
-import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIBreakpoint;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIExpression;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariable;
@@ -13,7 +11,6 @@ import org.eclipse.cdt.debug.core.cdi.model.ICDILocalVariableDescriptor;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIMemoryBlock;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIMixedInstruction;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIRegisterGroup;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIRuntimeOptions;
 import org.eclipse.cdt.debug.core.cdi.model.ICDISharedLibrary;
 import org.eclipse.cdt.debug.core.cdi.model.ICDISignal;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIStackFrame;
@@ -60,7 +57,7 @@ public class Analyzer {
 			
 			// Begin condition
 			log(3, "CONDITION");
-			ICDICondition condition = breakpoint.getCondition();
+			//ICDICondition condition = breakpoint.getCondition();
 			log(4, "ICDICondition condition = breakpoints[" + breakpointsCount + "].getCondition();");
 			String expression = breakpoint.getCondition().getExpression();
 			if (expression.equals("")) { expression = "\"\""; }
@@ -217,7 +214,7 @@ public class Analyzer {
 		
 		// Begin process
 		log(1, "PROCESS");
-		Process process = target.getProcess();
+		//Process process = target.getProcess();
 		log(2, "Process process = target.getProcess();\n");
 		log(2, "isAlive(); getOutputStream(); getInputStream(); getErrorStream(); destroy(); exitValue();\n");
 		// End process
@@ -239,14 +236,14 @@ public class Analyzer {
 		
 		// Begin runtime options
 		log(1, "RUNTIME OPTIONS");
-		ICDIRuntimeOptions runtimeOptions = target.getRuntimeOptions();
+		//ICDIRuntimeOptions runtimeOptions = target.getRuntimeOptions();
 		log(2, "ICDIRuntimeOptions runtimeOptions = target.getRuntimeOptions();");
 		log(2, "Ommited\n");
 		// End runtime options
 		
 		// Begin session
 		log(1, "SESSION");
-		ICDISession session = target.getSession();
+		//ICDISession session = target.getSession();
 		log(2, "session.getAttribute(key); session.getConfiguration(); session.getEventManager(); session.getSessionProcess();\n");
 		// End session
 		
@@ -289,7 +286,7 @@ public class Analyzer {
 		int pathCount = 0;
 		for (String path : paths) {
 			log(2, "pathCount == " + pathCount);
-			log(2, "path");
+			log(2, "path" + path);
 			pathCount++;
 			log();
 		}
@@ -297,7 +294,7 @@ public class Analyzer {
 
 		// Begin threads
 		log(1, "THREADS");
-		ICDIThread[] threads = target.getThreads();
+		//ICDIThread[] threads = target.getThreads();
 		log(2, "ICDIThread[] threads = target.getThreads();");
 		log(2, "See current thread (next)\n");
 		// End threads

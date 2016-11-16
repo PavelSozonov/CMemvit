@@ -5,45 +5,44 @@ import java.util.LinkedList;
 
 import org.eclipse.cdt.debug.core.cdi.CDIException;
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariable;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIGlobalVariableDescriptor;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIStackFrame;
 import org.eclipse.cdt.debug.core.cdi.model.ICDITarget;
-import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.eclipse.swt.widgets.Display;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import ru.innopolis.lips.memvit.Stack.RunnableForThread2;
 
 public class JsonCreator {
 	
 	//	private ICDITarget target = null;
 	
-	private CDIEventListener cdiEventListener = null;
-	private ICDISession cdiDebugSession = null;
+	private CDIEventListenerForJson cdiEventListenerForJson;
+	private ICDISession cdiDebugSession;
+	private boolean cdiSessionGot = false;
 
 	public JsonCreator() {
-		cdiEventListener = new CDIEventListener();
+		cdiEventListenerForJson = new CDIEventListenerForJson(this);
 		tryGetCdiSession();
 		
-		// Create new thread to regular save state to json
-		Runnable runnable = new RunnableForThread2();
+		// Create new thread, it will work until cdi session will got
+		Runnable runnable = new RunnableForThread();
 		Thread thread2 = new Thread(runnable);
 		thread2.start();
+	
 	}
 	
 	/*
-	 * Each 100 ms check if thread state updated, save it to json
+	 * Each 100 ms try to got cdi session, when it got, break
 	 */
-	class RunnableForThread2 implements Runnable {
+	class RunnableForThread implements Runnable {
 		
 		@Override
 		public void run() {
 			while (true) {
+				cdiSessionGot = false;
 				try { Thread.sleep(100); } catch (Exception e) { }
-				Runnable task = () -> { saveStateToJson(); };
+				Runnable task = () -> { 
+					cdiSessionGot = tryGetCdiSession();
+				};
 				Display.getDefault().asyncExec(task);
+				if (cdiSessionGot) break;
 			}			
 		}
 	}
@@ -51,17 +50,12 @@ public class JsonCreator {
 	/*
 	 * Get CDI session, if thread is updated, save new state to json
 	 */
-	private void saveStateToJson() {		
+	public void saveStateToJson() {		
 		tryGetCdiSession();
-		if (cdiEventListener == null) { return; }
-		if (!cdiEventListener.isItUpdatedThread()) { return; }
+		if (cdiEventListenerForJson == null) { return; }
+		if (!cdiEventListenerForJson.isItUpdatedThread()) { return; }
 			
-		String jsonContent = buildJson(
-				cdiEventListener.getActivationRecords(),
-				cdiEventListener.getEaxType(),
-				cdiEventListener.getEaxValue(),
-				cdiEventListener.getHeapVars()
-				);
+		String jsonContent = buildJson();
 		
 		// write json to file
 		writeJson(jsonContent);
@@ -71,23 +65,21 @@ public class JsonCreator {
 	/*
 	 * If it is new debug session, add event listener
 	 */
-	private void tryGetCdiSession() {	
+	private boolean tryGetCdiSession() {	
 		ICDISession session = GDBCDIDebuggerMemvit.getSession();
 		
-		if (session == null) { return; }
-		if (session.equals(this.cdiDebugSession)) { return; }
-		else {
-			this.cdiDebugSession = session;
-			if (this.cdiDebugSession != null) { 
-				this.cdiDebugSession.getEventManager().addEventListener(this.cdiEventListener); 
-			}	
-		}
+		if (session == null) { return false; }
+		if (session.equals(cdiDebugSession)) { return false; }
+		cdiDebugSession = session;
+		cdiDebugSession.getEventManager().addEventListener(cdiEventListenerForJson);
+		return true;
 	}
 	
 	private void writeJson(String json) {
 		FileWriter2.writeJson(json);
 	}
 
+	@SuppressWarnings({ "unused", "rawtypes" })
 	private LinkedHashMap buildJsonGlobalVariables(String globalVariableName) throws CDIException {
 		
 		// TODO: change using target to using cdiEventListener
@@ -111,16 +103,19 @@ public class JsonCreator {
 		return null;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setTarget(ICDITarget target) {
 		//this.target = target;
 	}
 	
+	@SuppressWarnings("unused")
 	private Integer frameCount() throws CDIException {
 		//return target.getCurrentThread().getStackFrames().length;
 		return null;
 	}
 	
 	// TODO:
+	@SuppressWarnings("unused")
 	private String frames() throws CDIException {
 		/*
 		ICDIStackFrame[] frames = target.getCurrentThread().getStackFrames();
@@ -131,11 +126,7 @@ public class JsonCreator {
 	}
 	
 	// TODO:
-	private LinkedHashMap buildJsonHeap() {
-		return null;
-	}
-	
-	// TODO:
+	@SuppressWarnings("rawtypes")
 	private LinkedHashMap buildJsonVirtualMemory() {
 		return null;
 	}
@@ -185,6 +176,22 @@ public class JsonCreator {
 		}
 		return stack;
 	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	LinkedList buildJsonHeap(VarDescription[] vars) {
+		LinkedList varsList = new LinkedList();
+		for (VarDescription var : vars) {
+			LinkedHashMap varMap = new LinkedHashMap();
+			varMap.put("address", var.getAddress());
+			varMap.put("name", var.getName());
+			varMap.put("type", var.getType());
+			varMap.put("value", var.getValue());
+			// TODO: var.getNested();
+			varMap.put("nested", "");
+			varsList.add(varMap);
+		}
+		return varsList;
+	}
 
 	/*
 	 * Structure:
@@ -210,32 +217,17 @@ public class JsonCreator {
 	 * Virtual memory
 	 *  - Allocation
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public String buildJson(ActivationRecord[] records, String eaxType, String eaxValue, VarDescription[] vars) {
+	public String buildJson() {
 		
 		JSONObject json = new JSONObject();
 
-		json.put("stack", buildJsonStack(records));
-		json.put("lastReturnedType", eaxType);
-		json.put("lastReturnedValue", eaxValue);
-
-		LinkedList varsList = new LinkedList();
-		for (VarDescription var : vars) {
-			LinkedHashMap varMap = new LinkedHashMap();
-			varMap.put("address", var.getAddress());
-			varMap.put("name", var.getName());
-			varMap.put("type", var.getType());
-			varMap.put("value", var.getValue());
-			// TODO: var.getNested();
-			varMap.put("nested", "");
-			varsList.add(varMap);
-		}
-		json.put("variables", varsList);
+		json.put("stack", buildJsonStack(cdiEventListenerForJson.getActivationRecords()));
+		json.put("heap", buildJsonHeap(cdiEventListenerForJson.getHeapVars()));
 		//json.put("globalVariables", buildJsonGlobalVariables("g_GLOBAL"));
-		json.put("heap", buildJsonHeap());
 		json.put("virtualMemory", buildJsonVirtualMemory());
-
-
+		json.put("lastReturnedType", cdiEventListenerForJson.getEaxType());
+		json.put("lastReturnedValue", cdiEventListenerForJson.getEaxValue());
+		
 		return json.toString();
 	}
 }
