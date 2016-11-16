@@ -59,18 +59,14 @@ public class Stack extends ViewPart {
 	/*
 	 * If it is new debug session, add event listener
 	 */
-	private void tryGetCdiSession() {	
-		//Session session = CDIDebugger.getSession();
+	private boolean tryGetCdiSession() {	
 		ICDISession session = GDBCDIDebuggerMemvit.getSession();
 		
-		if (session == null) { return; }
-		if (session.equals(this.cdiDebugSession)) { return; }
-		else {
-			this.cdiDebugSession = session;
-			if (this.cdiDebugSession != null) { 
-				this.cdiDebugSession.getEventManager().addEventListener(this.cdiEventListener); 
-			}	
-		}
+		if (session == null) { return false; }
+		if (session.equals(cdiDebugSession)) { return false; }
+		cdiDebugSession = session;
+		cdiDebugSession.getEventManager().addEventListener(cdiEventListener);
+		return true;
 	}
 	
 	/*
