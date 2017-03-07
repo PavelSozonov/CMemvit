@@ -14,6 +14,7 @@ public class BrowserView extends ViewPart implements View {
 
 	private Browser browser;
 	private String content;
+	private boolean isItChanged;
 	
 	public BrowserView() {
 		Activator.setBrowserView(this);
@@ -35,7 +36,10 @@ public class BrowserView extends ViewPart implements View {
 	}
 	
 	private void renderBrowser() {		
-		if (content != null) browser.setText(content);
+		if (content != null && isItChanged) {
+			browser.setText(content);
+			isItChanged = false;
+		}
 	}	
 
 	@Override
@@ -51,7 +55,10 @@ public class BrowserView extends ViewPart implements View {
 	@Override
 	public void update(State state) {
 		
-		if (state != null) content = HtmlBuilder.composeBrowserView(state);
+		if (state != null) {
+			content = HtmlBuilder.composeBrowserView(state);
+			isItChanged = true;
+		}
 	}
 
 	@Override

@@ -37,7 +37,7 @@ public class ListenerRegistrator {
 				Runnable task = () -> {
 					cdiSessionIsGot = getCdiSessionAndSetListener();
 				};
-				// Display.getDefault().asyncExec(task); 
+				Display.getDefault().asyncExec(task); // TODO: Remove? 
 //				if (cdiSessionIsGot)
 //					break;
 			}
