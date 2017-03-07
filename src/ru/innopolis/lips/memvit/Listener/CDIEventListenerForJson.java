@@ -2,7 +2,7 @@ package ru.innopolis.lips.memvit.Listener;
 
 import org.eclipse.cdt.debug.core.cdi.event.ICDIEvent;
 
-import ru.innopolis.lips.memvit.DataExtractor.DataExtractor;
+import ru.innopolis.lips.memvit.Controller.DataExtractor.DataExtractorObsolete;
 
 /*
  * New listener of debug events
@@ -10,16 +10,16 @@ import ru.innopolis.lips.memvit.DataExtractor.DataExtractor;
  */
 public class CDIEventListenerForJson extends CDIEventListener {
 
-	private DataExtractor dataExtractor;
+	private DataExtractorObsolete dataExtractorObsolete;
 	
-	public CDIEventListenerForJson(DataExtractor dataExtractor) {
+	public CDIEventListenerForJson(DataExtractorObsolete dataExtractorObsolete) {
 		super();
-		this.dataExtractor = dataExtractor;
+		this.dataExtractorObsolete = dataExtractorObsolete;
 	}
 	
 	@Override
 	public void handleDebugEvents(ICDIEvent[] event) {
 		super.handleDebugEvents(event);
-		dataExtractor.saveStateToJsonAndWriteToFile();
+		dataExtractorObsolete.saveStateToJsonAndWriteToFile();
 	}
 }

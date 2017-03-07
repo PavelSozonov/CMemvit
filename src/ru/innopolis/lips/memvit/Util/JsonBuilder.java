@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 import org.eclipse.cdt.debug.core.cdi.CDIException;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import ru.innopolis.lips.memvit.Model.ActivationRecord;
@@ -12,8 +13,8 @@ import ru.innopolis.lips.memvit.Model.VarDescription;
 
 public class JsonBuilder {
 	
-	@SuppressWarnings({ "unused", "rawtypes" })
-	private static LinkedHashMap buildJsonGlobalVariables(String globalVariableName)
+	@SuppressWarnings({ "rawtypes" })
+	private static LinkedHashMap buildJsonGlobalStaticVariables(VarDescription[] globalVariableName)
 			throws CDIException {
 
 		// TODO: change using target to using cdiEventListener
@@ -117,17 +118,24 @@ public class JsonBuilder {
 	 * 
 	 * Virtual memory - Allocation
 	 */
-	public static String buildJson(DataModel model) {
+	public static String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables) 
+			throws JSONException, CDIException {
 
+		if (stack == null || heap == null || globalStaticVariables == null) {
+			System.out.println("Stack, heap or global static description equal null. Break json build!");
+			return null;
+		}
+		
 		JSONObject json = new JSONObject();
 
-		json.put("stack",
-				buildJsonStack(model.getActivationRecords()));
-		json.put("heap", buildJsonHeap(model.getHeapVars()));
+		json.put("stack", buildJsonStack(stack));
+		json.put("heap", buildJsonHeap(heap));
+		json.put("globalStaticVariables", buildJsonGlobalStaticVariables(globalStaticVariables));
+
 		// json.put("globalVariables", buildJsonGlobalVariables("g_GLOBAL"));
-		json.put("virtualMemory", buildJsonVirtualMemory());
-		json.put("lastReturnedType", model.getEaxType());
-		json.put("lastReturnedValue", model.getEaxValue());
+		// json.put("virtualMemory", buildJsonVirtualMemory());
+		// json.put("lastReturnedType", model.getEaxType());
+		// json.put("lastReturnedValue", model.getEaxValue());
 
 		return json.toString();
 	}

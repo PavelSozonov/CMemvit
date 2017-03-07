@@ -7,16 +7,20 @@
       <view
             name="%view.name.2"
             icon="icons/sample.gif"
-            category="Plugin2"
-            class="ru.innopolis.lips.memvit.ViewControl.Stack"
+            class="ru.innopolis.lips.memvit.View.Obsolete.Stack"
             id="CMemvit">
       </view>
       <view
-            category="Plugin2"
-            class="ru.innopolis.lips.memvit.ViewControl.ProgramInfo"
+            class="ru.innopolis.lips.memvit.View.Obsolete.ProgramInfo"
             icon="icons/sample.gif"
             id="plugin2.views.ProgramInfo"
             name="%view.name.1">
+      </view>
+      <view
+            class="ru.innopolis.lips.memvit.View.BrowserView"
+            icon="icons/sample.gif"
+            id="CMemvit.BrowserView"
+            name="%view.name.3">
       </view>
    </extension>
    <extension

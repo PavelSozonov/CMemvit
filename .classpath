@@ -11,6 +11,6 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/pavel/Projects/workspace-luna-git/CMemvit/libs/json-20160810.jar"/>
+	<classpathentry kind="lib" path="/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/json-20160810.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

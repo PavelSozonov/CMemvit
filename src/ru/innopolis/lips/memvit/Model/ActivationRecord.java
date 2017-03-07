@@ -18,8 +18,8 @@
 
 package ru.innopolis.lips.memvit.Model;
 
-
 public class ActivationRecord {
+
 	private String lineNumber;
 	private String functionName;
 	private String fileName;

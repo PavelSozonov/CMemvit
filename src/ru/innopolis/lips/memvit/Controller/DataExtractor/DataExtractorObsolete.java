@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit.DataExtractor;
+package ru.innopolis.lips.memvit.Controller.DataExtractor;
 
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.swt.widgets.Display;
@@ -12,13 +12,13 @@ import ru.innopolis.lips.memvit.Util.JsonBuilder;
  * Creates listener, which on each debug event writes new json file
  * by invoking function saveStateToJsonAndWriteToFile of this class 
  */
-public class DataExtractor {
+public class DataExtractorObsolete {
 
 	private CDIEventListenerForJson cdiEventListenerForJson;
 	private ICDISession cdiDebugSession;
 	private boolean cdiSessionIsGot = false;
 
-	public DataExtractor() {
+	public DataExtractorObsolete() {
 		cdiEventListenerForJson = new CDIEventListenerForJson(this);
 
 		// Create new thread, it will work until cdi session will be got
@@ -80,7 +80,7 @@ public class DataExtractor {
 			return;
 		}
 
-		String jsonContent = JsonBuilder.buildJson(cdiEventListenerForJson.getDataModel());
+		String jsonContent = ""; //JsonBuilder.buildJson(cdiEventListenerForJson.getDataModel());
 
 		// Write json to file
 		FileWriter2.writeJson(jsonContent);

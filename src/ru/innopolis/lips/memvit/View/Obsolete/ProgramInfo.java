@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit.ViewControl;
+package ru.innopolis.lips.memvit.View.Obsolete;
 
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIInstruction;

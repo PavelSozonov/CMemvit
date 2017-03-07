@@ -1,14 +1,16 @@
-package ru.innopolis.lips.memvit.Activator;
+package ru.innopolis.lips.memvit;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import ru.innopolis.lips.memvit.DataExtractor.DataExtractor;
+import ru.innopolis.lips.memvit.Controller.Controller;
+import ru.innopolis.lips.memvit.Controller.Listener.ListenerRegistrator;
+import ru.innopolis.lips.memvit.View.BrowserView;
 
 /**
  * The activator class controls the plug-in life cycle
- * Instantiates jsonCreator
+ * Instantiates Controller and ListenerRegistrator
  */
 public class Activator extends AbstractUIPlugin {
 
@@ -18,7 +20,27 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
-	public static DataExtractor jsonCreator;
+	//public static DataExtractorObsolete jsonCreator;
+	
+	private static Controller controller = new Controller();
+	private static ListenerRegistrator listenerRegistrator; 
+	private static BrowserView browserView;
+	
+	public static void setController(Controller controller) {
+		Activator.controller = controller;
+	}
+	
+	public static Controller getController() {
+		return controller;
+	}
+	
+	public static void setBrowserView(BrowserView browserView) {
+		Activator.browserView = browserView;
+	}
+	
+	public static BrowserView getBrowserView() {
+		return browserView;
+	}
 	
 	/*
 	 * (non-Javadoc)
@@ -26,10 +48,9 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	@ Override
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Vis: plugin Start!");
 		super.start(context);
 		plugin = this;
-		jsonCreator = new DataExtractor();
+		listenerRegistrator = new ListenerRegistrator();
 	}
 
 	/*
@@ -38,7 +59,6 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	@ Override
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Vis: plugin Stop!");
 		plugin = null;
 		super.stop(context);
 	}
@@ -49,7 +69,6 @@ public class Activator extends AbstractUIPlugin {
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
-		System.out.println("Vis: plugin get Default!");
 		return plugin;
 	}
 

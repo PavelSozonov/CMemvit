@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit.ViewControl;
+package ru.innopolis.lips.memvit.View.Obsolete;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -6,9 +6,10 @@ import org.eclipse.swt.browser.*;
 import org.eclipse.swt.SWT;
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.ui.part.ViewPart;
+
 import ru.innopolis.lips.memvit.CDebugger.GDBCDIDebuggerMemvit;
 import ru.innopolis.lips.memvit.Listener.CDIEventListener;
-import ru.innopolis.lips.memvit.Util.VisualizationUtils;
+import ru.innopolis.lips.memvit.View.HtmlUtils.HtmlBuilder;
 
 /*
  * Each second requests data from data model,
@@ -48,9 +49,9 @@ public class Stack extends ViewPart {
 		initializeCDIEventListener();
 		initializeBrowser(parent);
 		
-		Runnable runnable = new RunnableForThread2();
-		Thread thread2 = new Thread(runnable);
-		thread2.start();		
+//		Runnable runnable = new RunnableForThread2();
+//		Thread thread2 = new Thread(runnable);
+//		thread2.start();		
 	}	
 	
 	/*
@@ -98,7 +99,7 @@ public class Stack extends ViewPart {
 		if (cdiEventListener == null) { return; }
 		if (!cdiEventListener.isItUpdatedThread()) { return; }
 			
-		String tabContent = VisualizationUtils.composeStackTab(
+		String tabContent = HtmlBuilder.composeStackTab(
 				cdiEventListener.getDataModel().getActivationRecords(),
 				cdiEventListener.getDataModel().getEaxType(),
 				cdiEventListener.getDataModel().getEaxValue(),

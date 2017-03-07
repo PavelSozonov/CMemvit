@@ -1,11 +1,20 @@
-package ru.innopolis.lips.memvit.Util;
+package ru.innopolis.lips.memvit.View.HtmlUtils;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import ru.innopolis.lips.memvit.Model.ActivationRecord;
+import ru.innopolis.lips.memvit.Model.State;
 import ru.innopolis.lips.memvit.Model.VarDescription;
 
-public class VisualizationUtils {
+public class HtmlBuilder {
 	
 	private static String htmlHeader = "<html><head><title>Stack</title><style type=\"text/css\">body{background-color: white;}*{font-family: monospace; font-size:10pt;}div.ar{background-color: #FDF1FA; padding: 6px; margin-bottom: 12px; border: 1px solid #bbb;}div.ar_title{font-size: small; color: #669999;}.ar_info, .ar_info td{border: 1px solid #FDF1FA; border-collapse: collapse; padding: 4px;}.ar_vars, .ar_vars td{border: 1px solid #ccc; border-collapse: collapse; padding: 6px;}.ar_info .n, .ar_vars .title td{font-size: 10pt; color: #669999;}.ar_info{font-size: small; border-color: #FDF1FA;}.gr{color: grey; font-size: 8pt;} td.arg { background-color: #d9ffb3; } .collapsibleList li > input + *{display: none;}.collapsibleList li > input:checked + *{display: block;}.collapsibleList{list-style-type: none;}.collapsibleList li > input{display: none;}.collapsibleList label{cursor: pointer; text-decoration: underline;}.fixed{position: fixed; top: 0; left: 6;}.container{width: 100%; margin: auto;}.stack{width: 48%; float: left; overflow-y: auto;}.heap{margin-left: 2%; width: 46%; float: left; padding: 2px; overflow-y: auto;} .heap table { width: 100%; background-color: #FDF1FA; } .clear{clear: both;} b { margin-bottom: 10px; display: block; } </style></head><body><div class=\"container\"><div class=\"stack\"><b>Stack:</b>";
 	
@@ -31,6 +40,101 @@ public class VisualizationUtils {
 	
 	{
 		idCounter = 0;
+	}
+	
+	public static String composeBrowserView(State state) {
+
+		String html = state.getData();
+		
+		// TODO:
+		
+		if (html == null) return null;
+		
+		html = "<html><body><pre>" + html + "</pre></body></html>";
+		
+		ActivationRecord[] frames = getStackFromJson(state);
+		String eaxType = "eaxType";
+		String eaxValue = "eaxValue";
+		VarDescription[] heapVars = getHeapFromJson(state);
+		
+		html = composeStackTab(frames, eaxType, eaxValue, heapVars);
+		return html;
+	}
+	
+	private static ActivationRecord[] getStackFromJson(State state) {
+
+		JSONTokener tokener = new JSONTokener(state.toString());
+		JSONObject json = new JSONObject(tokener);
+		
+		List frames = (LinkedList) json.get("stack");
+		
+		List<ActivationRecord> records = new LinkedList<ActivationRecord>();
+		
+		ActivationRecord record;
+		
+		for (Object frame : frames) {
+			Map frameMap = (LinkedHashMap)frame;
+			
+			// TODO
+			VarDescription[] args = new VarDescription[0];
+			String staticLink = "Not implemented";
+			
+			List varsList = (LinkedList) frameMap.get("vars");
+			VarDescription[] vars = new VarDescription[varsList.size()];
+			int varsCount = 0;
+			for (Object var : varsList) {
+				Map varMap = (LinkedHashMap) var;
+				
+				vars[varsCount++] = new VarDescription(
+						(String) varMap.get("address"), 
+						(String) varMap.get("type"), 
+						(String) varMap.get("value"), 
+						(String) varMap.get("name")
+						);
+			}
+			
+//			LinkedList varsList = new LinkedList();
+//			for (VarDescription var : record.getVars()) {
+//				LinkedHashMap varMap = new LinkedHashMap();
+//				varMap.put("address", var.getAddress());
+//				varMap.put("name", var.getName());
+//				varMap.put("type", var.getType());
+//				varMap.put("value", var.getValue());
+//				// TODO: var.getNested();
+//				// varMap.put("nested", "");
+//				varsList.add(varMap);
+//			}
+//			frame.put("vars", varsList);
+			
+			record = new ActivationRecord(
+					(String) frameMap.get("lineNumber"), 
+					(String) frameMap.get("functionName"), 
+					(String) frameMap.get("fileName"), 
+					(String) frameMap.get("startAddress"),
+					(String) frameMap.get("endAddress"), 
+					(String) staticLink, 
+					vars, 
+					args);
+			
+		}
+
+		/*LinkedHashMap frame = new LinkedHashMap();
+		frame.put("lineNumer", record.getLineNumber());
+		frame.put("functionName", record.getFunctionName());
+		frame.put("fileName", record.getFileName());
+		frame.put("startAddress", record.getStartAddress());
+		frame.put("endAddress", record.getEndAddress());
+		String staticLink, 
+			VarDescription[] vars, VarDescription[] args
+		*/
+		
+		
+		return null;
+	}
+	
+	private static VarDescription[] getHeapFromJson(State state) {
+		
+		return null;
 	}
 
 	private static String getUniqueId(boolean nextPlease) {
