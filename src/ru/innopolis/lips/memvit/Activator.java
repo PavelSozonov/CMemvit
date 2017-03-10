@@ -4,9 +4,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import ru.innopolis.lips.memvit.Controller.Controller;
-import ru.innopolis.lips.memvit.Controller.Listener.ListenerRegistrator;
-import ru.innopolis.lips.memvit.View.BrowserView;
+import ru.innopolis.lips.memvit.controller.Controller;
+import ru.innopolis.lips.memvit.controller.ListenerRegistrator;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -20,11 +19,11 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
-	//public static DataExtractorObsolete jsonCreator;
-	
+	// Controller for managing the browser view
 	private static Controller controller = new Controller();
+	
+	@SuppressWarnings("unused")
 	private static ListenerRegistrator listenerRegistrator; 
-	private static BrowserView browserView;
 	
 	public static void setController(Controller controller) {
 		Activator.controller = controller;
@@ -33,15 +32,7 @@ public class Activator extends AbstractUIPlugin {
 	public static Controller getController() {
 		return controller;
 	}
-	
-	public static void setBrowserView(BrowserView browserView) {
-		Activator.browserView = browserView;
-	}
-	
-	public static BrowserView getBrowserView() {
-		return browserView;
-	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
