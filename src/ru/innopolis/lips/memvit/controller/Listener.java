@@ -12,32 +12,46 @@ import ru.innopolis.lips.memvit.Activator;
 public class Listener implements ICDIEventListener {
 
 	private ICDIThread currentThread = null; 
+	private boolean updatedThread = false;
 	
 	@Override
 	public void handleDebugEvents(ICDIEvent[] events) {
-		
-		// TODO: add Data Extractor invocation
 		
 		for (ICDIEvent event : events) {
 			ICDIObject source = event.getSource();	
 			if (source == null) {
 				currentThread = null;
+				updatedThread = false;
 				return;
 			}
 			
 			ICDITarget target = source.getTarget();
 			if (target.isTerminated()) {
 				currentThread = null;
+				updatedThread = false;
 				return;	
 			}
 			try {
 				ICDIThread thread = target.getCurrentThread();
 				currentThread = thread;
+				updatedThread = true;
 			} catch (CDIException e) {}
 		}
 		
 		// Check, handle event only once or each event in cycle
-		Activator.getController().handleEvent(currentThread);		
+		// Data extractor invocation
+		//Activator.getController().handleEvent(this);		
 	}
-
+	
+	public ICDIThread getCurrentThread() {
+		return currentThread;
+	}
+	
+	public boolean isUpdatedThread() {
+		return updatedThread;
+	}
+	
+	public void setUpdatedThread(boolean updatedThread) {
+		this.updatedThread = updatedThread;
+	}
 }

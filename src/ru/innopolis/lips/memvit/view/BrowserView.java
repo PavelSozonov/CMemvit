@@ -2,8 +2,18 @@ package ru.innopolis.lips.memvit.view;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.part.ViewPart;
 
 import ru.innopolis.lips.memvit.controller.Controller;
@@ -15,23 +25,23 @@ import ru.innopolis.lips.memvit.utils.HtmlBuilder;
  */
 public class BrowserView extends ViewPart implements View {
 
-	private Browser browser;
-	private String content;
-	private boolean isChanged;
+	private Browser browser = null;
+	private String content = null;
+	private boolean contentChanged = false;;
 	
 	public BrowserView() {
 		Controller.setBrowserView(this);
 	}
 	
 	/*
-	 * Each second updates the browser view content
+	 * Each 100 ms updates the browser view content
 	 */
-	class RunnableForThread implements Runnable {
+	class BrowserUpdater implements Runnable {
 		
 		@Override
 		public void run() {
 			while (true) {
-				try { Thread.sleep(1000); } catch (Exception e) { }
+				try { Thread.sleep(100); } catch (Exception e) { }
 				Runnable task = () -> { renderBrowser(); };
 				Display.getDefault().asyncExec(task);
 			}			
@@ -42,10 +52,11 @@ public class BrowserView extends ViewPart implements View {
 	 * Update content of the browser view if there is new state
 	 */
 	private void renderBrowser() {		
-		if (content != null && isChanged) {
+		if (content != null && contentChanged && browser != null) {
 			browser.setText(content);
-			isChanged = false;
+			contentChanged = false;
 		}
+		//if (!contentChanged) System.out.println("!contentChanged");
 	}	
 
 	/*
@@ -58,7 +69,7 @@ public class BrowserView extends ViewPart implements View {
 	public void createPartControl(Composite parent) {
 		initializeBrowser(parent);
 		
-		Runnable runnable = new RunnableForThread();
+		Runnable runnable = new BrowserUpdater();
 		Thread thread = new Thread(runnable);
 		thread.start();		
 
@@ -75,7 +86,7 @@ public class BrowserView extends ViewPart implements View {
 		
 		if (state != null) {
 			content = HtmlBuilder.composeBrowserView(state);
-			isChanged = true;
+			contentChanged = true;
 		}
 	}
 
@@ -88,8 +99,10 @@ public class BrowserView extends ViewPart implements View {
 	 * Initialize browser
 	 */
 	private void initializeBrowser(Composite parent) {
+
 		browser = new Browser(parent, SWT.NONE);
 		browser.setText("<html><body>Here will appear stack- and heap-related debug information </body></html>");
+		
 	}
 
 }

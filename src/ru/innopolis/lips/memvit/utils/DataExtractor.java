@@ -2,7 +2,6 @@ package ru.innopolis.lips.memvit.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.cdt.debug.core.cdi.CDIException;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIArgument;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIArgumentDescriptor;
@@ -18,37 +17,39 @@ import org.eclipse.cdt.debug.core.cdi.model.ICDIVariable;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariableDescriptor;
 import org.eclipse.cdt.debug.mi.core.cdi.model.Variable;
 import org.json.JSONException;
-
 import ru.innopolis.lips.memvit.model.ActivationRecord;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateImpl;
 import ru.innopolis.lips.memvit.model.VarDescription;
 
 /*
- * Takes thread and return all useful data as State object
+ * Takes thread and return all useful data as a State object
  */
 public class DataExtractor {
 
 	private static List<VarDescription> heapVars = new ArrayList<>();
-	@SuppressWarnings("unused")
+
 	private static String eaxValueType;
-	@SuppressWarnings("unused")
+
 	private static String eaxValue;
 
 	/*
 	 * Base method, extract all information from thread, and forms result
 	 */
-	public static State extractData(ICDIThread thread) throws JSONException, CDIException {
+	public static State extractData(ICDIThread thread) {
 		
-		ActivationRecord[] stack = getActivationRecords(thread);
-		VarDescription[] heap = getHeapVariables();
-		VarDescription[] globalStaticVariables = getGlobalStaticVariables();
+		ActivationRecord[] stack;
+		stack = getActivationRecords(thread);
+		
+		VarDescription[] heap;
+		heap = getHeapVariables();
+		
+		VarDescription[] globalStaticVariables;
+		globalStaticVariables = getGlobalStaticVariables();
 		
 		String json = JsonUtils.buildJson(stack, heap, globalStaticVariables);
 		if (json == null) return null;
 		
-		// String json = "Stub " + new Date();
-
 		State result = new StateImpl(json);
 		
 		return result;
@@ -75,6 +76,7 @@ public class DataExtractor {
 	// Move functionality from getActivationRecords() and its submethods
 	@SuppressWarnings("unused")
 	private static void findHeapVariables() {
+		
 		heapVars = new ArrayList<>();
 	}
 

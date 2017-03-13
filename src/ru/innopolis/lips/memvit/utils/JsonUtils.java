@@ -120,19 +120,24 @@ public class JsonUtils {
 	 * 
 	 * Virtual memory - Allocation
 	 */
-	public static String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables) 
-			throws JSONException, CDIException {
+	public static String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables) {
 
 		if (stack == null || heap == null || globalStaticVariables == null) {
 			System.out.println("Stack, heap or global static description equal null. Break json build!");
 			return null;
 		}
 		
-		JSONObject json = new JSONObject();
+		JSONObject json = null;
+		try {
+			json = new JSONObject();
 
-		json.put("stack", buildJsonStack(stack));
-		json.put("heap", buildJsonHeap(heap));
-		json.put("globalStaticVariables", buildJsonGlobalStaticVariables(globalStaticVariables));
+			json.put("stack", buildJsonStack(stack));
+			json.put("heap", buildJsonHeap(heap));
+			json.put("globalStaticVariables", buildJsonGlobalStaticVariables(globalStaticVariables));
+
+		} catch (JSONException | CDIException e) {
+			e.printStackTrace();
+		}
 
 		// json.put("globalVariables", buildJsonGlobalVariables("g_GLOBAL"));
 		// json.put("virtualMemory", buildJsonVirtualMemory());

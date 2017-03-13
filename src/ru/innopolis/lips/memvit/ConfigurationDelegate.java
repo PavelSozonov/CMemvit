@@ -8,7 +8,7 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 
 /*
- * Used by plygin extension point
+ * Used by plugin extension point
  */
 public class ConfigurationDelegate implements ILaunchConfigurationDelegate {
 

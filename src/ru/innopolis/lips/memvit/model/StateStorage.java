@@ -18,7 +18,6 @@ public class StateStorage {
 	 */
 	private int shiftFromLastState = 0;
 	
-	
 	private List<State> stateStorage = new LinkedList<State>();
 	public void addState(State state) {
 		shiftFromLastState = 0; // When new data is added, new data becomes current state
@@ -41,6 +40,15 @@ public class StateStorage {
 	
 	private State getCurrentState() {
 		return stateStorage.get(stateStorage.size() - 1 - shiftFromLastState);
+	}
+	
+	// From 1, not from 0
+	public int getNumberOfCurrentState() {
+		return stateStorage.size() - shiftFromLastState;
+	}
+	
+	public int getAmountOfStates() {
+		return stateStorage.size();
 	}
 	
 	/*
