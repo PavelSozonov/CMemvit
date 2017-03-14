@@ -3,6 +3,7 @@ package ru.innopolis.lips.memvit.controller;
 import org.eclipse.cdt.debug.core.cdi.ICDISession;
 import org.eclipse.swt.widgets.Display;
 
+import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.GDBCDIDebuggerMemvit;
 
 /*
@@ -10,13 +11,13 @@ import ru.innopolis.lips.memvit.GDBCDIDebuggerMemvit;
  */
 public class ListenerRegistrator {
 
-	private Listener listener;
 	private ICDISession cdiDebugSession;
 
+	// Reference to instance from Activator
+	private Listener listener = Activator.getController().getListener();
+	
 	public ListenerRegistrator() {
 		
-		listener = new Listener();
-
 		Runnable runnable = new SessionChecker();
 		Thread thread2 = new Thread(runnable);
 		thread2.start();
@@ -57,10 +58,5 @@ public class ListenerRegistrator {
 		}
 		cdiDebugSession = session;
 		cdiDebugSession.getEventManager().addEventListener(listener);
-	}
-	
-	public Listener getListener() {
-		return listener;
-	}
-	
+	}	
 }

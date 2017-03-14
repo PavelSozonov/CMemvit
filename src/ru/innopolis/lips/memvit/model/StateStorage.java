@@ -17,11 +17,17 @@ public class StateStorage {
 	 * shiftFromLastJson becomes equal to 0
 	 */
 	private int shiftFromLastState = 0;
+	private int currentStep = 0;
+	
+	public int getCurrentStep() {
+		return currentStep;
+	}
 	
 	private List<State> stateStorage = new LinkedList<State>();
 	public void addState(State state) {
 		shiftFromLastState = 0; // When new data is added, new data becomes current state
 		stateStorage.add(state);
+		currentStep++;
 	}
 	
 	public State getLastState() {
@@ -34,7 +40,7 @@ public class StateStorage {
 		return stateStorage.size() == 0;
 	}
 	
-	public int size() {
+	public int getStorageSize() {
 		return stateStorage.size();
 	}
 	

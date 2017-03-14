@@ -8,6 +8,7 @@ import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -16,8 +17,10 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.part.ViewPart;
 
+import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.controller.Controller;
 import ru.innopolis.lips.memvit.model.State;
+import ru.innopolis.lips.memvit.model.StateStorage;
 import ru.innopolis.lips.memvit.utils.HtmlBuilder;
 
 /*
@@ -28,6 +31,7 @@ public class BrowserView extends ViewPart implements View {
 	private Browser browser = null;
 	private String content = null;
 	private boolean contentChanged = false;;
+	private Label stepNumber;
 	
 	public BrowserView() {
 		Controller.setBrowserView(this);
@@ -53,6 +57,8 @@ public class BrowserView extends ViewPart implements View {
 	 */
 	private void renderBrowser() {		
 		if (content != null && contentChanged && browser != null) {
+			StateStorage stateStorage = Activator.getController().getStateStorage();
+			setStepLabel(stateStorage.getCurrentStep(), stateStorage.getStorageSize());
 			browser.setText(content);
 			contentChanged = false;
 		}
@@ -100,9 +106,48 @@ public class BrowserView extends ViewPart implements View {
 	 */
 	private void initializeBrowser(Composite parent) {
 
-		browser = new Browser(parent, SWT.NONE);
-		browser.setText("<html><body>Here will appear stack- and heap-related debug information </body></html>");
+//		browser = new Browser(parent, SWT.NONE);
+//		browser.setText("<html><body>Here will appear stack- and heap-related debug information </body></html>");
+
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 1;
+		parent.setLayout(gridLayout);	
 		
+		Composite buttonsLayout = new Composite(parent, SWT.NONE);
+		
+		
+		RowLayout rowLayout = new RowLayout();
+		rowLayout.wrap = false;
+		rowLayout.pack = true;
+		rowLayout.type = SWT.HORIZONTAL;
+		buttonsLayout.setLayout(rowLayout);
+		
+		Button backButton = new Button(buttonsLayout, SWT.PUSH | SWT.TOP);
+		backButton.setText(" ← ");
+		backButton.setEnabled(true);
+		
+		Button forwardButton = new Button(buttonsLayout, SWT.PUSH | SWT.TOP);
+		forwardButton.setText(" → ");
+		forwardButton.setEnabled(true);
+		
+		stepNumber = new Label(buttonsLayout, SWT.PUSH | SWT.MEDIUM);
+		stepNumber.setText("");
+		stepNumber.setEnabled(true);
+		
+		browser = new Browser(parent, SWT.NONE);
+		GridData gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalSpan = 100;
+		gridData.verticalSpan = 100;
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.verticalAlignment = GridData.FILL;
+		
+		browser.setLayoutData(gridData);
+		browser.setText("<html><body>Here will appear stack- and heap-related debug information </body></html>");	
+	}
+	
+	public void setStepLabel(int step, int of) {
+		stepNumber.setText("Step " + step + " / " + of);
 	}
 
 }

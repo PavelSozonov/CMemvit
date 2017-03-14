@@ -3,7 +3,6 @@ package ru.innopolis.lips.memvit.controller;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.eclipse.swt.widgets.Display;
 
-import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
 import ru.innopolis.lips.memvit.utils.DataExtractor;
@@ -15,7 +14,18 @@ import ru.innopolis.lips.memvit.view.View;
  */
 public class Controller {
 
+	// Count how many states are equals
+	private static int tempDublicatedStates = 0;
+	
+	private StateStorage stateStorage = new StateStorage();
+
+	private Listener listener;
+
+	/*
+	 * Default constructor
+	 */
 	{
+		listener = new Listener();
 		Runnable runnable = new ListenerUpdateChecker();
 		Thread thread = new Thread(runnable);
 		thread.start();
@@ -40,10 +50,9 @@ public class Controller {
 	 * If listener has state changed thread then handle event
 	 */
 	private void checkListener() {
-		Listener listener = Activator.getListenerRegistrator().getListener();
 		if (listener == null) return;
 		if (listener.isUpdatedThread()) {
-			handleEvent(listener);
+			handleEvent();
 			listener.setUpdatedThread(false);
 		}
 	}	
@@ -59,12 +68,7 @@ public class Controller {
 		return browserView;
 	}
 	
-	// Count how many states are equals
-	private static int tempDublicatedStates = 0;
-	
-	private StateStorage stateStorage = new StateStorage();
-	
-	public void handleEvent(Listener listener) {
+	public void handleEvent() {
 		
 		ICDIThread thread = listener.getCurrentThread();
 		
@@ -106,5 +110,13 @@ public class Controller {
 		View view = getBrowserView();
 		State state = stateStorage.getNextState();
 		view.update(state);
+	}
+	
+	public Listener getListener() {
+		return listener;
+	}
+
+	public StateStorage getStateStorage() {
+		return stateStorage;
 	}
 }

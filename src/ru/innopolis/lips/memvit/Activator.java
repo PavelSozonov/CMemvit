@@ -22,7 +22,7 @@ public class Activator extends AbstractUIPlugin {
 	// Controller for managing the browser view
 	private static Controller controller = new Controller();
 	
-	@SuppressWarnings("unused")
+	// Register listener, if session changed update registration
 	private static ListenerRegistrator listenerRegistrator; 
 	
 	public static void setController(Controller controller) {
