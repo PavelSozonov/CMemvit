@@ -26,6 +26,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * Memvit Debugger configuration tab
+ * 
+ * @author Pavel Sozonov
+ */
 public class MemvitConfigurationTab extends CLaunchConfigurationTab {
 
 	Text debugIDText, debuggerText, debugArgsText, projNameText, exeNameText, exeArgsText, platformText;
@@ -44,14 +49,13 @@ public class MemvitConfigurationTab extends CLaunchConfigurationTab {
 		comp.setLayout(gl);
 		
 
-		ModifyListener modifyListener = new ModifyListener(){
-
+		ModifyListener modifyListener = new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e) {
 				setDirty(true);
 			    updateLaunchConfigurationDialog();
-				
-			}};
+			}
+		};
 		
 		// Create a label and text box for the debugger 
 		Label debugger = new Label(comp, SWT.NONE);

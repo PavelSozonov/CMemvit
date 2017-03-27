@@ -3,84 +3,101 @@ package ru.innopolis.lips.memvit.controller;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.eclipse.swt.widgets.Display;
 
+import ru.innopolis.lips.memvit.model.Model;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
 import ru.innopolis.lips.memvit.utils.DataExtractor;
 import ru.innopolis.lips.memvit.view.BrowserView;
 import ru.innopolis.lips.memvit.view.View;
 
-/*
- * Handle debug events, and backward/forward buttons' events
+/**
+ * Handle the events of the current thread changing, 
+ * and the backward/forward buttons' events.
+ * Instantiated by Activator
+ * 
+ * @author Pavel Sozonov
  */
 public class Controller {
 
-	// Count how many states are equals
-	private static int tempDublicatedStates = 0;
+	// The unique instance of the Debug Event Listener 
+	private DebugEventsListener debugEventsListener = new DebugEventsListener();
 	
-	private StateStorage stateStorage = new StateStorage();
+	// Object which contain all the program execution related data
+	private Model model = new Model();
 
-	private Listener listener;
+	// Reference to the view, initialized in the Browser View class constructor
+	private BrowserView browserView;
 
-	/*
-	 * Default constructor
+	/**
+	 * Constructor
+	 * 
+	 * Instantiate Debug Listener Registrator.
+	 * Create the thread which every 100 ms checks 
+	 * if the state of the program being debugged is changed. 
+	 * If the state is changed then handles it 
+	 * (add the new state in the states storage, and send the new state to the view).
 	 */
-	{
-		listener = new Listener();
-		Runnable runnable = new ListenerUpdateChecker();
+	public Controller() {
+		Runnable runnable = new ThreadUpdateChecker();
 		Thread thread = new Thread(runnable);
 		thread.start();
 	}
 	
-	/*
-	 * Each 100 ms check listener state
+	/**
+	 * Each 100 ms check if state of the current thread is updated
+	 * 
+	 * @author Pavel Sozonov
 	 */
-	class ListenerUpdateChecker implements Runnable {
+	private class ThreadUpdateChecker implements Runnable {
 		
 		@Override
 		public void run() {
 			while (true) {
 				try { Thread.sleep(100); } catch (Exception e) { }
-				Runnable task = () -> { checkListener(); };
+				Runnable task = () -> { checkCurrentThreadState(); };
 				Display.getDefault().asyncExec(task);
 			}			
 		}
 	}
 	
-	/*
-	 * If listener has state changed thread then handle event
+	/**
+	 * The setter for the currentThead field
+	 * 
+	 * @param currentThread the currentThread to set
 	 */
-	private void checkListener() {
-		if (listener == null) return;
-		if (listener.isUpdatedThread()) {
+	public void setCurrentThread(ICDIThread currentThread) {
+		model.setCurrentThread(currentThread);
+	}
+	
+	/**
+	 * If the current thread has the updated state then handle event
+	 * and reset the "updated thread" flag
+	 */
+	private void checkCurrentThreadState() {
+		if (model.isUpdatedThread()) {
 			handleEvent();
-			listener.setUpdatedThread(false);
+			model.setUpdatedThread(false);
 		}
 	}	
 
-	// Link to the view, initialized in the class constructor
-	private static BrowserView browserView;
-
-	public static void setBrowserView(BrowserView browserView) {
-		Controller.browserView = browserView;
+	public void setBrowserView(BrowserView browserView) {
+		this.browserView = browserView;
 	}
 	
-	public static BrowserView getBrowserView() {
+	public BrowserView getBrowserView() {
 		return browserView;
 	}
 	
 	public void handleEvent() {
 		
-		ICDIThread thread = listener.getCurrentThread();
+		// Local reference to the current thread (shortcut)
+		ICDIThread thread = model.getCurrentThread();
 		
-		if (!listener.isUpdatedThread()) return; // Redundant?
-		
-		// Get link to view
+		// Local reference to the browser view
 		View view = getBrowserView();
 				
-		// Extract data
-		State newState = null;
-		
-		newState = DataExtractor.extractData(thread);
+		// Object for storing the extracted data
+		State newState = DataExtractor.extractData(thread);
 				
 		if (newState == null) {
 			System.out.println("Null state returned, break handle!");
@@ -89,34 +106,73 @@ public class Controller {
 		
 		// Put data in storage
 		// Check for duplicated states
-		if (stateStorage.isEmpty() || !stateStorage.getLastState().getData().equals(newState.getData())) {
-			stateStorage.addState(newState);
+		if (!isDuplicate(newState)) {
+			
+			getStateStorage().addState(newState);
+			
 			// Update view
 			if (view != null) view.update(newState);
+			
 		} else {
-			// Debug info
-			System.out.println("- Duplicated state: " + ++tempDublicatedStates);
+			handleDuplicatedState();
 		}
-		
+	}
+
+	/**
+	 * Increase duplicated states counter, 
+	 * and print out the message with the total amount
+	 */
+	private void handleDuplicatedState() {
+		int duplicatedStates = model.getDuplicatedStates() + 1;
+		model.setTempDuplicatedStates(duplicatedStates);
+		System.out.println("Duplicated state is found. Total: " + duplicatedStates);
 	}
 	
+	/**
+	 * Check if state equal to the last state in the State Storage
+	 * 
+	 * @param state for duplicate checking
+	 * @return true if last state in the storage equal to the state being checked, else false 
+	 */
+	private boolean isDuplicate(State state) {
+		if (getStateStorage().isEmpty()) return false; 
+		return getStateStorage().getLastState().getData().equals(state.getData());
+	}
+	
+	/**
+	 * Handle hits on Back button in the browser view,
+	 * if previous state exists, then update the browser view to the previous state
+	 */
 	public void handleBackButton() {
 		View view = getBrowserView();
-		State state = stateStorage.getPreviousState();
+		State state = getStateStorage().getPreviousState();
 		view.update(state);
 	}
 	
+	/**
+	 * Handle hits on Forward button in the browser view,
+	 * if next state exists, then update the browser view to the next state
+	 */
 	public void handleForwardButton() {
 		View view = getBrowserView();
-		State state = stateStorage.getNextState();
+		State state = getStateStorage().getNextState();
 		view.update(state);
 	}
 	
-	public Listener getListener() {
-		return listener;
+	public DebugEventsListener getDebugEventsListener() {
+		return debugEventsListener;
 	}
 
 	public StateStorage getStateStorage() {
-		return stateStorage;
+		return model.getStateStorage();
 	}
+
+	/**
+	 * @return the model
+	 */
+	public Model getModel() {
+		return model;
+	}
+
 }
+

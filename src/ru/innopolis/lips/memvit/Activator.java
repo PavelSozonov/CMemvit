@@ -3,13 +3,14 @@ package ru.innopolis.lips.memvit;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
 import ru.innopolis.lips.memvit.controller.Controller;
-import ru.innopolis.lips.memvit.controller.ListenerRegistrator;
+import ru.innopolis.lips.memvit.controller.DebugEventsListenerRegistrator;
 
 /**
  * The activator class controls the plug-in life cycle
  * Instantiates Controller and ListenerRegistrator
+ * 
+ * @author Pavel Sozonov
  */
 public class Activator extends AbstractUIPlugin {
 
@@ -22,33 +23,35 @@ public class Activator extends AbstractUIPlugin {
 	// Controller for managing the browser view
 	private static Controller controller = new Controller();
 	
-	// Register listener, if session changed update registration
-	private static ListenerRegistrator listenerRegistrator; 
-	
-	public static void setController(Controller controller) {
-		Activator.controller = controller;
-	}
-	
+	/**
+	 * Getter for the controller class field
+	 * @return reference to the controller class field
+	 */
 	public static Controller getController() {
 		return controller;
 	}
+
+	// Register listener, if session changed update registration
+	public DebugEventsListenerRegistrator debugEventsListenerRegistrator;
 
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
-	@ Override
+	@Override
 	public void start(BundleContext context) throws Exception {
+		debugEventsListenerRegistrator = new DebugEventsListenerRegistrator(controller);
 		super.start(context);
+		//controller = new Controller();
 		plugin = this;
-		listenerRegistrator = new ListenerRegistrator();
+		System.out.println("Plugin Start");
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
 	 */
-	@ Override
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
@@ -72,9 +75,5 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
-	}
-	
-	public static ListenerRegistrator getListenerRegistrator() {
-		return listenerRegistrator;
 	}
 }

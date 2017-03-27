@@ -2,29 +2,25 @@ package ru.innopolis.lips.memvit.view;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.part.ViewPart;
-
 import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.controller.Controller;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
 import ru.innopolis.lips.memvit.utils.HtmlBuilder;
 
-/*
+/**
  * Used as extension point
+ * 
+ * @author Pavel Sozonov
  */
 public class BrowserView extends ViewPart implements View {
 
@@ -34,13 +30,13 @@ public class BrowserView extends ViewPart implements View {
 	private Label stepNumber;
 	
 	public BrowserView() {
-		Controller.setBrowserView(this);
+		Activator.getController().setBrowserView(this);
 	}
 	
 	/*
 	 * Each 100 ms updates the browser view content
 	 */
-	class BrowserUpdater implements Runnable {
+	private class BrowserUpdater implements Runnable {
 		
 		@Override
 		public void run() {
@@ -103,11 +99,13 @@ public class BrowserView extends ViewPart implements View {
 	
 	/*
 	 * Initialize browser
+	 * 
+	 * TODO: decompose this method
 	 */
 	private void initializeBrowser(Composite parent) {
 
-//		browser = new Browser(parent, SWT.NONE);
-//		browser.setText("<html><body>Here will appear stack- and heap-related debug information </body></html>");
+		// browser = new Browser(parent, SWT.NONE);
+		// browser.setText("<html><body>Here will appear stack- and heap-related debug information </body></html>");
 
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 1;
@@ -126,9 +124,19 @@ public class BrowserView extends ViewPart implements View {
 		backButton.setText(" ← ");
 		backButton.setEnabled(true);
 		
+		backButton.addListener(SWT.Selection, (Event event) -> { 
+			Controller controller = Activator.getController();
+			if (event.type == SWT.Selection && controller != null) controller.handleBackButton();
+		});
+		
 		Button forwardButton = new Button(buttonsLayout, SWT.PUSH | SWT.TOP);
 		forwardButton.setText(" → ");
 		forwardButton.setEnabled(true);
+		
+		forwardButton.addListener(SWT.Selection, (Event event) -> {
+			Controller controller = Activator.getController();
+			if (event.type == SWT.Selection && controller != null) controller.handleForwardButton();
+		});
 		
 		stepNumber = new Label(buttonsLayout, SWT.PUSH | SWT.MEDIUM);
 		stepNumber.setText("");

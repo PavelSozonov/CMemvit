@@ -7,8 +7,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.ILaunch;
 
-/*
+/**
  * Used by plugin extension point
+ * 
+ * @author Pavel Sozonov
  */
 public class GDBCDIDebuggerMemvit extends GDBCDIDebugger2 {
 	

@@ -28,8 +28,8 @@ public class FileWriter2 {
 	}
 	
 	private static String dateTimeToString() {
-		long curTime = System.currentTimeMillis();
-		String curStringDate = new SimpleDateFormat("dd.MM.yyyy_HH-mm-ss-SSS").format(curTime); 
+		long currentTime = System.currentTimeMillis();
+		String curStringDate = new SimpleDateFormat("dd.MM.yyyy_HH-mm-ss-SSS").format(currentTime); 
 		return curStringDate;
 	}
 	

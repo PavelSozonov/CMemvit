@@ -16,7 +16,6 @@ import org.eclipse.cdt.debug.core.cdi.model.ICDIValue;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariable;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIVariableDescriptor;
 import org.eclipse.cdt.debug.mi.core.cdi.model.Variable;
-import org.json.JSONException;
 import ru.innopolis.lips.memvit.model.ActivationRecord;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateImpl;
@@ -56,7 +55,7 @@ public class DataExtractor {
 	}
 
 	/*
-	 * Takes frames from current thread, read data from each frame and return
+	 * Takes frames from the current thread, read data from each frame and return
 	 * activation records array with data about all frames. Sets status of
 	 * thread to not updated.
 	 * 
@@ -283,7 +282,8 @@ public class DataExtractor {
 		try {
 			variables = value.getVariables();
 		} catch (CDIException e) {
-			e.printStackTrace();
+			System.out.println("Debug: Target is not suspended[]. Class DataExtractor, getLocalVariablesFromValue(...);");
+			//e.printStackTrace();
 		}
 		return variables;
 	}
@@ -296,7 +296,8 @@ public class DataExtractor {
 		try {
 			valuestring = value.getValueString();
 		} catch (CDIException e) {
-			e.printStackTrace();
+			System.out.println("Debug: Target is not suspended[]. Class DataExtractor, getValueString(...);");
+			//e.printStackTrace();
 		}
 		return valuestring;
 	}
@@ -363,7 +364,8 @@ public class DataExtractor {
 		try {
 			regDescriptors = registerGroup.getRegisterDescriptors();
 		} catch (CDIException e) {
-			e.printStackTrace();
+			System.out.println("Debug: Target is not suspended[]. Class DataExtractor, getICDIRegisterDescriptors(...);");
+			//e.printStackTrace();
 		}
 		return regDescriptors;
 	}
@@ -394,7 +396,8 @@ public class DataExtractor {
 			variable = descriptor.getStackFrame().createLocalVariable(
 					descriptor);
 		} catch (CDIException e) {
-			e.printStackTrace();
+			System.out.println("Debug: Target is not suspended[]. Class DataExtractor, getLocalVariable(...);");
+			//e.printStackTrace();
 		}
 		return variable;
 	}

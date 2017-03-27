@@ -7,8 +7,10 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 
-/*
- * Used by plugin extension point
+/**
+ * Used by plugin extension point 
+ * 
+ * @author Pavel Sozonov
  */
 public class ConfigurationDelegate implements ILaunchConfigurationDelegate {
 
