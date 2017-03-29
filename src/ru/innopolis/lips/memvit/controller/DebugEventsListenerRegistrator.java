@@ -52,12 +52,21 @@ public class DebugEventsListenerRegistrator {
 					if (isSessionUpdated(session)) {
 						updateSession(session);
 						updateListener();
-
+						resetStateStorage();
 					}
 				};
 				Display.getDefault().asyncExec(task); 
 			}
 		}
+	}
+	
+	/**
+	 * If session is updated, 
+	 * the states from the previous session should be deleted from the storage,
+	 * and the storage counters should be reseted.   
+	 */
+	private void resetStateStorage() {
+		Activator.getController().getStateStorage().resetStorage();
 	}
 	
 	/**

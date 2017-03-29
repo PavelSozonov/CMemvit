@@ -13,6 +13,17 @@ public class Model {
 	// Count how many states are equals
 	private int duplicatedStates = 0;
 	
+	// State management buttons disable flag, when debug haven't started, using of buttons is disabled
+	private boolean stateManagementButtonsEnabled = false;
+	
+	public boolean isStateManagementButtonsEnabled() {
+		return stateManagementButtonsEnabled;
+	}
+
+	public void setStateManagementButtonsEnabled(boolean value) {
+		stateManagementButtonsEnabled = value;
+	}
+
 	/**
 	 * @param duplicatedStates the tempDuplicatedStates to set
 	 */

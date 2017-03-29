@@ -21,8 +21,10 @@ import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateImpl;
 import ru.innopolis.lips.memvit.model.VarDescription;
 
-/*
+/**
  * Takes thread and return all useful data as a State object
+ * 
+ * @author Pavel Sozonov
  */
 public class DataExtractor {
 
@@ -33,7 +35,7 @@ public class DataExtractor {
 	private static String eaxValue;
 
 	/*
-	 * Base method, extract all information from thread, and forms result
+	 * Base method, extract all information from thread, and form result
 	 */
 	public static State extractData(ICDIThread thread) {
 		
@@ -46,7 +48,7 @@ public class DataExtractor {
 		VarDescription[] globalStaticVariables;
 		globalStaticVariables = getGlobalStaticVariables();
 		
-		String json = JsonUtils.buildJson(stack, heap, globalStaticVariables);
+		String json = JsonUtils.buildJson(stack, heap, globalStaticVariables, eaxValue, eaxValueType);
 		if (json == null) return null;
 		
 		State result = new StateImpl(json);

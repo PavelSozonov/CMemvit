@@ -3,6 +3,7 @@ package ru.innopolis.lips.memvit.controller;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.eclipse.swt.widgets.Display;
 
+import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.model.Model;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
@@ -76,9 +77,14 @@ public class Controller {
 	private void checkCurrentThreadState() {
 		if (model.isUpdatedThread()) {
 			handleEvent();
+			enableStateManagementButtons();
 			model.setUpdatedThread(false);
 		}
 	}	
+	
+	private void enableStateManagementButtons() {
+		Activator.getController().getModel().setStateManagementButtonsEnabled(true);
+	}
 
 	public void setBrowserView(BrowserView browserView) {
 		this.browserView = browserView;
@@ -144,6 +150,7 @@ public class Controller {
 	 * if previous state exists, then update the browser view to the previous state
 	 */
 	public void handleBackButton() {
+		if (!Activator.getController().getModel().isStateManagementButtonsEnabled()) return;
 		View view = getBrowserView();
 		State state = getStateStorage().getPreviousState();
 		view.update(state);
@@ -154,6 +161,7 @@ public class Controller {
 	 * if next state exists, then update the browser view to the next state
 	 */
 	public void handleForwardButton() {
+		if (!Activator.getController().getModel().isStateManagementButtonsEnabled()) return;
 		View view = getBrowserView();
 		State state = getStateStorage().getNextState();
 		view.update(state);

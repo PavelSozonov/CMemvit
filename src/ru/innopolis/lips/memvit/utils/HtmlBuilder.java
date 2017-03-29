@@ -28,11 +28,7 @@ public class HtmlBuilder {
 	private static String varsTableHeader = "<table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Value</td><td>Name</td></tr></thead> <tbody>";
 	private static String varsTableFooter = "</tbody></table>";
 	
-	private static int idCounter;
-	
-	{
-		idCounter = 0;
-	}
+	private static int idCounter = 0;
 	
 	public static String composeBrowserView(State state) {
 
@@ -43,8 +39,8 @@ public class HtmlBuilder {
 		html = "<html><body><pre>" + html + "</pre></body></html>";
 		
 		ActivationRecord[] frames = JsonUtils.getStackFromJson(state);
-		String eaxType = "eaxType";
-		String eaxValue = "eaxValue";
+		String eaxType = JsonUtils.getEaxValueTypeFromJson(state);
+		String eaxValue = JsonUtils.getEaxValueFromJson(state);
 		VarDescription[] heapVars = JsonUtils.getHeapFromJson(state);
 		
 		html = composeStackTab(frames, eaxType, eaxValue, heapVars);

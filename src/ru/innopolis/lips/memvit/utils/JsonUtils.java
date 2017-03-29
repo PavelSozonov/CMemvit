@@ -120,7 +120,7 @@ public class JsonUtils {
 	 * 
 	 * Virtual memory - Allocation
 	 */
-	public static String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables) {
+	public static String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables, String eaxValue, String eaxValueType) {
 
 		if (stack == null || heap == null || globalStaticVariables == null) {
 			System.out.println("Stack, heap or global static description equal null. Break json build!");
@@ -134,15 +134,13 @@ public class JsonUtils {
 			json.put("stack", buildJsonStack(stack));
 			json.put("heap", buildJsonHeap(heap));
 			json.put("globalStaticVariables", buildJsonGlobalStaticVariables(globalStaticVariables));
-
+			json.put("eaxValue", eaxValue);
+			json.put("eaxValueType", eaxValueType);
+			
 		} catch (JSONException | CDIException e) {
 			e.printStackTrace();
 		}
 
-		// json.put("globalVariables", buildJsonGlobalVariables("g_GLOBAL"));
-		// json.put("virtualMemory", buildJsonVirtualMemory());
-		// json.put("lastReturnedType", model.getEaxType());
-		// json.put("lastReturnedValue", model.getEaxValue());
 
 		return json.toString();
 	}
@@ -221,6 +219,23 @@ public class JsonUtils {
 		
 		return heap;
 	}
+	
+	public static String getEaxValueFromJson(State state) {
 
+		JSONTokener tokener = new JSONTokener(state.getData());
+		JSONObject json = new JSONObject(tokener);
+		String eaxValue = json.getString("eaxValue");
+		
+		return eaxValue;
+	}
+	
+	public static String getEaxValueTypeFromJson(State state) {
+
+		JSONTokener tokener = new JSONTokener(state.getData());
+		JSONObject json = new JSONObject(tokener);
+		String eaxValueType = json.getString("eaxValueType");
+		
+		return eaxValueType;
+	}
 }
 

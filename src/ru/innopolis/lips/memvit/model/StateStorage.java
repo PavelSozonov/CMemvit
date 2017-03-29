@@ -18,12 +18,13 @@ public class StateStorage {
 	 */
 	private int shiftFromLastState = 0;
 	private int currentStep = 0;
+
+	private List<State> stateStorage = new LinkedList<State>();
 	
 	public int getCurrentStep() {
 		return currentStep;
 	}
 	
-	private List<State> stateStorage = new LinkedList<State>();
 	public void addState(State state) {
 		shiftFromLastState = 0; // When new data is added, new data becomes current state
 		stateStorage.add(state);
@@ -77,6 +78,16 @@ public class StateStorage {
 			shiftFromLastState--;
 		}
 		return getCurrentState();
+	}
+	
+	/**
+	 * Reset the storage state to empty. 
+	 * Used when the new debug session is started.
+	 */
+	public void resetStorage() {
+		shiftFromLastState = 0;
+		currentStep = 0;
+		stateStorage = new LinkedList<State>();
 	}
 
 }
