@@ -16,16 +16,16 @@ public class HtmlBuilder {
 
 	// Template's params list: function, file, line, Static link, end address, args, rows, start address
 	// address, return value type, return value
-	private static String activationRecordTemplate = "<div class=\"ar collapsibleList\"><div class=\"ar_title\">Activation Record</div><table class=\"ar_info\"> <tr> <td class=\"n\">Function</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">File</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Line</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Static Link</td><td class=\"v\">%s</td></tr><tr> <td colspan=\"2\"> <table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Value</td><td>Name</td></tr></thead> <tbody> <tr> <td>%s</td><td colspan=\"3\" class=\"gr\">end address</td></tr>%s</tbody> </table> </td></tr></table></div>";
+	private static String activationRecordTemplate = "<div class=\"ar collapsibleList\"><div class=\"ar_title\">Activation Record</div><table class=\"ar_info\"> <tr> <td class=\"n\">Function</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">File</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Line</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Static Link</td><td class=\"v\">%s</td></tr><tr> <td colspan=\"2\"> <table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Name</td><td>Value</td></tr></thead> <tbody> <tr> <td>%s</td><td colspan=\"3\" class=\"gr\">end address</td></tr>%s</tbody> </table> </td></tr></table></div>";
 
-	// Template's params list: addr, type, value, name
-	private static String varsRowTemplate = "<tr> <td class=\"c_addr\">%s</td><td class=\"c_type\">%s</td><td class=\"c_value\">%s</td><td class=\"c_name\">%s</td></tr>";
-	private static String argsRowTemplate = "<tr> <td class=\"c_addr arg\">%s</td><td class=\"c_type arg\">%s</td><td class=\"c_value arg\">%s</td><td class=\"c_name arg\">%s</td></tr>";
+	// Template's params list: addr, type, name, value
+	private static String varsRowTemplate = "<tr> <td class=\"c_addr\">%s</td><td class=\"c_type\">%s</td><td class=\"c_name\">%s</td><td class=\"c_value\">%s</td></tr>";
+	private static String argsRowTemplate = "<tr> <td class=\"c_addr arg\">%s</td><td class=\"c_type arg\">%s</td><td class=\"c_name arg\">%s</td><td class=\"c_value arg\">%s</td></tr>";
 
-	// Template's params list: addr, type, UNIQUE ID ,value, name
-	private static String varsRowWithNestedTemplate = "<tr> <td class=\"c_addr\">%s</td><td class=\"c_type\">%s</td><td class=\"c_value\"><label for=\"mln%s\">%s</label></td><td class=\"c_name\">%s</td></tr>";
+	// Template's params list: addr, type, UNIQUE ID, name, value
+	private static String varsRowWithNestedTemplate = "<tr> <td class=\"c_addr\">%s</td><td class=\"c_type\">%s</td><td class=\"c_name\">%s</td><td class=\"c_value\"><label for=\"mln%s\">%s</label></td></tr>";
 	
-	private static String varsTableHeader = "<table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Value</td><td>Name</td></tr></thead> <tbody>";
+	private static String varsTableHeader = "<table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Name</td><td>Value</td></tr></thead> <tbody>";
 	private static String varsTableFooter = "</tbody></table>";
 	
 	private static int idCounter = 0;
@@ -101,15 +101,14 @@ public class HtmlBuilder {
 			for (VarDescription var : vars) {
 				if ((nested = var.getNested()) != null && nested.length > 0) {
 					builder.append(String.format(varsRowWithNestedTemplate, var.getAddress(), var.getType(),
-							getUniqueId(true), var.getValue(), var.getName()));
+							getUniqueId(true), var.getName(), var.getValue()));
 					builder.append(String.format("<tr><td colspan=\"4\"><li><input type=\"checkbox\" id=\"mln%s\" /><div>", getUniqueId(false)));
 					
 					builder.append(composeVarsTable(null, nested, false));
 					
 					builder.append("</div></li></td></tr>");
 				} else {
-					builder.append(String.format(varsRowTemplate, var.getAddress(), var.getType(), var.getValue(),
-							var.getName()));
+					builder.append(String.format(varsRowTemplate, var.getAddress(), var.getType(), var.getName(), var.getValue()));
 				}
 			}
 		}
@@ -122,7 +121,7 @@ public class HtmlBuilder {
 			Arrays.sort(args);
 			for (VarDescription arg : args) {
 				builder.append(
-						String.format(argsRowTemplate, arg.getAddress(), arg.getType(), arg.getValue(), arg.getName()));
+						String.format(argsRowTemplate, arg.getAddress(), arg.getType(), arg.getName(), arg.getValue()));
 			}
 		}
 

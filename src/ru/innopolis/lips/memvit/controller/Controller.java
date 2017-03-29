@@ -1,5 +1,6 @@
 package ru.innopolis.lips.memvit.controller;
 
+import org.eclipse.cdt.debug.core.cdi.CDIException;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.eclipse.swt.widgets.Display;
 
@@ -103,8 +104,13 @@ public class Controller {
 		View view = getBrowserView();
 				
 		// Object for storing the extracted data
-		State newState = DataExtractor.extractData(thread);
-				
+		State newState;
+		try {
+			newState = DataExtractor.extractData(thread);
+		} catch (CDIException e) {
+			return;
+		}
+						
 		if (newState == null) {
 			System.out.println("Null state returned, break handle!");
 			return;

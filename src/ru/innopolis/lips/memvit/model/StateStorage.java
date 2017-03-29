@@ -26,13 +26,14 @@ public class StateStorage {
 	}
 	
 	public void addState(State state) {
-		shiftFromLastState = 0; // When new data is added, new data becomes current state
+		System.out.println("state added");
+		shiftFromLastState = 0; // When the new data is added, the new data becomes current state
 		stateStorage.add(state);
 		currentStep++;
 	}
 	
 	public State getLastState() {
-		shiftFromLastState = 0; // Last state will be returned, reset shift pointer 
+		shiftFromLastState = 0; // The last state will be returned, reset shift pointer 
 		if (stateStorage.size() == 0) return null; // If storage is empty
 		return stateStorage.get(stateStorage.size() - 1);
 	}

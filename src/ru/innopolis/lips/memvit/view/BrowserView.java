@@ -18,7 +18,7 @@ import ru.innopolis.lips.memvit.model.StateStorage;
 import ru.innopolis.lips.memvit.utils.HtmlBuilder;
 
 /**
- * Used as extension point
+ * Used as an extension point
  * 
  * @author Pavel Sozonov
  */
@@ -58,7 +58,6 @@ public class BrowserView extends ViewPart implements View {
 			browser.setText(content);
 			contentChanged = false;
 		}
-		//if (!contentChanged) System.out.println("!contentChanged");
 	}	
 
 	/*
@@ -138,6 +137,7 @@ public class BrowserView extends ViewPart implements View {
 			if (event.type == SWT.Selection && controller != null) controller.handleForwardButton();
 		});
 		
+		//TODO don't work
 		stepNumber = new Label(buttonsLayout, SWT.PUSH | SWT.MEDIUM);
 		stepNumber.setText("");
 		stepNumber.setEnabled(true);

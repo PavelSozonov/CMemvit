@@ -22,63 +22,64 @@ import ru.innopolis.lips.memvit.model.StateImpl;
 import ru.innopolis.lips.memvit.model.VarDescription;
 
 /**
- * Takes thread and return all useful data as a State object
+ * Take thread and return all useful data as a State object
  * 
  * @author Pavel Sozonov
  */
 public class DataExtractor {
 
 	private static List<VarDescription> heapVars = new ArrayList<>();
-
+	private static ActivationRecord[] activationRecords;
 	private static String eaxValueType;
-
 	private static String eaxValue;
 
-	/*
-	 * Base method, extract all information from thread, and form result
+	/**
+	 * Base method, extract all the information from the thread, and form the result as a State
+	 * 
+	 * @param thread from which will be extracted information about the current state
+	 * @return state object which contain all the information about the current state
+	 * @throws CDIException
 	 */
-	public static State extractData(ICDIThread thread) {
+	public static State extractData(ICDIThread thread) throws CDIException {
 		
-		ActivationRecord[] stack;
-		stack = getActivationRecords(thread);
-		
-		VarDescription[] heap;
-		heap = getHeapVariables();
+		try {
+			fillHeapVarsAndActivationRecords(thread);
+		} catch (CDIException e) {
+			throw new CDIException();
+		}
+
+		VarDescription[] heap = getHeapVariables();
 		
 		VarDescription[] globalStaticVariables;
 		globalStaticVariables = getGlobalStaticVariables();
 		
-		String json = JsonUtils.buildJson(stack, heap, globalStaticVariables, eaxValue, eaxValueType);
+		String json = JsonUtils.buildJson(activationRecords, heap, globalStaticVariables, eaxValue, eaxValueType);
 		if (json == null) return null;
 		
-		State result = new StateImpl(json);
+		State state = new StateImpl(json);
 		
-		return result;
+		return state;
 	}
 
-	/*
-	 * Takes frames from the current thread, read data from each frame and return
-	 * activation records array with data about all frames. Sets status of
-	 * thread to not updated.
-	 * 
-	 * TODO: this method also finds heap variables, need to create separate method
+	/**
+	 * Extract data from the thread and fill heapVars and activationRecords arrays 
+	 * @param thread from which will be extracted information about the current state
+	 * @throws CDIException 
 	 */
-	private static ActivationRecord[] getActivationRecords(ICDIThread thread) {
+	private static void fillHeapVarsAndActivationRecords(ICDIThread thread) throws CDIException {
 
-		heapVars = new ArrayList<>(); // TODO move to findHeapVariables();
+		heapVars = new ArrayList<>();
 		
 		ICDIStackFrame[] frames = getStackFrames(thread);
-		if (frames == null) return null;
+		if (frames == null) return;
 		
-		ActivationRecord[] records = processingFrames(frames);
-		return records;
-	}
-	
-	// Move functionality from getActivationRecords() and its submethods
-	@SuppressWarnings("unused")
-	private static void findHeapVariables() {
-		
-		heapVars = new ArrayList<>();
+		ActivationRecord[] records;
+		try {
+			records = extractActivationRecordsFromFrames(frames);
+		} catch (CDIException e) {
+			throw new CDIException();
+		}
+		activationRecords = records;
 	}
 
 	private static ICDIStackFrame[] getStackFrames(ICDIThread thread) {
@@ -106,7 +107,7 @@ public class DataExtractor {
 	 * Reads frame by frame, extract data and form array of activation records
 	 * On each step updates fields eaxValue and eaxValueType
 	 */
-	private static ActivationRecord[] processingFrames(ICDIStackFrame[] frames) {
+	private static ActivationRecord[] extractActivationRecordsFromFrames(ICDIStackFrame[] frames) throws CDIException {
 		
 		ActivationRecord[] records = new ActivationRecord[frames.length];
 
@@ -119,7 +120,12 @@ public class DataExtractor {
 			String endAddress = getEndAddress(frame);
 
 			ICDILocalVariableDescriptor[] localVariables = GetStackFrameLocalVariableDescriptors(frame);
-			VarDescription[] vars = localVariablesProcessing(localVariables, startAddress, endAddress);
+			VarDescription[] vars;
+			try {
+				vars = localVariablesProcessing(localVariables, startAddress, endAddress);
+			} catch (CDIException e) {
+				throw new CDIException();
+			}
 
 			ICDIArgumentDescriptor[] argDescriptors = getStackFrameArgumentDescriptors(frame);
 			VarDescription[] args = argsProcessing(argDescriptors); // extra
@@ -141,12 +147,16 @@ public class DataExtractor {
 		return records;
 	}
 	
-	/*
+	/**
 	 * Convert local variables descriptions in useful format
 	 * 
-	 * TODO: also finds heap variables, move functionality in separate method findHeapVariables()
+	 * @param localVariables
+	 * @param startAddress
+	 * @param endAddress
+	 * @return
+	 * @throws CDIException
 	 */
-	private static VarDescription[] localVariablesProcessing(ICDILocalVariableDescriptor[] localVariables, String startAddress, String endAddress) {
+	private static VarDescription[] localVariablesProcessing(ICDILocalVariableDescriptor[] localVariables, String startAddress, String endAddress) throws CDIException {
 
 		ArrayList<VarDescription> convertedLocalVariables = new ArrayList<>();
 
@@ -161,14 +171,18 @@ public class DataExtractor {
 
 			VarDescription addedVar = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
 			
-			if (hexAddress.compareTo(endAddress) >= 0 // TODO may be it make sense to change this check
+			if (hexAddress.compareTo(endAddress) >= 0
 					&& hexAddress.compareTo(startAddress) <= 0) {
 				convertedLocalVariables.add(addedVar);
 			} else {
-				heapVars.add(addedVar); // TODO check is it work well? Move functionality in findHeapVariables()
+				heapVars.add(addedVar);
 			}
 			
-			fillVariableDescriptors(addedVar, cdiValue, startAddress, endAddress);
+			try {
+				fillVariableDescriptors(addedVar, cdiValue, startAddress, endAddress);
+			} catch (CDIException e) {
+				throw new CDIException();
+			}
 		}
 		
 		VarDescription[] result = new VarDescription[convertedLocalVariables.size()];
@@ -177,13 +191,18 @@ public class DataExtractor {
 		return result;
 	}
 	
+	/**
+	 * Just convert a list to an array
+	 * 
+	 * @return a list as an array
+	 */
 	private static VarDescription[] getHeapVariables() {
 		VarDescription[] array = new VarDescription[heapVars.size()];
 		heapVars.toArray(array);
 		return array;
 	}
 
-	private static void fillVariableDescriptors(VarDescription var, ICDIValue cdivalue, String startAddress, String endAddress) {
+	private static void fillVariableDescriptors(VarDescription var, ICDIValue cdivalue, String startAddress, String endAddress) throws CDIException {
 		ICDIVariable[] subVariables = getLocalVariablesFromValue(cdivalue);
 		if (subVariables == null) {
 			return;
@@ -192,7 +211,12 @@ public class DataExtractor {
 		ArrayList<VarDescription> tempSubVars = new ArrayList<>();
 		for (int k = 0; k < subVariables.length; k++) {
 			ICDIVariable iCdiLocalVariable = subVariables[k];
-			String hexAddress = getHexAddress((Variable) iCdiLocalVariable);
+			String hexAddress;
+			try {
+				hexAddress = getHexAddress((Variable) iCdiLocalVariable);
+			} catch (CDIException e) {
+				throw new CDIException();
+			}
 			String typeName = getLocalVariableTypeName(iCdiLocalVariable);
 			ICDIValue subCDIValue = getLocalVariableValue(iCdiLocalVariable);
 			String valueString = getValueString(subCDIValue);
@@ -217,13 +241,13 @@ public class DataExtractor {
 		tempSubVars.toArray(subVars);
 	}
 
-	private static String getHexAddress(Variable variable) {
+	private static String getHexAddress(Variable variable) throws CDIException {
 		String hexAddress = "";
 		try {
 			hexAddress = variable.getHexAddress();
 		} catch (CDIException e) {
-			e.printStackTrace();
-		}
+			throw new CDIException();
+		}		
 		return hexAddress;
 	}
 
@@ -408,7 +432,7 @@ public class DataExtractor {
 	 * Converts stack arguments description to VarDescription[]
 	 */
 	private static VarDescription[] argsProcessing(
-			ICDIArgumentDescriptor[] argDescriptors) {
+			ICDIArgumentDescriptor[] argDescriptors) throws CDIException {
 		int argsCounter = 0;
 		VarDescription[] args = new VarDescription[argDescriptors.length]; // extra
 																			// space
@@ -417,7 +441,12 @@ public class DataExtractor {
 																			// value
 		for (ICDIArgumentDescriptor argDescriptor : argDescriptors) {
 			ICDILocalVariable icdilovalvariable = getArgument(argDescriptor);
-			String hexAddress = getHexAddress((Variable) icdilovalvariable);
+			String hexAddress;
+			try {
+				hexAddress = getHexAddress((Variable) icdilovalvariable);
+			} catch (CDIException e) {
+				throw new CDIException();
+			}
 			String typeName = getLocalVariableTypeName(icdilovalvariable);
 			ICDIValue icdValue = getLocalVariableValue(icdilovalvariable);
 			String valueString = getValueString(icdValue);
