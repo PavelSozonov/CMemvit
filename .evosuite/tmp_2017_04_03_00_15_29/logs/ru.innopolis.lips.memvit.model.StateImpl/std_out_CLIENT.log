@@ -1,0 +1,71 @@
+* Starting client
+* Connecting to master process on port 13289
+* Analyzing classpath: 
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/test-classes
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/classes
+  - /home/pavel/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /home/pavel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+* Finished analyzing classpath
+* Generating tests for class ru.innopolis.lips.memvit.model.StateImpl
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 00:22:55.368 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/evosuite-seeds/ru.innopolis.lips.memvit.model.StateImpl.seed
+* Total number of test goals: 
+  - Line 5
+  - Branch 3
+  - Exception 0
+  - MutationFactory 0
+  - Output 3
+  - Method 3
+  - MethodNoException 3
+  - CBranchFitnessFactory 3
+* Using seed 1491168171889
+* Starting evolution
+* Search finished after 3s and 0 generations, 6087 statements, best individual has fitness: 0.0
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 100%
+* Total number of goals: 5
+* Number of covered goals: 5
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100% (no goals)
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 100% (no goals)
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Generated 3 tests with total length 8
+* Resulting test suite's coverage: 100% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 100%
+* Compiling and checking tests
+* Writing JUnit test case 'StateImpl_ESTest' to /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests
+* Done!
+
