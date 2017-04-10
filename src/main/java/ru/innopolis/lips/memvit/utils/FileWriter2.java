@@ -6,20 +6,29 @@ import java.text.SimpleDateFormat;
 
 public class FileWriter2 {
 
-	public static void writeLog(String message) {
+	private String file;
+
+	public FileWriter2() {
+		file = "~/CMemvitLog.txt";
+	}
+
+	public FileWriter2(String file) {
+		this.file = file;
+	}
+
+	public void writeLog(String message) {
 		writeLog(0, message);
 	}
 
-	public static void writeLog(int nestingLevel, String message) {
+	public void writeLog(int nestingLevel, String message) {
 		String indent = "";
 		if (nestingLevel > 0) {
 			for (int i = 0; i < nestingLevel; i++) {
 				indent += "    ";
 			}
 		}
-		String filePath = "/home/pavel/Projects/CMemvitLog.txt";
 		try {
-			FileWriter fw = new FileWriter(filePath, true);
+			FileWriter fw = new FileWriter(file, true);
 			fw.write(indent + message);
 			fw.append('\n');
 			fw.flush();
@@ -29,17 +38,16 @@ public class FileWriter2 {
 		}
 	}
 
-	private static String dateTimeToString() {
+	@SuppressWarnings("unused")
+	private String dateTimeToString() {
 		long currentTime = System.currentTimeMillis();
 		String curStringDate = new SimpleDateFormat("dd.MM.yyyy_HH-mm-ss-SSS").format(currentTime);
 		return curStringDate;
 	}
 
-	public static void writeJson(String json) {
-		String filePath = "/home/pavel/Projects/JSONs/CMemvit_" + dateTimeToString() + ".json";
-
+	public void writeJson(String json) {
 		try {
-			FileWriter fileWriter = new FileWriter(filePath, false);
+			FileWriter fileWriter = new FileWriter(file, false);
 			fileWriter.write(json);
 			fileWriter.flush();
 			fileWriter.close();

@@ -8,14 +8,14 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 
 /**
- * Used by plugin extension point 
+ * Used by the plugin extension point
  * 
  * @author Pavel Sozonov
  */
 public class ConfigurationDelegate implements ILaunchConfigurationDelegate {
 
 	@Override
-	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) 
+	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
 			throws CoreException {
 		LocalCDILaunchDelegate localCDI = new LocalCDILaunchDelegate();
 		localCDI.launch(configuration, mode, launch, monitor);

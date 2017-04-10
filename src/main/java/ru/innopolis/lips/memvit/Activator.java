@@ -45,7 +45,6 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Plugin Start");
 		debugEventsListenerRegistrator = new DebugEventsListenerRegistrator(controller);
 		super.start(context);
 		// controller = new Controller();
@@ -63,7 +62,6 @@ public class Activator extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		super.stop(context);
-		System.out.println("Plugin Stop");
 	}
 
 	/**
