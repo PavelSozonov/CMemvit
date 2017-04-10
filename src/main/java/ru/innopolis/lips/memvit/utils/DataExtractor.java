@@ -30,10 +30,10 @@ import ru.innopolis.lips.memvit.model.VarDescription;
  */
 public class DataExtractor {
 
-	private static List<VarDescription> heapVars = new ArrayList<>();
-	private static ActivationRecord[] activationRecords;
-	private static String eaxValueType;
-	private static String eaxValue;
+	private List<VarDescription> heapVars = new ArrayList<>();
+	private ActivationRecord[] activationRecords;
+	private String eaxValueType;
+	private String eaxValue;
 
 	/**
 	 * Base method, extract all the information from the thread, and form the
@@ -46,7 +46,7 @@ public class DataExtractor {
 	 *         state
 	 * @throws CDIException
 	 */
-	public static State extractData(ICDIThread thread) throws CDIException {
+	public State extractData(ICDIThread thread) throws CDIException {
 
 		fillHeapVarsAndActivationRecordsLists(thread);
 
@@ -74,7 +74,7 @@ public class DataExtractor {
 	 *            state
 	 * @throws CDIException
 	 */
-	private static void fillHeapVarsAndActivationRecordsLists(ICDIThread thread) throws CDIException {
+	private void fillHeapVarsAndActivationRecordsLists(ICDIThread thread) throws CDIException {
 
 		heapVars = new ArrayList<>();
 
@@ -85,7 +85,7 @@ public class DataExtractor {
 		activationRecords = records;
 	}
 
-	private static ICDIStackFrame[] getStackFrames(ICDIThread thread) throws CDIException {
+	private ICDIStackFrame[] getStackFrames(ICDIThread thread) throws CDIException {
 		if (thread == null) {
 			return null;
 		}
@@ -103,7 +103,7 @@ public class DataExtractor {
 	/*
 	 * TODO: not implemented
 	 */
-	private static VarDescription[] getGlobalStaticVariables() {
+	private VarDescription[] getGlobalStaticVariables() {
 		VarDescription[] globalStaticVariables = new VarDescription[0];
 		return globalStaticVariables;
 	}
@@ -112,7 +112,7 @@ public class DataExtractor {
 	 * Reads frame by frame, extract data and form array of activation records
 	 * On each step updates fields eaxValue and eaxValueType
 	 */
-	private static ActivationRecord[] extractActivationRecordsFromFrames(ICDIStackFrame[] frames) throws CDIException {
+	private ActivationRecord[] extractActivationRecordsFromFrames(ICDIStackFrame[] frames) throws CDIException {
 
 		ActivationRecord[] records = new ActivationRecord[frames.length];
 
@@ -138,7 +138,7 @@ public class DataExtractor {
 			String curLineNumber = String.valueOf(frame.getLocator().getLineNumber());
 
 			records[recordCounter++] = new ActivationRecord(curLineNumber, functionName, fileName, startAddress,
-					endAddress, "Static link (not implemented)", vars, args);
+					endAddress, "link (not implemented)", vars, args);
 		}
 
 		return records;
@@ -154,7 +154,7 @@ public class DataExtractor {
 	 * @throws CDIException
 	 */
 
-	private static VarDescription[] localVariablesProcessing(ICDILocalVariableDescriptor[] localVariables,
+	private VarDescription[] localVariablesProcessing(ICDILocalVariableDescriptor[] localVariables,
 			String startAddress, String endAddress) throws CDIException {
 
 		ArrayList<VarDescription> convertedLocalVariablesList = new ArrayList<>();
@@ -186,14 +186,14 @@ public class DataExtractor {
 	 * 
 	 * @return a list as an array
 	 */
-	private static VarDescription[] getHeapVariables() {
+	private VarDescription[] getHeapVariables() {
 		VarDescription[] array = new VarDescription[heapVars.size()];
 		heapVars.toArray(array);
 		return array;
 	}
 
-	private static void fillVariableDescriptors(VarDescription var, ICDIValue cdiValue, String startAddress,
-			String endAddress) throws CDIException {
+	private void fillVariableDescriptors(VarDescription var, ICDIValue cdiValue, String startAddress, String endAddress)
+			throws CDIException {
 		ICDIVariable[] subVariables = getLocalVariablesFromValue(cdiValue);
 		if (subVariables == null) {
 			return;
@@ -220,12 +220,12 @@ public class DataExtractor {
 		subVarsList.toArray(subVarsArray);
 	}
 
-	private static void separateStackHeapVariables(String startAddress, String endAddress, String hexAddress,
+	private void separateStackHeapVariables(String startAddress, String endAddress, String hexAddress,
 			List<VarDescription> stackVars, VarDescription varToAdd) {
 		separateStackHeapVariables(startAddress, endAddress, hexAddress, stackVars, null, varToAdd);
 	}
 
-	private static void separateStackHeapVariables(String startAddress, String endAddress, String hexAddress,
+	private void separateStackHeapVariables(String startAddress, String endAddress, String hexAddress,
 			List<VarDescription> stackVars, VarDescription var, VarDescription varToAdd) {
 		// If it is the last frame, there is problem with end address, compiler
 		// does not set rsp register properly
@@ -251,13 +251,13 @@ public class DataExtractor {
 		}
 	}
 
-	private static String getHexAddress(Variable variable) throws CDIException {
+	private String getHexAddress(Variable variable) throws CDIException {
 		String hexAddress = "";
 		hexAddress = variable.getHexAddress();
 		return hexAddress;
 	}
 
-	private static ICDIValue getLocalVariableValue(ICDIVariable variable) {
+	private ICDIValue getLocalVariableValue(ICDIVariable variable) {
 		ICDIValue value = null;
 		try {
 			value = variable.getValue();
@@ -267,7 +267,7 @@ public class DataExtractor {
 		return value;
 	}
 
-	private static ICDILocalVariableDescriptor[] getLocalVariablesFromFrame(ICDIStackFrame frame) {
+	private ICDILocalVariableDescriptor[] getLocalVariablesFromFrame(ICDIStackFrame frame) {
 		ICDILocalVariableDescriptor[] descriptor = new ICDILocalVariableDescriptor[0];
 		try {
 			descriptor = frame.getLocalVariableDescriptors();
@@ -277,7 +277,7 @@ public class DataExtractor {
 		return descriptor;
 	}
 
-	private static ICDIArgumentDescriptor[] getArgumentsFromFrame(ICDIStackFrame frame) {
+	private ICDIArgumentDescriptor[] getArgumentsFromFrame(ICDIStackFrame frame) {
 		ICDIArgumentDescriptor[] descriptor = new ICDIArgumentDescriptor[0];
 		try {
 			descriptor = frame.getArgumentDescriptors();
@@ -287,7 +287,7 @@ public class DataExtractor {
 		return descriptor;
 	}
 
-	private static String getLocalVariableTypeName(ICDIVariable variable) {
+	private String getLocalVariableTypeName(ICDIVariable variable) {
 		String typeName = null;
 		try {
 			typeName = variable.getTypeName();
@@ -297,7 +297,7 @@ public class DataExtractor {
 		return typeName;
 	}
 
-	private static String getQualifiedName(ICDIVariableDescriptor variable) {
+	private String getQualifiedName(ICDIVariableDescriptor variable) {
 		String QualifiedName = null;
 		try {
 			QualifiedName = variable.getQualifiedName();
@@ -307,7 +307,7 @@ public class DataExtractor {
 		return QualifiedName;
 	}
 
-	private static ICDIVariable[] getLocalVariablesFromValue(ICDIValue value) {
+	private ICDIVariable[] getLocalVariablesFromValue(ICDIValue value) {
 		ICDIVariable[] variables = null;
 		try {
 			variables = value.getVariables();
@@ -319,7 +319,7 @@ public class DataExtractor {
 		return variables;
 	}
 
-	private static String getValueString(ICDIValue value) {
+	private String getValueString(ICDIValue value) {
 		String valuestring = "";
 		if (value == null) {
 			return valuestring;
@@ -333,15 +333,15 @@ public class DataExtractor {
 		return valuestring;
 	}
 
-	private static String getFileName(ICDIStackFrame frame) {
+	private String getFileName(ICDIStackFrame frame) {
 		return frame.getLocator().getFile();
 	}
 
-	private static String getFunctionName(ICDIStackFrame frame) {
+	private String getFunctionName(ICDIStackFrame frame) {
 		return frame.getLocator().getFunction();
 	}
 
-	private static String getStartAddress(ICDIStackFrame frame) {
+	private String getStartAddress(ICDIStackFrame frame) {
 		ICDIValue registerBasePointer = findRegisterValueByQualifiedName(frame, "$rbp");
 		String startAddress = getValueString(registerBasePointer);
 		if (startAddress.length() == 0) {
@@ -351,7 +351,7 @@ public class DataExtractor {
 		return startAddress;
 	}
 
-	private static String getEndAddress(ICDIStackFrame frame) {
+	private String getEndAddress(ICDIStackFrame frame) {
 		ICDIValue registerStackPointer = findRegisterValueByQualifiedName(frame, "$rsp");
 		String endAddress = getValueString(registerStackPointer);
 		if (endAddress.length() == 0) {
@@ -361,7 +361,7 @@ public class DataExtractor {
 		return endAddress;
 	}
 
-	private static ICDIValue findRegisterValueByQualifiedName(ICDIStackFrame frame, String qualifedName) {
+	private ICDIValue findRegisterValueByQualifiedName(ICDIStackFrame frame, String qualifedName) {
 		ICDIValue value = null;
 		ICDIRegisterGroup[] registerGroups = getICDIRegisterGroups(frame);
 		for (ICDIRegisterGroup registerGroup : registerGroups) {
@@ -377,7 +377,7 @@ public class DataExtractor {
 		return value;
 	}
 
-	private static ICDIRegisterGroup[] getICDIRegisterGroups(ICDIStackFrame frame) {
+	private ICDIRegisterGroup[] getICDIRegisterGroups(ICDIStackFrame frame) {
 		ICDIRegisterGroup[] registerGroup = new ICDIRegisterGroup[0];
 		try {
 			registerGroup = frame.getThread().getTarget().getRegisterGroups();
@@ -387,7 +387,7 @@ public class DataExtractor {
 		return registerGroup;
 	}
 
-	private static ICDIRegisterDescriptor[] getICDIRegisterDescriptors(ICDIRegisterGroup registerGroup) {
+	private ICDIRegisterDescriptor[] getICDIRegisterDescriptors(ICDIRegisterGroup registerGroup) {
 		ICDIRegisterDescriptor[] regDescriptors = new ICDIRegisterDescriptor[0];
 		try {
 			regDescriptors = registerGroup.getRegisterDescriptors();
@@ -399,7 +399,7 @@ public class DataExtractor {
 		return regDescriptors;
 	}
 
-	private static ICDIRegister createICDIRegister(ICDIStackFrame frame, ICDIRegisterDescriptor regDescriptor) {
+	private ICDIRegister createICDIRegister(ICDIStackFrame frame, ICDIRegisterDescriptor regDescriptor) {
 		ICDIRegister register = null;
 		try {
 			register = frame.getTarget().createRegister(regDescriptor);
@@ -409,7 +409,7 @@ public class DataExtractor {
 		return register;
 	}
 
-	private static ICDIValue getRegisterValue(ICDIStackFrame frame, ICDIRegister register) {
+	private ICDIValue getRegisterValue(ICDIStackFrame frame, ICDIRegister register) {
 		ICDIValue value = null;
 		try {
 			value = register.getValue(frame);
@@ -419,7 +419,7 @@ public class DataExtractor {
 		return value;
 	}
 
-	private static ICDILocalVariable getLocalVariable(ICDILocalVariableDescriptor descriptor) {
+	private ICDILocalVariable getLocalVariable(ICDILocalVariableDescriptor descriptor) {
 		ICDILocalVariable variable = null;
 		try {
 			variable = descriptor.getStackFrame().createLocalVariable(descriptor);
@@ -433,7 +433,7 @@ public class DataExtractor {
 	/*
 	 * Converts stack arguments description to VarDescription[]
 	 */
-	private static VarDescription[] argsProcessing(ICDIArgumentDescriptor[] argDescriptors) throws CDIException {
+	private VarDescription[] argsProcessing(ICDIArgumentDescriptor[] argDescriptors) throws CDIException {
 		int argsCounter = 0;
 
 		// extra space for return value
@@ -452,7 +452,7 @@ public class DataExtractor {
 		return args;
 	}
 
-	private static ICDIArgument getArgument(ICDIArgumentDescriptor descriptor) {
+	private ICDIArgument getArgument(ICDIArgumentDescriptor descriptor) {
 		ICDIArgument argument = null;
 		try {
 			argument = descriptor.getStackFrame().createArgument(descriptor);
@@ -465,13 +465,13 @@ public class DataExtractor {
 	/*
 	 * Updates returned value and type
 	 */
-	private static void updateEaxValueAndType(ICDIStackFrame frame) {
+	private void updateEaxValueAndType(ICDIStackFrame frame) {
 		ICDIValue registerReturnValue = findRegisterValueByQualifiedName(frame, "$eax");
 		eaxValue = getValueString(registerReturnValue);
 		eaxValueType = getValueTypeName(registerReturnValue);
 	}
 
-	private static String getValueTypeName(ICDIValue value) {
+	private String getValueTypeName(ICDIValue value) {
 		String valueTypeName = "";
 		if (value == null) {
 			return valueTypeName;
