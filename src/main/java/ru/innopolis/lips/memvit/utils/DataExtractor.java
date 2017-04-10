@@ -35,6 +35,9 @@ public class DataExtractor {
 	private String eaxValueType;
 	private String eaxValue;
 
+	// Instance of the class for managing Json
+	private JsonUtils jsonUtils = new JsonUtils();
+
 	/**
 	 * Base method, extract all the information from the thread, and form the
 	 * result as a State
@@ -57,7 +60,7 @@ public class DataExtractor {
 		VarDescription[] globalStaticVariables = getGlobalStaticVariables();
 
 		// Build all data in one json
-		String json = JsonUtils.buildJson(activationRecords, heap, globalStaticVariables, eaxValue, eaxValueType);
+		String json = jsonUtils.buildJson(activationRecords, heap, globalStaticVariables, eaxValue, eaxValueType);
 		if (json == null)
 			return null;
 
@@ -138,7 +141,7 @@ public class DataExtractor {
 			String curLineNumber = String.valueOf(frame.getLocator().getLineNumber());
 
 			records[recordCounter++] = new ActivationRecord(curLineNumber, functionName, fileName, startAddress,
-					endAddress, "link (not implemented)", vars, args);
+					endAddress, vars, args);
 		}
 
 		return records;

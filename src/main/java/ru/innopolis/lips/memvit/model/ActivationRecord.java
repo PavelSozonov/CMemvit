@@ -30,14 +30,13 @@ public class ActivationRecord {
 	private VarDescription[] args;
 
 	public ActivationRecord(String lineNumber, String functionName, String fileName, String startAddress,
-			String endAddress, String staticLink, VarDescription[] vars, VarDescription[] args) {
+			String endAddress, VarDescription[] vars, VarDescription[] args) {
 		super();
 		this.lineNumber = lineNumber;
 		this.functionName = functionName;
 		this.fileName = fileName;
 		this.startAddress = startAddress;
 		this.endAddress = endAddress;
-		this.staticLink = staticLink;
 		this.vars = vars;
 		this.args = args;
 	}

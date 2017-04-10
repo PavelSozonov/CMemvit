@@ -30,6 +30,9 @@ public class BrowserView extends ViewPart implements View {
 	private boolean contentChanged = false;;
 	private Label stepNumber;
 
+	// Instance of the class for HTML building
+	private HtmlBuilder htmlBuilder = new HtmlBuilder();
+
 	public BrowserView() {
 		Activator.getController().setBrowserView(this);
 	}
@@ -98,7 +101,7 @@ public class BrowserView extends ViewPart implements View {
 	public void update(State state) {
 
 		if (state != null) {
-			content = HtmlBuilder.composeBrowserView(state);
+			content = htmlBuilder.composeBrowserView(state);
 			contentChanged = true;
 		}
 	}

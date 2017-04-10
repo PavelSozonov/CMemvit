@@ -25,7 +25,6 @@ public class StateStorage {
 	}
 
 	public void addState(State state) {
-		System.out.println("Debug: State added");
 		shiftFromLastState = 0; // When the new data is added, the new data
 								// becomes current state
 		stateStorage.add(state);

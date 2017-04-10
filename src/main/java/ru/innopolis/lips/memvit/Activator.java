@@ -16,7 +16,7 @@ import ru.innopolis.lips.memvit.controller.DebugEventsListenerRegistrator;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "Plugin2"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "CMemvitPlugin"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
