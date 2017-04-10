@@ -47,6 +47,7 @@ public class HtmlBuilder_ESTest extends HtmlBuilder_ESTest_scaffolding {
 
 	@Test(timeout = 4000)
 	public void test1() throws Throwable {
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder0 = new HtmlBuilder();
 		ActivationRecord[] activationRecordArray0 = new ActivationRecord[1];
 		VarDescription[] varDescriptionArray0 = new VarDescription[1];
@@ -168,15 +169,18 @@ public class HtmlBuilder_ESTest extends HtmlBuilder_ESTest_scaffolding {
 
 	@Test(timeout = 4000)
 	public void test7() throws Throwable {
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder0 = new HtmlBuilder();
 		StateImpl stateImpl0 = new StateImpl((String) null);
 		HtmlBuilder.composeBrowserView(stateImpl0);
+		@SuppressWarnings("unused")
 		ActivationRecord[] activationRecordArray0 = new ActivationRecord[6];
 		VarDescription[] varDescriptionArray0 = new VarDescription[6];
 		VarDescription varDescription0 = new VarDescription("z* TjKB# Kccn!9z", "", " :-( ", "_ps0&y");
 		varDescriptionArray0[0] = varDescription0;
 		VarDescription varDescription1 = new VarDescription("", "", "", "_ps0&y");
 		varDescriptionArray0[1] = varDescription1;
+		@SuppressWarnings("unused")
 		VarDescription varDescription2 = null;
 		try {
 			varDescription2 = new VarDescription((String) null, "", "", "_ps0&y");
@@ -192,7 +196,9 @@ public class HtmlBuilder_ESTest extends HtmlBuilder_ESTest_scaffolding {
 
 	@Test(timeout = 4000)
 	public void test8() throws Throwable {
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder0 = new HtmlBuilder();
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder1 = new HtmlBuilder();
 		ActivationRecord[] activationRecordArray0 = new ActivationRecord[0];
 		String string0 = "<";
@@ -214,8 +220,11 @@ public class HtmlBuilder_ESTest extends HtmlBuilder_ESTest_scaffolding {
 
 	@Test(timeout = 4000)
 	public void test9() throws Throwable {
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder0 = new HtmlBuilder();
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder1 = new HtmlBuilder();
+		@SuppressWarnings("unused")
 		HtmlBuilder htmlBuilder2 = new HtmlBuilder();
 		ActivationRecord[] activationRecordArray0 = new ActivationRecord[2];
 		VarDescription[] varDescriptionArray0 = new VarDescription[2];

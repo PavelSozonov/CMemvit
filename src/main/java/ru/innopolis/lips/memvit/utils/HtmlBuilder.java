@@ -17,7 +17,7 @@ public class HtmlBuilder {
 	// Template's params list: function, file, line, Static link, end address,
 	// args, rows, start address
 	// address, return value type, return value
-	private static String activationRecordTemplate = "<div class=\"ar collapsibleList\"><div class=\"ar_title\">Activation Record</div><table class=\"ar_info\"> <tr> <td class=\"n\">Function</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">File</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Line</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Static Link</td><td class=\"v\">%s</td></tr><tr> <td colspan=\"2\"> <table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Name</td><td>Value</td></tr></thead> <tbody> <tr> <td>%s</td><td colspan=\"3\" class=\"gr\">end address</td></tr>%s</tbody> </table> </td></tr></table></div>";
+	private static String activationRecordTemplate = "<div class=\"ar collapsibleList\"><div class=\"ar_title\">Activation Record</div><table class=\"ar_info\"> <tr> <td class=\"n\">Function</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">File</td><td class=\"v\">%s</td></tr><tr> <td class=\"n\">Line</td><td class=\"v\">%s</td></tr><tr> <td colspan=\"2\"> <table class=\"ar_vars\"> <thead> <tr class=\"title\"> <td>Address</td><td>Type</td><td>Name</td><td>Value</td></tr></thead> <tbody> <tr> <td>%s</td><td colspan=\"3\" class=\"gr\">end address</td></tr>%s</tbody> </table> </td></tr></table></div>";
 
 	// Template's params list: addr, type, name, value
 	private static String varsRowTemplate = "<tr> <td class=\"c_addr\">%s</td><td class=\"c_type\">%s</td><td class=\"c_name\">%s</td><td class=\"c_value\">%s</td></tr>";
@@ -61,17 +61,26 @@ public class HtmlBuilder {
 		StringBuilder html = new StringBuilder();
 
 		html.append(htmlHeader);
-		html.append(String.format("<div class=\"ar\" id=\"ff\">EAX: (%s) %s<br>Program Counter: %s</div>", eaxType,
-				eaxValue, getCurrentLineNumber(frames)));
+		/*
+		 * html.append(String.format(
+		 * "<div class=\"ar\" id=\"ff\">The last returned value: (%s) %s<br>Program Counter: %s</div>"
+		 * , eaxType, eaxValue, getCurrentLineNumber(frames)));
+		 */
+		html.append(String
+				.format("<div class=\"ar\" id=\"ff\">Program Counter: %s</div>", getCurrentLineNumber(frames)));
 		if (frames != null) {
 			for (ActivationRecord frame : frames) {
 
 				String varsTable = String.format(composeVarsTable(frame.getArgs(), frame.getVars(), true),
 						frame.getStartAddress());
-
+				String endAddress;
+				if (frame.getStartAddress().equals(frame.getEndAddress())) {
+					endAddress = checkEndAddress(frame.getEndAddress(), frame.getVars());
+				} else {
+					endAddress = frame.getEndAddress();
+				}
 				String activationRecord = String.format(activationRecordTemplate, frame.getFunctionName(),
-						frame.getFileName(), frame.getLineNumber(), frame.getStaticLink(), frame.getEndAddress(),
-						varsTable);
+						frame.getFileName(), frame.getLineNumber(), endAddress, varsTable);
 
 				html.append(activationRecord);
 			}
@@ -84,6 +93,15 @@ public class HtmlBuilder {
 		html.append(htmlFooter);
 
 		return html.toString();
+	}
+
+	private static String checkEndAddress(String endAddress, VarDescription[] vars) {
+		String minAddress = endAddress;
+		for (VarDescription var : vars) {
+			if (var.getAddress().compareTo(minAddress) < 0)
+				minAddress = var.getAddress();
+		}
+		return minAddress;
 	}
 
 	private static String getCurrentLineNumber(ActivationRecord[] recs) {

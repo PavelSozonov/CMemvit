@@ -154,7 +154,7 @@ public class BrowserView extends ViewPart implements View {
 		// TODO don't work
 		stepNumber = new Label(buttonsLayout, SWT.PUSH | SWT.MEDIUM);
 		stepNumber.setText("");
-		stepNumber.setEnabled(true);
+		stepNumber.setEnabled(false);
 
 		browser = new Browser(parent, SWT.NONE);
 		GridData gridData = new GridData();
@@ -169,7 +169,8 @@ public class BrowserView extends ViewPart implements View {
 	}
 
 	public void setStepLabel(int step, int of) {
-		stepNumber.setText("Step " + step + " / " + of);
+		// stepNumber.setText("Step " + step + " / " + of);
+		stepNumber.setText("");
 	}
 
 }

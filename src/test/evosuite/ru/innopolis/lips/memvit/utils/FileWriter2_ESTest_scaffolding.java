@@ -7,82 +7,82 @@
 package ru.innopolis.lips.memvit.utils;
 
 import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
-import org.junit.BeforeClass;
-import org.junit.Before;
+import org.evosuite.runtime.sandbox.Sandbox;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.evosuite.runtime.sandbox.Sandbox;
-import org.evosuite.runtime.sandbox.Sandbox.SandboxMode;
+import org.junit.Before;
+import org.junit.BeforeClass;
 
 @EvoSuiteClassExclude
 public class FileWriter2_ESTest_scaffolding {
 
-  private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System.getProperties().clone(); 
+	private static final java.util.Properties defaultProperties = (java.util.Properties) java.lang.System
+			.getProperties().clone();
 
-  private org.evosuite.runtime.thread.ThreadStopper threadStopper =  new org.evosuite.runtime.thread.ThreadStopper (org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
+	private org.evosuite.runtime.thread.ThreadStopper threadStopper = new org.evosuite.runtime.thread.ThreadStopper(
+			org.evosuite.runtime.thread.KillSwitchHandler.getInstance(), 3000);
 
-  @BeforeClass 
-  public static void initEvoSuiteFramework() { 
-    org.evosuite.runtime.RuntimeSettings.className = "ru.innopolis.lips.memvit.utils.FileWriter2"; 
-    org.evosuite.runtime.GuiSupport.initialize(); 
-    org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100; 
-    org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000; 
-    org.evosuite.runtime.RuntimeSettings.mockSystemIn = true; 
-    org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED; 
-    org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT(); 
-    org.evosuite.runtime.classhandling.JDKClassResetter.init(); 
-    initializeClasses();
-    org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
-  } 
+	@BeforeClass
+	public static void initEvoSuiteFramework() {
+		org.evosuite.runtime.RuntimeSettings.className = "ru.innopolis.lips.memvit.utils.FileWriter2";
+		org.evosuite.runtime.GuiSupport.initialize();
+		org.evosuite.runtime.RuntimeSettings.maxNumberOfThreads = 100;
+		org.evosuite.runtime.RuntimeSettings.maxNumberOfIterationsPerLoop = 10000;
+		org.evosuite.runtime.RuntimeSettings.mockSystemIn = true;
+		org.evosuite.runtime.RuntimeSettings.sandboxMode = org.evosuite.runtime.sandbox.Sandbox.SandboxMode.RECOMMENDED;
+		org.evosuite.runtime.sandbox.Sandbox.initializeSecurityManagerForSUT();
+		org.evosuite.runtime.classhandling.JDKClassResetter.init();
+		initializeClasses();
+		org.evosuite.runtime.Runtime.getInstance().resetRuntime();
+	}
 
-  @AfterClass 
-  public static void clearEvoSuiteFramework(){ 
-    Sandbox.resetDefaultSecurityManager(); 
-    java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
-  } 
+	@AfterClass
+	public static void clearEvoSuiteFramework() {
+		Sandbox.resetDefaultSecurityManager();
+		java.lang.System.setProperties((java.util.Properties) defaultProperties.clone());
+	}
 
-  @Before 
-  public void initTestCase(){ 
-    threadStopper.storeCurrentThreads();
-    threadStopper.startRecordingTime();
-    org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler(); 
-    org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode(); 
-    setSystemProperties(); 
-    org.evosuite.runtime.GuiSupport.setHeadless(); 
-    org.evosuite.runtime.Runtime.getInstance().resetRuntime(); 
-    org.evosuite.runtime.agent.InstrumentingAgent.activate(); 
-  } 
+	@Before
+	public void initTestCase() {
+		threadStopper.storeCurrentThreads();
+		threadStopper.startRecordingTime();
+		org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().initHandler();
+		org.evosuite.runtime.sandbox.Sandbox.goingToExecuteSUTCode();
+		setSystemProperties();
+		org.evosuite.runtime.GuiSupport.setHeadless();
+		org.evosuite.runtime.Runtime.getInstance().resetRuntime();
+		org.evosuite.runtime.agent.InstrumentingAgent.activate();
+	}
 
-  @After 
-  public void doneWithTestCase(){ 
-    threadStopper.killAndJoinClientThreads();
-    org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks(); 
-    org.evosuite.runtime.classhandling.JDKClassResetter.reset(); 
-    resetClasses(); 
-    org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode(); 
-    org.evosuite.runtime.agent.InstrumentingAgent.deactivate(); 
-    org.evosuite.runtime.GuiSupport.restoreHeadlessMode(); 
-  } 
+	@After
+	public void doneWithTestCase() {
+		threadStopper.killAndJoinClientThreads();
+		org.evosuite.runtime.jvm.ShutdownHookHandler.getInstance().safeExecuteAddedHooks();
+		org.evosuite.runtime.classhandling.JDKClassResetter.reset();
+		resetClasses();
+		org.evosuite.runtime.sandbox.Sandbox.doneWithExecutingSUTCode();
+		org.evosuite.runtime.agent.InstrumentingAgent.deactivate();
+		org.evosuite.runtime.GuiSupport.restoreHeadlessMode();
+	}
 
-  public void setSystemProperties() {
- 
-    java.lang.System.setProperties((java.util.Properties) defaultProperties.clone()); 
-    java.lang.System.setProperty("java.vm.vendor", "Oracle Corporation"); 
-    java.lang.System.setProperty("java.specification.version", "1.8"); 
-            java.lang.System.setProperty("java.home", "/usr/lib/jvm/java-8-openjdk-amd64/jre"); 
-    java.lang.System.setProperty("java.awt.headless", "true"); 
-    java.lang.System.setProperty("user.home", "/home/pavel"); 
-                                        java.lang.System.setProperty("user.dir", "/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit"); 
-    java.lang.System.setProperty("java.io.tmpdir", "/tmp"); 
-    java.lang.System.setProperty("line.separator", "\n"); 
-  }
+	public void setSystemProperties() {
 
-  private static void initializeClasses() {
-    org.evosuite.runtime.classhandling.ClassStateSupport.initializeClasses(FileWriter2_ESTest_scaffolding.class.getClassLoader() ,
-      "ru.innopolis.lips.memvit.utils.FileWriter2"
-    );
-  } 
+		java.lang.System.setProperties((java.util.Properties) defaultProperties.clone());
+		java.lang.System.setProperty("java.vm.vendor", "Oracle Corporation");
+		java.lang.System.setProperty("java.specification.version", "1.8");
+		java.lang.System.setProperty("java.home", "/usr/lib/jvm/java-8-openjdk-amd64/jre");
+		java.lang.System.setProperty("java.awt.headless", "true");
+		java.lang.System.setProperty("user.home", "/home/pavel");
+		java.lang.System.setProperty("user.dir", "/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit");
+		java.lang.System.setProperty("java.io.tmpdir", "/tmp");
+		java.lang.System.setProperty("line.separator", "\n");
+	}
 
-  private static void resetClasses() {
-  }
+	private static void initializeClasses() {
+		org.evosuite.runtime.classhandling.ClassStateSupport.initializeClasses(
+				FileWriter2_ESTest_scaffolding.class.getClassLoader(), "ru.innopolis.lips.memvit.utils.FileWriter2");
+	}
+
+	private static void resetClasses() {
+	}
 }

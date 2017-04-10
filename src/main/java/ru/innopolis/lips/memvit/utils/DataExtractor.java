@@ -36,7 +36,7 @@ public class DataExtractor {
 	private static String eaxValue;
 
 	/**
-	 * Base method, extract all the information from the thread, aпуеnd form the
+	 * Base method, extract all the information from the thread, and form the
 	 * result as a State
 	 * 
 	 * @param thread
@@ -48,23 +48,20 @@ public class DataExtractor {
 	 */
 	public static State extractData(ICDIThread thread) throws CDIException {
 
-		try {
-			fillHeapVarsAndActivationRecords(thread);
-		} catch (CDIException e) {
-			throw new CDIException();
-		}
+		fillHeapVarsAndActivationRecordsLists(thread);
 
+		// Convert list to array
 		VarDescription[] heap = getHeapVariables();
 
-		VarDescription[] globalStaticVariables;
-		globalStaticVariables = getGlobalStaticVariables();
+		// Not implemented
+		VarDescription[] globalStaticVariables = getGlobalStaticVariables();
 
+		// Build all data in one json
 		String json = JsonUtils.buildJson(activationRecords, heap, globalStaticVariables, eaxValue, eaxValueType);
 		if (json == null)
 			return null;
 
 		State state = new StateImpl(json);
-
 		return state;
 	}
 
@@ -77,24 +74,18 @@ public class DataExtractor {
 	 *            state
 	 * @throws CDIException
 	 */
-	private static void fillHeapVarsAndActivationRecords(ICDIThread thread) throws CDIException {
+	private static void fillHeapVarsAndActivationRecordsLists(ICDIThread thread) throws CDIException {
 
 		heapVars = new ArrayList<>();
 
 		ICDIStackFrame[] frames = getStackFrames(thread);
-		if (frames == null)
-			return;
 
 		ActivationRecord[] records;
-		try {
-			records = extractActivationRecordsFromFrames(frames);
-		} catch (CDIException e) {
-			throw new CDIException();
-		}
+		records = extractActivationRecordsFromFrames(frames);
 		activationRecords = records;
 	}
 
-	private static ICDIStackFrame[] getStackFrames(ICDIThread thread) {
+	private static ICDIStackFrame[] getStackFrames(ICDIThread thread) throws CDIException {
 		if (thread == null) {
 			return null;
 		}
@@ -104,6 +95,8 @@ public class DataExtractor {
 		} catch (CDIException e) {
 			e.printStackTrace();
 		}
+		if (frames == null)
+			throw new CDIException();
 		return frames;
 	}
 
@@ -127,33 +120,25 @@ public class DataExtractor {
 		for (ICDIStackFrame frame : frames) {
 
 			String functionName = getFunctionName(frame);
-			System.out.println("Debug: func. name : " + functionName);
 			String fileName = getFileName(frame);
 			String startAddress = getStartAddress(frame);
-			System.out.println("Debug: PBP (start): " + startAddress);
 			String endAddress = getEndAddress(frame);
-			System.out.println("Debug: PSP (end  ): " + endAddress);
 
-			ICDILocalVariableDescriptor[] localVariables = GetStackFrameLocalVariableDescriptors(frame);
+			ICDILocalVariableDescriptor[] localVariables = getLocalVariablesFromFrame(frame);
 			VarDescription[] vars;
-			try {
-				vars = localVariablesProcessing(localVariables, startAddress, endAddress);
-			} catch (CDIException e) {
-				throw new CDIException();
-			}
+			vars = localVariablesProcessing(localVariables, startAddress, endAddress);
 
-			ICDIArgumentDescriptor[] argDescriptors = getStackFrameArgumentDescriptors(frame);
-			VarDescription[] args = argsProcessing(argDescriptors); // extra
-																	// space for
-																	// return
-																	// value
+			ICDIArgumentDescriptor[] argDescriptors = getArgumentsFromFrame(frame);
 
-			updateEaxValueAndType(frame);
+			// extra space for return value
+			VarDescription[] args = argsProcessing(argDescriptors);
+
+			updateEaxValueAndType(frame); // unused anymore
 
 			String curLineNumber = String.valueOf(frame.getLocator().getLineNumber());
 
 			records[recordCounter++] = new ActivationRecord(curLineNumber, functionName, fileName, startAddress,
-					endAddress, "Unknown (not implemented)"/* String staticLink */, vars, args);
+					endAddress, "Static link (not implemented)", vars, args);
 		}
 
 		return records;
@@ -168,10 +153,11 @@ public class DataExtractor {
 	 * @return
 	 * @throws CDIException
 	 */
+
 	private static VarDescription[] localVariablesProcessing(ICDILocalVariableDescriptor[] localVariables,
 			String startAddress, String endAddress) throws CDIException {
 
-		ArrayList<VarDescription> convertedLocalVariables = new ArrayList<>();
+		ArrayList<VarDescription> convertedLocalVariablesList = new ArrayList<>();
 
 		for (ICDILocalVariableDescriptor localVariable : localVariables) {
 
@@ -182,29 +168,21 @@ public class DataExtractor {
 			String valueString = getValueString(cdiValue);
 			String qualifiedName = getQualifiedName(iCdiLocalVariable);
 
-			VarDescription addedVar = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
+			VarDescription variable = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
 
-			if (hexAddress.compareTo(endAddress) >= 0 && hexAddress.compareTo(startAddress) <= 0) {
-				convertedLocalVariables.add(addedVar);
-			} else {
-				heapVars.add(addedVar);
-			}
-
-			try {
-				fillVariableDescriptors(addedVar, cdiValue, startAddress, endAddress);
-			} catch (CDIException e) {
-				throw new CDIException();
-			}
+			separateStackHeapVariables(startAddress, endAddress, hexAddress, convertedLocalVariablesList, variable);
+			fillVariableDescriptors(variable, cdiValue, startAddress, endAddress);
 		}
 
-		VarDescription[] result = new VarDescription[convertedLocalVariables.size()];
-		convertedLocalVariables.toArray(result);
+		// Convert list to array
+		VarDescription[] convertedLocalVariablesArray = new VarDescription[convertedLocalVariablesList.size()];
+		convertedLocalVariablesList.toArray(convertedLocalVariablesArray);
 
-		return result;
+		return convertedLocalVariablesArray;
 	}
 
 	/**
-	 * Just convert a list to an array
+	 * Convert list to array
 	 * 
 	 * @return a list as an array
 	 */
@@ -214,50 +192,68 @@ public class DataExtractor {
 		return array;
 	}
 
-	private static void fillVariableDescriptors(VarDescription var, ICDIValue cdivalue, String startAddress,
+	private static void fillVariableDescriptors(VarDescription var, ICDIValue cdiValue, String startAddress,
 			String endAddress) throws CDIException {
-		ICDIVariable[] subVariables = getLocalVariablesFromValue(cdivalue);
+		ICDIVariable[] subVariables = getLocalVariablesFromValue(cdiValue);
 		if (subVariables == null) {
 			return;
 		}
 
-		ArrayList<VarDescription> tempSubVars = new ArrayList<>();
+		List<VarDescription> subVarsList = new ArrayList<>();
 		for (int k = 0; k < subVariables.length; k++) {
 			ICDIVariable iCdiLocalVariable = subVariables[k];
 			String hexAddress;
-			try {
-				hexAddress = getHexAddress((Variable) iCdiLocalVariable);
-			} catch (CDIException e) {
-				throw new CDIException();
-			}
+			hexAddress = getHexAddress((Variable) iCdiLocalVariable);
 			String typeName = getLocalVariableTypeName(iCdiLocalVariable);
 			ICDIValue subCDIValue = getLocalVariableValue(iCdiLocalVariable);
 			String valueString = getValueString(subCDIValue);
 			String qualifiedName = getQualifiedName(iCdiLocalVariable);
-			VarDescription addedVar = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
-			if (hexAddress.compareTo(endAddress) >= 0 && hexAddress.compareTo(startAddress) <= 0) {
-				tempSubVars.add(addedVar);
-				var.addNested(addedVar);
-			} else {
-				heapVars.add(addedVar);
-			}
-			fillVariableDescriptors(addedVar, subCDIValue, startAddress, endAddress);
+			VarDescription varToAdd = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
+
+			separateStackHeapVariables(startAddress, endAddress, hexAddress, subVarsList, var, varToAdd);
+
+			fillVariableDescriptors(varToAdd, subCDIValue, startAddress, endAddress);
 		}
-		VarDescription[] subVars = new VarDescription[tempSubVars.size()]; // extra
-																			// space
-																			// for
-																			// return
-																			// value
-		tempSubVars.toArray(subVars);
+
+		// extra space for return value
+		VarDescription[] subVarsArray = new VarDescription[subVarsList.size()];
+		subVarsList.toArray(subVarsArray);
+	}
+
+	private static void separateStackHeapVariables(String startAddress, String endAddress, String hexAddress,
+			List<VarDescription> stackVars, VarDescription varToAdd) {
+		separateStackHeapVariables(startAddress, endAddress, hexAddress, stackVars, null, varToAdd);
+	}
+
+	private static void separateStackHeapVariables(String startAddress, String endAddress, String hexAddress,
+			List<VarDescription> stackVars, VarDescription var, VarDescription varToAdd) {
+		// If it is the last frame, there is problem with end address, compiler
+		// does not set rsp register properly
+
+		if (startAddress.equals(endAddress)) {
+			Long start = Long.parseLong(startAddress.substring(2), 16);
+			Long end = Long.parseLong(endAddress.substring(2), 16);
+			if (Math.abs(start - end) <= 10000) {
+				stackVars.add(varToAdd);
+				if (var != null)
+					var.addNested(varToAdd);
+			} else {
+				heapVars.add(varToAdd);
+			}
+		} else {
+			if (hexAddress.compareTo(endAddress) >= 0 && hexAddress.compareTo(startAddress) <= 0) {
+				stackVars.add(varToAdd);
+				if (var != null)
+					var.addNested(varToAdd);
+			} else {
+				heapVars.add(varToAdd);
+			}
+		}
 	}
 
 	private static String getHexAddress(Variable variable) throws CDIException {
 		String hexAddress = "";
-		try {
-			hexAddress = variable.getHexAddress();
-		} catch (CDIException e) {
-			throw new CDIException();
-		}
+		hexAddress = variable.getHexAddress();
 		return hexAddress;
 	}
 
@@ -271,7 +267,7 @@ public class DataExtractor {
 		return value;
 	}
 
-	private static ICDILocalVariableDescriptor[] GetStackFrameLocalVariableDescriptors(ICDIStackFrame frame) {
+	private static ICDILocalVariableDescriptor[] getLocalVariablesFromFrame(ICDIStackFrame frame) {
 		ICDILocalVariableDescriptor[] descriptor = new ICDILocalVariableDescriptor[0];
 		try {
 			descriptor = frame.getLocalVariableDescriptors();
@@ -281,7 +277,7 @@ public class DataExtractor {
 		return descriptor;
 	}
 
-	private static ICDIArgumentDescriptor[] getStackFrameArgumentDescriptors(ICDIStackFrame frame) {
+	private static ICDIArgumentDescriptor[] getArgumentsFromFrame(ICDIStackFrame frame) {
 		ICDIArgumentDescriptor[] descriptor = new ICDIArgumentDescriptor[0];
 		try {
 			descriptor = frame.getArgumentDescriptors();
@@ -439,23 +435,18 @@ public class DataExtractor {
 	 */
 	private static VarDescription[] argsProcessing(ICDIArgumentDescriptor[] argDescriptors) throws CDIException {
 		int argsCounter = 0;
-		VarDescription[] args = new VarDescription[argDescriptors.length]; // extra
-																			// space
-																			// for
-																			// return
-																			// value
+
+		// extra space for return value
+		VarDescription[] args = new VarDescription[argDescriptors.length];
+
 		for (ICDIArgumentDescriptor argDescriptor : argDescriptors) {
-			ICDILocalVariable icdilovalvariable = getArgument(argDescriptor);
+			ICDILocalVariable iCdiLocalVariable = getArgument(argDescriptor);
 			String hexAddress;
-			try {
-				hexAddress = getHexAddress((Variable) icdilovalvariable);
-			} catch (CDIException e) {
-				throw new CDIException();
-			}
-			String typeName = getLocalVariableTypeName(icdilovalvariable);
-			ICDIValue icdValue = getLocalVariableValue(icdilovalvariable);
+			hexAddress = getHexAddress((Variable) iCdiLocalVariable);
+			String typeName = getLocalVariableTypeName(iCdiLocalVariable);
+			ICDIValue icdValue = getLocalVariableValue(iCdiLocalVariable);
 			String valueString = getValueString(icdValue);
-			String qualifiedName = getQualifiedName(icdilovalvariable);
+			String qualifiedName = getQualifiedName(iCdiLocalVariable);
 			args[argsCounter++] = new VarDescription(hexAddress, typeName, valueString, qualifiedName);
 		}
 		return args;

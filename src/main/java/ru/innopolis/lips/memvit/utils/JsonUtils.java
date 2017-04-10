@@ -124,7 +124,7 @@ public class JsonUtils {
 			VarDescription[] globalStaticVariables, String eaxValue, String eaxValueType) {
 
 		if (stack == null || heap == null || globalStaticVariables == null) {
-			System.out.println("Stack, heap or global static description equal null. Break json build!");
+			System.out.println("Stack, heap or global static description equal to null. Break json build!");
 			return null;
 		}
 
