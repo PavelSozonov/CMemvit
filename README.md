@@ -15,7 +15,7 @@ Plugin works with Eclipse Luna with C/C++ Development Tooling (CDT) installed.
 The easiest way to get this configuration is to download Eclipse IDE for C/C++ Developers:  
 <http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/lunasr2>
 
-To install CMemvit plugin you need to download the [Memvit.jar](https://github.com/PavelSozonov/CMemvit/raw/master/Outcome/Memvit.jar) file from the <b>Outcome</b> folder, and copy it in the <b>dropins</b> folder inside the root directory of your Eclipse installation. This package contains compiled versions of plugin to run CMemvit.
+To install CMemvit plugin you need to download the [Memvit_1.0.0.201704100420.jar](https://github.com/PavelSozonov/CMemvit/raw/master/Outcome/Memvit_1.0.0.201704100420.jar) file from the <b>Outcome</b> folder, and copy it in the <b>dropins</b> folder inside the root directory of your Eclipse installation. This package contains compiled versions of plugin to run CMemvit.
 
 ## Using CMemvit Plugin
 
