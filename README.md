@@ -19,7 +19,7 @@ To install CMemvit plugin you need to download the [Memvit.jar](https://github.c
 
 ## Using CMemvit Plugin
 
-As CMemvit runs on C/C++ projects, you must create or import some. Example:
+As CMemvit runs on C/C++ projects, you must create or import some example:
 
 Step 1: click <b>File</b> -&gt; <b>New</b> -&gt; <b>Project</b><br>
 This brings up the New Project Dialog<br>
