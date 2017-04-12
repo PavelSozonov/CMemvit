@@ -1,0 +1,103 @@
+* Starting client
+* Connecting to master process on port 21085
+* Analyzing classpath: 
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/test-classes
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/classes
+  - /home/pavel/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /home/pavel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui_3.106.1.v20141002-1150.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.swt_3.103.2.v20150203-1313.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.swt.gtk.linux.x86_64_3.103.2.v20150203-1351.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.jface_3.10.2.v20141021-1035.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.commands_3.6.100.v20140528-1422.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui.workbench_3.106.2.v20150204-1030.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.e4.ui.workbench3_0.12.0.v20140227-2118.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.core.native_5.7.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.core_5.9.1.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.debug.core_7.6.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.debug.mi.core_7.3.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.dsf.gdb_4.6.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.launch_7.2.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.resources_3.9.1.v20140825-1431.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.runtime_3.10.0.v20140318-2214.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.variables_3.2.800.v20130819-1716.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.debug.core_3.9.1.v20140805-1629.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.debug.ui_3.10.2.v20141014-1039.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.registry_3.5.400.v20140428-1507.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.osgi_3.10.2.v20150203-1939.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.weaving.hook_1.1.100.weaving-hook-20140821.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/json-20160810.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.fx.osgi_2.4.0.201605100504.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.osgi.compatibility.state_1.0.1.v20140709-1414.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui.ide_3.10.2.v20141118-1227.jar
+[MASTER] 23:07:13.479 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.ui.internal.WorkbenchPage was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:07:13.482 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.ui.internal.WorkbenchPage
+[MASTER] 23:07:14.431 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.e4.ui.model.application.ui.basic.MPart was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:07:14.431 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.e4.ui.model.application.ui.basic.MPart
+* Finished analyzing classpath
+* Generating tests for class ru.innopolis.lips.memvit.view.BrowserView
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 23:07:14.933 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/evosuite-seeds/ru.innopolis.lips.memvit.view.BrowserView.seed
+* Total number of test goals: 
+  - Line 61
+  - Branch 15
+  - Exception 0
+  - MutationFactory 61
+  - Output 0
+  - Method 5
+  - MethodNoException 5
+  - CBranchFitnessFactory 15
+* Using seed 1491854824385
+* Starting evolution
+* Search finished after 66s and 1295 generations, 4128 statements, best individual has fitness: 140.48245614035088
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 8%
+* Total number of goals: 61
+* Number of covered goals: 5
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 7%
+* Total number of goals: 15
+* Number of covered goals: 1
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 1
+* Number of covered goals: 1
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 2%
+* Total number of goals: 61
+* Number of covered goals: 1
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 100% (no goals)
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 20%
+* Total number of goals: 5
+* Number of covered goals: 1
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 0%
+* Total number of goals: 5
+* Number of covered goals: 0
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 7%
+* Total number of goals: 15
+* Number of covered goals: 1
+* Generated 1 tests with total length 1
+* Resulting test suite's coverage: 30% (average coverage for all fitness functions)
+* Generating assertions
+* Resulting test suite's mutation score: 0%
+* Compiling and checking tests
+* Writing JUnit test case 'BrowserView_ESTest' to /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests
+* Done!
+

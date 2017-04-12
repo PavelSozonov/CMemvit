@@ -1,0 +1,35 @@
+* Starting client
+* Connecting to master process on port 19415
+* Analyzing classpath: 
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/test-classes
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/classes
+  - /home/pavel/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /home/pavel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui_3.106.1.v20141002-1150.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.swt_3.103.2.v20150203-1313.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.swt.gtk.linux.x86_64_3.103.2.v20150203-1351.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.jface_3.10.2.v20141021-1035.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.commands_3.6.100.v20140528-1422.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui.workbench_3.106.2.v20150204-1030.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.e4.ui.workbench3_0.12.0.v20140227-2118.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.core.native_5.7.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.core_5.9.1.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.debug.core_7.6.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.debug.mi.core_7.3.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.dsf.gdb_4.6.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.launch_7.2.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.resources_3.9.1.v20140825-1431.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.runtime_3.10.0.v20140318-2214.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.variables_3.2.800.v20130819-1716.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.debug.core_3.9.1.v20140805-1629.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.debug.ui_3.10.2.v20141014-1039.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.registry_3.5.400.v20140428-1507.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.osgi_3.10.2.v20150203-1939.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.weaving.hook_1.1.100.weaving-hook-20140821.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/json-20160810.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.fx.osgi_2.4.0.201605100504.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.osgi.compatibility.state_1.0.1.v20140709-1414.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui.ide_3.10.2.v20141118-1227.jar
+* Error while initializing target class: [Lorg/eclipse/core/resources/IResource;
+[MASTER] 23:13:32.934 [pool-2-thread-1] WARN  TimeController - Phase INITIALIZATION lasted too long, 1 seconds more than allowed.

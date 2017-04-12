@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProjectInfo>
-    <totalNumberOfClasses>9</totalNumberOfClasses>
-    <totalNumberOfTestableClasses>6</totalNumberOfTestableClasses>
-    <overallCoverage>0.97</overallCoverage>
+    <totalNumberOfClasses>18</totalNumberOfClasses>
+    <totalNumberOfTestableClasses>16</totalNumberOfTestableClasses>
+    <overallCoverage>0.57</overallCoverage>
     <generatedTestSuites>
         <fullNameOfTargetClass>ru.innopolis.lips.memvit.utils.HtmlBuilder</fullNameOfTargetClass>
         <fullNameOfTestSuite>ru.innopolis.lips.memvit.utils.HtmlBuilder_ESTest</fullNameOfTestSuite>
-        <totalEffortInSeconds>207</totalEffortInSeconds>
+        <totalEffortInSeconds>153</totalEffortInSeconds>
         <coverageTestSuites>
             <id>0</id>
-            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests/ru/innopolis/lips/memvit/utils/HtmlBuilder_ESTest.java</fullPathOfTestSuite>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/utils/HtmlBuilder_ESTest.java</fullPathOfTestSuite>
             <coverage>
                 <criterion>LineCoverage</criterion>
-                <coverageValue>0.92</coverageValue>
+                <coverageValue>0.21</coverageValue>
             </coverage>
             <coverage>
                 <criterion>BranchCoverage</criterion>
-                <coverageValue>0.97</coverageValue>
+                <coverageValue>0.08</coverageValue>
             </coverage>
             <coverage>
                 <criterion>ExceptionCoverage</criterion>
@@ -24,7 +24,7 @@
             </coverage>
             <coverage>
                 <criterion>WeakMutationScore</criterion>
-                <coverageValue>0.93</coverageValue>
+                <coverageValue>0.12</coverageValue>
             </coverage>
             <coverage>
                 <criterion>OutputCoverage</criterion>
@@ -40,27 +40,27 @@
             </coverage>
             <coverage>
                 <criterion>CBranchCoverage</criterion>
-                <coverageValue>0.97</coverageValue>
+                <coverageValue>0.08</coverageValue>
             </coverage>
-            <numberOfTests>10</numberOfTests>
-            <totalNumberOfStatements>94</totalNumberOfStatements>
-            <effortInSeconds>207</effortInSeconds>
+            <numberOfTests>3</numberOfTests>
+            <totalNumberOfStatements>9</totalNumberOfStatements>
+            <effortInSeconds>153</effortInSeconds>
         </coverageTestSuites>
     </generatedTestSuites>
     <generatedTestSuites>
         <fullNameOfTargetClass>ru.innopolis.lips.memvit.utils.FileWriter2</fullNameOfTargetClass>
         <fullNameOfTestSuite>ru.innopolis.lips.memvit.utils.FileWriter2_ESTest</fullNameOfTestSuite>
-        <totalEffortInSeconds>72</totalEffortInSeconds>
+        <totalEffortInSeconds>64</totalEffortInSeconds>
         <coverageTestSuites>
             <id>0</id>
-            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests/ru/innopolis/lips/memvit/utils/FileWriter2_ESTest.java</fullPathOfTestSuite>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/utils/FileWriter2_ESTest.java</fullPathOfTestSuite>
             <coverage>
                 <criterion>LineCoverage</criterion>
-                <coverageValue>1.0</coverageValue>
+                <coverageValue>0.89</coverageValue>
             </coverage>
             <coverage>
                 <criterion>BranchCoverage</criterion>
-                <coverageValue>1.0</coverageValue>
+                <coverageValue>0.89</coverageValue>
             </coverage>
             <coverage>
                 <criterion>ExceptionCoverage</criterion>
@@ -68,7 +68,7 @@
             </coverage>
             <coverage>
                 <criterion>WeakMutationScore</criterion>
-                <coverageValue>0.98</coverageValue>
+                <coverageValue>0.87</coverageValue>
             </coverage>
             <coverage>
                 <criterion>OutputCoverage</criterion>
@@ -84,20 +84,108 @@
             </coverage>
             <coverage>
                 <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.89</coverageValue>
+            </coverage>
+            <numberOfTests>8</numberOfTests>
+            <totalNumberOfStatements>50</totalNumberOfStatements>
+            <effortInSeconds>64</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.utils.DataExtractor</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.utils.DataExtractor_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>181</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/utils/DataExtractor_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>0.06</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>0.06</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
             </coverage>
-            <numberOfTests>7</numberOfTests>
-            <totalNumberOfStatements>44</totalNumberOfStatements>
-            <effortInSeconds>72</effortInSeconds>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>0.01</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>0.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>0.5</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.06</coverageValue>
+            </coverage>
+            <numberOfTests>2</numberOfTests>
+            <totalNumberOfStatements>6</totalNumberOfStatements>
+            <effortInSeconds>181</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.utils.JsonUtils</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.utils.JsonUtils_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>110</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/utils/JsonUtils_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>0.64</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>0.67</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>0.52</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>0.13</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>0.33</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.67</coverageValue>
+            </coverage>
+            <numberOfTests>13</numberOfTests>
+            <totalNumberOfStatements>45</totalNumberOfStatements>
+            <effortInSeconds>110</effortInSeconds>
         </coverageTestSuites>
     </generatedTestSuites>
     <generatedTestSuites>
         <fullNameOfTargetClass>ru.innopolis.lips.memvit.model.VarDescription</fullNameOfTargetClass>
         <fullNameOfTestSuite>ru.innopolis.lips.memvit.model.VarDescription_ESTest</fullNameOfTestSuite>
-        <totalEffortInSeconds>46</totalEffortInSeconds>
+        <totalEffortInSeconds>43</totalEffortInSeconds>
         <coverageTestSuites>
             <id>0</id>
-            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests/ru/innopolis/lips/memvit/model/VarDescription_ESTest.java</fullPathOfTestSuite>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/model/VarDescription_ESTest.java</fullPathOfTestSuite>
             <coverage>
                 <criterion>LineCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
@@ -130,9 +218,9 @@
                 <criterion>CBranchCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
             </coverage>
-            <numberOfTests>23</numberOfTests>
-            <totalNumberOfStatements>49</totalNumberOfStatements>
-            <effortInSeconds>46</effortInSeconds>
+            <numberOfTests>22</numberOfTests>
+            <totalNumberOfStatements>48</totalNumberOfStatements>
+            <effortInSeconds>43</effortInSeconds>
         </coverageTestSuites>
     </generatedTestSuites>
     <generatedTestSuites>
@@ -141,7 +229,7 @@
         <totalEffortInSeconds>13</totalEffortInSeconds>
         <coverageTestSuites>
             <id>0</id>
-            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests/ru/innopolis/lips/memvit/model/ActivationRecord_ESTest.java</fullPathOfTestSuite>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/model/ActivationRecord_ESTest.java</fullPathOfTestSuite>
             <coverage>
                 <criterion>LineCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
@@ -174,18 +262,62 @@
                 <criterion>CBranchCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
             </coverage>
-            <numberOfTests>29</numberOfTests>
-            <totalNumberOfStatements>89</totalNumberOfStatements>
+            <numberOfTests>28</numberOfTests>
+            <totalNumberOfStatements>86</totalNumberOfStatements>
             <effortInSeconds>13</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.model.Model</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.model.Model_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>34</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/model/Model_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>0.54</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <numberOfTests>10</numberOfTests>
+            <totalNumberOfStatements>24</totalNumberOfStatements>
+            <effortInSeconds>34</effortInSeconds>
         </coverageTestSuites>
     </generatedTestSuites>
     <generatedTestSuites>
         <fullNameOfTargetClass>ru.innopolis.lips.memvit.model.StateStorage</fullNameOfTargetClass>
         <fullNameOfTestSuite>ru.innopolis.lips.memvit.model.StateStorage_ESTest</fullNameOfTestSuite>
-        <totalEffortInSeconds>90</totalEffortInSeconds>
+        <totalEffortInSeconds>82</totalEffortInSeconds>
         <coverageTestSuites>
             <id>0</id>
-            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests/ru/innopolis/lips/memvit/model/StateStorage_ESTest.java</fullPathOfTestSuite>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/model/StateStorage_ESTest.java</fullPathOfTestSuite>
             <coverage>
                 <criterion>LineCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
@@ -219,17 +351,17 @@
                 <coverageValue>1.0</coverageValue>
             </coverage>
             <numberOfTests>19</numberOfTests>
-            <totalNumberOfStatements>59</totalNumberOfStatements>
-            <effortInSeconds>90</effortInSeconds>
+            <totalNumberOfStatements>58</totalNumberOfStatements>
+            <effortInSeconds>82</effortInSeconds>
         </coverageTestSuites>
     </generatedTestSuites>
     <generatedTestSuites>
         <fullNameOfTargetClass>ru.innopolis.lips.memvit.model.StateImpl</fullNameOfTargetClass>
         <fullNameOfTestSuite>ru.innopolis.lips.memvit.model.StateImpl_ESTest</fullNameOfTestSuite>
-        <totalEffortInSeconds>6</totalEffortInSeconds>
+        <totalEffortInSeconds>5</totalEffortInSeconds>
         <coverageTestSuites>
             <id>0</id>
-            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_03_00_15_29/tests/ru/innopolis/lips/memvit/model/StateImpl_ESTest.java</fullPathOfTestSuite>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/model/StateImpl_ESTest.java</fullPathOfTestSuite>
             <coverage>
                 <criterion>LineCoverage</criterion>
                 <coverageValue>1.0</coverageValue>
@@ -264,7 +396,183 @@
             </coverage>
             <numberOfTests>3</numberOfTests>
             <totalNumberOfStatements>8</totalNumberOfStatements>
-            <effortInSeconds>6</effortInSeconds>
+            <effortInSeconds>5</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.controller.DebugEventsListenerRegistrator</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.controller.DebugEventsListenerRegistrator_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>48</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/controller/DebugEventsListenerRegistrator_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>0.05</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>0.11</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>0.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>0.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.11</coverageValue>
+            </coverage>
+            <numberOfTests>1</numberOfTests>
+            <totalNumberOfStatements>1</totalNumberOfStatements>
+            <effortInSeconds>48</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.controller.Controller</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.controller.Controller_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>96</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/controller/Controller_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>0.33</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>0.29</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>0.03</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>0.37</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>0.7</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.29</coverageValue>
+            </coverage>
+            <numberOfTests>9</numberOfTests>
+            <totalNumberOfStatements>18</totalNumberOfStatements>
+            <effortInSeconds>96</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.controller.DebugEventsListener</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.controller.DebugEventsListener_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>57</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/controller/DebugEventsListener_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>0.3</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>0.56</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>0.33</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.56</coverageValue>
+            </coverage>
+            <numberOfTests>3</numberOfTests>
+            <totalNumberOfStatements>10</totalNumberOfStatements>
+            <effortInSeconds>57</effortInSeconds>
+        </coverageTestSuites>
+    </generatedTestSuites>
+    <generatedTestSuites>
+        <fullNameOfTargetClass>ru.innopolis.lips.memvit.view.BrowserView</fullNameOfTargetClass>
+        <fullNameOfTestSuite>ru.innopolis.lips.memvit.view.BrowserView_ESTest</fullNameOfTestSuite>
+        <totalEffortInSeconds>74</totalEffortInSeconds>
+        <coverageTestSuites>
+            <id>0</id>
+            <fullPathOfTestSuite>/home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests/ru/innopolis/lips/memvit/view/BrowserView_ESTest.java</fullPathOfTestSuite>
+            <coverage>
+                <criterion>LineCoverage</criterion>
+                <coverageValue>0.08</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>BranchCoverage</criterion>
+                <coverageValue>0.07</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>ExceptionCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>WeakMutationScore</criterion>
+                <coverageValue>0.02</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>OutputCoverage</criterion>
+                <coverageValue>1.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodCoverage</criterion>
+                <coverageValue>0.2</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>MethodNoExceptionCoverage</criterion>
+                <coverageValue>0.0</coverageValue>
+            </coverage>
+            <coverage>
+                <criterion>CBranchCoverage</criterion>
+                <coverageValue>0.07</coverageValue>
+            </coverage>
+            <numberOfTests>1</numberOfTests>
+            <totalNumberOfStatements>1</totalNumberOfStatements>
+            <effortInSeconds>74</effortInSeconds>
         </coverageTestSuites>
     </generatedTestSuites>
 </ProjectInfo>

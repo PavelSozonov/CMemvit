@@ -1,0 +1,3 @@
+[MASTER] 23:10:27.871 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize ru.innopolis.lips.memvit.controller.Controller: org/eclipse/cdt/debug/core/cdi/CDIException
+[MASTER] 23:10:27.908 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.ui.plugin.AbstractUIPlugin: org/eclipse/core/runtime/preferences/IScopeContext
+[MASTER] 23:10:27.911 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize ru.innopolis.lips.memvit.Activator: org/eclipse/core/runtime/preferences/IScopeContext

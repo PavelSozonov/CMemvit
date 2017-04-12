@@ -1,0 +1,132 @@
+* Starting client
+* Connecting to master process on port 14230
+* Analyzing classpath: 
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/test-classes
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/target/classes
+  - /home/pavel/.m2/repository/junit/junit/4.12/junit-4.12.jar
+  - /home/pavel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui_3.106.1.v20141002-1150.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.swt_3.103.2.v20150203-1313.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.swt.gtk.linux.x86_64_3.103.2.v20150203-1351.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.jface_3.10.2.v20141021-1035.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.commands_3.6.100.v20140528-1422.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui.workbench_3.106.2.v20150204-1030.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.e4.ui.workbench3_0.12.0.v20140227-2118.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.core.native_5.7.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.core_5.9.1.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.debug.core_7.6.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.debug.mi.core_7.3.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.dsf.gdb_4.6.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.cdt.launch_7.2.0.201502131403.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.resources_3.9.1.v20140825-1431.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.runtime_3.10.0.v20140318-2214.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.core.variables_3.2.800.v20130819-1716.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.debug.core_3.9.1.v20140805-1629.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.debug.ui_3.10.2.v20141014-1039.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.registry_3.5.400.v20140428-1507.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.osgi_3.10.2.v20150203-1939.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.equinox.weaving.hook_1.1.100.weaving-hook-20140821.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/json-20160810.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.fx.osgi_2.4.0.201605100504.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.osgi.compatibility.state_1.0.1.v20140709-1414.jar
+  - /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/libs/org.eclipse.ui.ide_3.10.2.v20141118-1227.jar
+[MASTER] 23:03:57.069 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.ui.internal.WorkbenchPage was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:03:57.071 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.ui.internal.WorkbenchPage
+[MASTER] 23:03:57.668 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.e4.ui.model.application.ui.basic.MPart was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:03:57.668 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.e4.ui.model.application.ui.basic.MPart
+[MASTER] 23:03:58.425 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.core.resources.mapping.ResourceMapping
+[MASTER] 23:03:58.451 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.ui.internal.AbstractWorkingSetManager was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:03:58.452 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.ui.internal.AbstractWorkingSetManager
+[MASTER] 23:03:58.458 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.ui.internal.AbstractWorkingSetManager was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:03:58.538 [pool-2-thread-1] WARN  CheapPurityAnalyzer - org.eclipse.e4.core.contexts.ContextInjectionFactory was not found in the inheritance tree. Using DEFAULT value for cheap-purity analysis
+[MASTER] 23:03:58.538 [pool-2-thread-1] WARN  InheritanceTree - Class not in inheritance graph: org.eclipse.e4.core.contexts.ContextInjectionFactory
+* Finished analyzing classpath
+* Generating tests for class ru.innopolis.lips.memvit.controller.Controller
+* Test criteria:
+  - Line Coverage
+  - Branch Coverage
+  - Exception
+  - Mutation testing (weak)
+  - Method-Output Coverage
+  - Top-Level Method Coverage
+  - No-Exception Top-Level Method Coverage
+  - Context Branch Coverage
+* Setting up search algorithm for whole suite generation
+[MASTER] 23:04:00.886 [pool-2-thread-1] WARN  TestSuiteSerialization - Cannot load tests because file does not exist: /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/evosuite-seeds/ru.innopolis.lips.memvit.controller.Controller.seed
+* Total number of test goals: 
+  - Line 61
+  - Branch 24
+  - Exception 0
+  - MutationFactory 30
+  - Output 27
+  - Method 10
+  - MethodNoException 10
+  - CBranchFitnessFactory 24
+* Using seed 1491854628174
+* Starting evolution
+[MASTER] 23:04:33.119 [pool-2-thread-1] WARN  FunctionalMockStatement - Failed to check if can mock class org.eclipse.core.resources.mapping.ResourceMapping: [Lorg/eclipse/core/resources/IProject;
+* Search finished after 79s and 697 generations, 70198 statements, best individual has fitness: 139.22619047619048
+* Writing sequences to pool
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion LINE
+* Coverage of criterion LINE: 33%
+* Total number of goals: 61
+* Number of covered goals: 20
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 29%
+* Total number of goals: 24
+* Number of covered goals: 7
+* Coverage analysis for criterion EXCEPTION
+* Coverage of criterion EXCEPTION: 100%
+* Total number of goals: 3
+* Number of covered goals: 3
+* Coverage analysis for criterion WEAKMUTATION
+* Coverage of criterion WEAKMUTATION: 3%
+* Total number of goals: 30
+* Number of covered goals: 1
+* Coverage analysis for criterion OUTPUT
+* Coverage of criterion OUTPUT: 37%
+* Total number of goals: 27
+* Number of covered goals: 10
+* Coverage analysis for criterion METHOD
+* Coverage of criterion METHOD: 100%
+* Total number of goals: 10
+* Number of covered goals: 10
+* Coverage analysis for criterion METHODNOEXCEPTION
+* Coverage of criterion METHODNOEXCEPTION: 70%
+* Total number of goals: 10
+* Number of covered goals: 7
+* Coverage analysis for criterion CBRANCH
+* Coverage of criterion CBRANCH: 29%
+* Total number of goals: 24
+* Number of covered goals: 7
+* Generated 9 tests with total length 18
+* Resulting test suite's coverage: 46% (average coverage for all fitness functions)
+* Generating assertions
+[MASTER] 23:05:20.195 [pool-2-thread-1] WARN  ClassResetter - class java.lang.reflect.InvocationTargetException thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.graphics.Device, java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+[MASTER] 23:05:20.271 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.widgets.Display, null
+[MASTER] 23:05:20.411 [pool-2-thread-1] WARN  ClassResetter - class java.lang.UnsatisfiedLinkError thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.internal.C, null
+[MASTER] 23:05:20.644 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown while loading method  __STATIC_RESET() for class org.eclipse.core.runtime.Platform
+[MASTER] 23:05:20.662 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown while loading method  __STATIC_RESET() for class org.eclipse.core.internal.runtime.InternalPlatform
+[MASTER] 23:05:21.013 [pool-2-thread-1] WARN  ClassResetter - class java.lang.ExceptionInInitializerError thrown during execution of method  __STATIC_RESET() for class org.eclipse.core.internal.resources.FileState, org.evosuite.runtime.mock.java.lang.MockThrowable: Workspace is closed.
+[MASTER] 23:05:21.062 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.internal.Callback, null
+[MASTER] 23:05:21.077 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.widgets.ToolBar, null
+[MASTER] 23:05:21.081 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.internal.C, null
+[MASTER] 23:05:21.103 [pool-2-thread-1] WARN  ClassResetter - class java.lang.NoClassDefFoundError thrown during execution of method  __STATIC_RESET() for class org.eclipse.core.internal.resources.FileState, null
+[MASTER] 23:05:21.507 [pool-2-thread-1] WARN  ClassResetter - class java.lang.reflect.InvocationTargetException thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.widgets.Display, java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+[MASTER] 23:05:21.508 [pool-2-thread-1] WARN  ClassResetter - class java.lang.reflect.InvocationTargetException thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.internal.C, java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.internal.C
+[MASTER] 23:05:21.525 [pool-2-thread-1] WARN  ClassResetter - class java.lang.reflect.InvocationTargetException thrown during execution of method  __STATIC_RESET() for class org.eclipse.core.internal.resources.FileState, java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.core.internal.resources.FileState
+[MASTER] 23:05:21.525 [pool-2-thread-1] WARN  ClassResetter - class java.lang.reflect.InvocationTargetException thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.internal.Callback, java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.internal.Callback
+[MASTER] 23:05:21.525 [pool-2-thread-1] WARN  ClassResetter - class java.lang.reflect.InvocationTargetException thrown during execution of method  __STATIC_RESET() for class org.eclipse.swt.widgets.ToolBar, java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.ToolBar
+* Resulting test suite's mutation score: 0%
+* Compiling and checking tests
+* Permissions denied during test execution: 
+  - java.io.FilePermission: 
+         write /dev/random: 1
+  - java.lang.RuntimePermission: 
+         loadLibrary.swt-gtk-4430: 2
+* Writing JUnit test case 'Controller_ESTest' to /home/pavel/Projects/Luna/workspace-luna-git-2017/CMemvit/.evosuite/tmp_2017_04_10_22_55_52/tests
+* Done!
+

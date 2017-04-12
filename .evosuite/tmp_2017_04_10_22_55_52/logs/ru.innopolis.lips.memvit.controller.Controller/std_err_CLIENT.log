@@ -1,0 +1,1217 @@
+[MASTER] 23:03:56.001 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.IProject
+java.lang.ClassNotFoundException: org/eclipse/core/resources/IContainer
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IContainer
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/resources/IResource
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 25 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 29 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 30 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 34 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 35 common frames omitted
+[MASTER] 23:03:56.004 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.012 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.IFolder
+java.lang.ClassNotFoundException: org/eclipse/core/resources/IContainer
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IContainer
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/resources/IResource
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 25 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 29 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 30 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 34 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 35 common frames omitted
+[MASTER] 23:03:56.012 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.021 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.IContainer
+java.lang.ClassNotFoundException: org/eclipse/core/resources/IResource
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 25 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 29 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 30 common frames omitted
+[MASTER] 23:03:56.021 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.026 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.IResource
+java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 25 common frames omitted
+[MASTER] 23:03:56.027 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.035 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.IWorkspaceRoot
+java.lang.ClassNotFoundException: org/eclipse/core/resources/IContainer
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IContainer
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/resources/IResource
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 25 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 29 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 30 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 34 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 35 common frames omitted
+[MASTER] 23:03:56.035 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.042 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.IFile
+java.lang.ClassNotFoundException: org/eclipse/core/resources/IResource
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 25 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 29 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 30 common frames omitted
+[MASTER] 23:03:56.044 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.139 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.Project
+java.lang.ClassNotFoundException: Class not found: org/eclipse/core/runtime/jobs/ISchedulingRule: java.lang.NullPointerException: Class not found org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.RuntimeException: Class not found: org/eclipse/core/runtime/jobs/ISchedulingRule: java.lang.NullPointerException: Class not found org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:52) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassWriter.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodWriter.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.instrumentation.LoopCounterMethodAdapter.visitMaxs(LoopCounterMethodAdapter.java:48) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.commons.JSRInlinerAdapter.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.b(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.NullPointerException: Class not found org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.runtime.util.ComputeClassWriter.typeInfo(ComputeClassWriter.java:186) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:49) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	... 39 common frames omitted
+[MASTER] 23:03:56.140 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.152 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.Folder
+java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.runtime.instrumentation.MethodCallReplacementClassAdapter.visitEnd(MethodCallReplacementClassAdapter.java:180) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.eclipse.core.runtime.jobs.ISchedulingRule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	... 76 common frames omitted
+[MASTER] 23:03:56.152 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.168 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.Container
+java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.runtime.instrumentation.MethodCallReplacementClassAdapter.visitEnd(MethodCallReplacementClassAdapter.java:180) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.eclipse.core.runtime.jobs.ISchedulingRule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	... 64 common frames omitted
+[MASTER] 23:03:56.169 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.201 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.Resource
+java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.runtime.instrumentation.MethodCallReplacementClassAdapter.visitEnd(MethodCallReplacementClassAdapter.java:180) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.eclipse.core.runtime.jobs.ISchedulingRule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	... 52 common frames omitted
+[MASTER] 23:03:56.201 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.211 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.Workspace
+java.lang.ClassNotFoundException: Class not found: org/eclipse/core/runtime/jobs/ISchedulingRule: java.lang.NullPointerException: Class not found org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.RuntimeException: Class not found: org/eclipse/core/runtime/jobs/ISchedulingRule: java.lang.NullPointerException: Class not found org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:58) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassWriter.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodWriter.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.instrumentation.LoopCounterMethodAdapter.visitMaxs(LoopCounterMethodAdapter.java:48) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.commons.JSRInlinerAdapter.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.b(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.NullPointerException: Class not found org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.runtime.util.ComputeClassWriter.typeInfo(ComputeClassWriter.java:186) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:55) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	... 39 common frames omitted
+[MASTER] 23:03:56.211 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.222 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.WorkspaceRoot
+java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.runtime.instrumentation.MethodCallReplacementClassAdapter.visitEnd(MethodCallReplacementClassAdapter.java:180) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.eclipse.core.runtime.jobs.ISchedulingRule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	... 76 common frames omitted
+[MASTER] 23:03:56.223 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.237 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.internal.resources.File
+java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.runtime.instrumentation.MethodCallReplacementClassAdapter.visitEnd(MethodCallReplacementClassAdapter.java:180) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 20 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.eclipse.core.runtime.jobs.ISchedulingRule
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	... 64 common frames omitted
+[MASTER] 23:03:56.237 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.258 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.mapping.ModelProvider
+java.lang.NoClassDefFoundError: [Lorg/eclipse/core/resources/IResource;
+	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetPublicMethods(Class.java:2902) ~[na:1.8.0_121]
+	at java.lang.Class.getMethods(Class.java:1615) ~[na:1.8.0_121]
+	at org.evosuite.setup.TestClusterUtils.hasStaticGenerator(TestClusterUtils.java:239) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:115) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 22 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 23 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 27 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 28 common frames omitted
+[MASTER] 23:03:56.259 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.270 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.core.resources.mapping.ResourceMapping
+java.lang.NoClassDefFoundError: [Lorg/eclipse/core/resources/IProject;
+	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetPublicMethods(Class.java:2902) ~[na:1.8.0_121]
+	at java.lang.Class.getMethods(Class.java:1615) ~[na:1.8.0_121]
+	at org.evosuite.setup.TestClusterUtils.hasStaticGenerator(TestClusterUtils.java:239) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:115) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:768) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/resources/IContainer
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 22 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IContainer
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 23 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/resources/IResource
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 27 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 28 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 32 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 33 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 37 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 38 common frames omitted
+[MASTER] 23:03:56.270 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.308 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.ui.internal.AbstractWorkingSetManager
+java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/Job
+	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetPublicMethods(Class.java:2902) ~[na:1.8.0_121]
+	at java.lang.Class.getMethods(Class.java:1615) ~[na:1.8.0_121]
+	at org.evosuite.setup.TestClusterUtils.hasStaticGenerator(TestClusterUtils.java:239) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:115) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/Job.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 21 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/Job.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 22 common frames omitted
+[MASTER] 23:03:56.309 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.353 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.ui.internal.WorkbenchWindow
+java.lang.ClassNotFoundException: Class not found: org/eclipse/e4/ui/model/application/ui/menu/MMenuSeparator: java.lang.NullPointerException: Class not found org/eclipse/e4/ui/model/application/ui/menu/MMenuSeparator
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:685) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:874) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.RuntimeException: Class not found: org/eclipse/e4/ui/model/application/ui/menu/MMenuSeparator: java.lang.NullPointerException: Class not found org/eclipse/e4/ui/model/application/ui/menu/MMenuSeparator
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:52) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassWriter.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodWriter.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.instrumentation.LoopCounterMethodAdapter.visitMaxs(LoopCounterMethodAdapter.java:48) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.commons.JSRInlinerAdapter.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.b(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 19 common frames omitted
+Caused by: java.lang.NullPointerException: Class not found org/eclipse/e4/ui/model/application/ui/menu/MMenuSeparator
+	at org.evosuite.runtime.util.ComputeClassWriter.typeInfo(ComputeClassWriter.java:186) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:49) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	... 38 common frames omitted
+[MASTER] 23:03:56.353 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:56.392 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.ui.internal.WorkbenchPage
+java.lang.ClassNotFoundException: Class not found: org/eclipse/e4/ui/model/application/ui/advanced/MPlaceholder: java.lang.NullPointerException: Class not found org/eclipse/e4/ui/model/application/ui/advanced/MPlaceholder
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:107) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.RuntimeException: Class not found: org/eclipse/e4/ui/model/application/ui/advanced/MPlaceholder: java.lang.NullPointerException: Class not found org/eclipse/e4/ui/model/application/ui/advanced/MPlaceholder
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:52) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassWriter.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.Frame.a(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodWriter.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitMaxs(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.instrumentation.LoopCounterMethodAdapter.visitMaxs(LoopCounterMethodAdapter.java:48) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.tree.MethodNode.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.commons.JSRInlinerAdapter.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.MethodVisitor.visitEnd(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.b(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 19 common frames omitted
+Caused by: java.lang.NullPointerException: Class not found org/eclipse/e4/ui/model/application/ui/advanced/MPlaceholder
+	at org.evosuite.runtime.util.ComputeClassWriter.typeInfo(ComputeClassWriter.java:186) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.runtime.util.ComputeClassWriter.getCommonSuperClass(ComputeClassWriter.java:49) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	... 38 common frames omitted
+[MASTER] 23:03:56.393 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:57.371 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.debug.internal.ui.views.variables.details.DefaultDetailPane$ICursorListener
+java.lang.NoClassDefFoundError: org/eclipse/debug/internal/ui/views/variables/details/DefaultDetailPane$DetailJob
+	at java.lang.Class.getDeclaringClass0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.getDeclaringClass(Class.java:1235) ~[na:1.8.0_121]
+	at java.lang.Class.getEnclosingClass(Class.java:1277) ~[na:1.8.0_121]
+	at java.lang.Class.getSimpleBinaryName(Class.java:1443) ~[na:1.8.0_121]
+	at java.lang.Class.getSimpleName(Class.java:1309) ~[na:1.8.0_121]
+	at java.lang.Class.isAnonymousClass(Class.java:1411) ~[na:1.8.0_121]
+	at org.evosuite.setup.TestUsageChecker.canUse(TestUsageChecker.java:152) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/Job
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 23 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/Job
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368) ~[na:1.8.0_121]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362) ~[na:1.8.0_121]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_121]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_121]
+	at org.evosuite.runtime.instrumentation.MethodCallReplacementClassAdapter.visitEnd(MethodCallReplacementClassAdapter.java:180) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.shaded.org.objectweb.asm.ClassReader.accept(Unknown Source) ~[evosuite-standalone-runtime-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.BytecodeInstrumentation.transformBytes(BytecodeInstrumentation.java:280) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.getTransformedBytes(InstrumentingClassLoader.java:173) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:190) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 24 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.eclipse.core.runtime.jobs.Job
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_121]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_121]
+	... 44 common frames omitted
+[MASTER] 23:03:57.372 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:59.678 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.debug.ui.AbstractDebugView
+java.lang.NoClassDefFoundError: org/eclipse/ui/texteditor/IUpdate
+	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetPublicMethods(Class.java:2902) ~[na:1.8.0_121]
+	at java.lang.Class.getMethods(Class.java:1615) ~[na:1.8.0_121]
+	at org.evosuite.setup.TestClusterUtils.hasStaticGenerator(TestClusterUtils.java:239) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:115) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/ui/texteditor/IUpdate.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 21 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/ui/texteditor/IUpdate.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 22 common frames omitted
+[MASTER] 23:03:59.678 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:03:59.839 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Problem for ru.innopolis.lips.memvit.controller.Controller. Class not found: org.eclipse.ui.actions.WorkspaceAction
+java.lang.NoClassDefFoundError: org/eclipse/core/resources/IResource
+	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701) ~[na:1.8.0_121]
+	at java.lang.Class.privateGetPublicMethods(Class.java:2902) ~[na:1.8.0_121]
+	at java.lang.Class.getMethods(Class.java:1615) ~[na:1.8.0_121]
+	at org.evosuite.setup.TestClusterUtils.hasStaticGenerator(TestClusterUtils.java:239) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClassesImpl(ConcreteClassAnalyzer.java:115) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.ConcreteClassAnalyzer.getConcreteClasses(ConcreteClassAnalyzer.java:42) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependency(TestClusterGenerator.java:802) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencies(TestClusterGenerator.java:711) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.addDependencyClass(TestClusterGenerator.java:918) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.resolveDependencies(TestClusterGenerator.java:332) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:138) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:117) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:131) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:110) [evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.rmi.service.ClientNodeImpl$1.run(ClientNodeImpl.java:145) [evosuite-master-1.0.3.jar:1.0.3]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_121]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_121]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: java.lang.ClassNotFoundException: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 21 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/core/runtime/jobs/ISchedulingRule
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763) ~[na:1.8.0_121]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:642) ~[na:1.8.0_121]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:192) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 22 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:199) ~[evosuite-master-1.0.3.jar:1.0.3]
+	at org.evosuite.instrumentation.InstrumentingClassLoader.loadClass(InstrumentingClassLoader.java:166) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: Class 'org/eclipse/core/runtime/jobs/ISchedulingRule.class' should be in target project, but could not be found!
+	at org.evosuite.instrumentation.InstrumentingClassLoader.instrumentClass(InstrumentingClassLoader.java:186) ~[evosuite-master-1.0.3.jar:1.0.3]
+	... 27 common frames omitted
+[MASTER] 23:03:59.839 [pool-2-thread-1] ERROR ConcreteClassAnalyzer - Removing class from inheritance tree
+[MASTER] 23:05:27.661 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GdkEventKey: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:27.724 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.Callback: null
+[MASTER] 23:05:28.042 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.core.internal.resources.FileState: null
+[MASTER] 23:05:28.059 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GdkEvent: Could not initialize class org.eclipse.swt.internal.gtk.GdkEvent
+[MASTER] 23:05:28.366 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GtkBorder: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:28.411 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.RxThread: org/eclipse/cdt/debug/mi/core/event/MIBreakpointHitEvent
+[MASTER] 23:05:28.418 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.CLIPType: org/eclipse/cdt/debug/mi/core/output/CLIPTypeInfo
+[MASTER] 23:05:28.631 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.graphics.Device: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:28.664 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.CLICatch: org/eclipse/cdt/debug/mi/core/output/CLICatchInfo
+[MASTER] 23:05:28.833 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.Register: org/eclipse/cdt/debug/mi/core/event/MIVarChangedEvent
+[MASTER] 23:05:28.846 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIBreakInsert: org/eclipse/cdt/debug/mi/core/output/MIBreakInsertInfo
+[MASTER] 23:05:28.858 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.jface.resource.ImageDescriptor: org/eclipse/jface/resource/URLImageDescriptor
+[MASTER] 23:05:28.872 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize ru.innopolis.lips.memvit.Activator: org/eclipse/core/runtime/preferences/IScopeContext
+[MASTER] 23:05:28.957 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.widgets.ToolBar: Could not initialize class org.eclipse.swt.internal.Callback
+[MASTER] 23:05:28.977 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.debug.core.ILaunchConfiguration: org/eclipse/debug/core/DebugPlugin
+[MASTER] 23:05:29.000 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.MIInferior: org/eclipse/cdt/debug/mi/core/event/MIInferiorExitEvent
+[MASTER] 23:05:29.194 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GdkRGBA: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:29.418 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.core.internal.runtime.DataArea: org/eclipse/core/internal/runtime/Activator
+[MASTER] 23:05:29.431 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIGDBShowPrompt: org/eclipse/cdt/debug/mi/core/output/MIGDBShowInfo
+[MASTER] 23:05:29.444 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.graphics.Image: org/eclipse/swt/SWTException
+[MASTER] 23:05:29.461 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.MemoryManager: org/eclipse/cdt/debug/mi/core/event/MIMemoryCreatedEvent
+[MASTER] 23:05:29.479 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.GlobalVariable: org/eclipse/cdt/debug/mi/core/event/MIVarChangedEvent
+[MASTER] 23:05:29.518 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIVarUpdate: org/eclipse/cdt/debug/mi/core/output/MIVarUpdateInfo
+[MASTER] 23:05:29.659 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GtkAllocation: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:29.756 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GdkColor: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:29.762 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GdkEventMotion: org.eclipse.swt.internal.gtk.GdkEvent
+[MASTER] 23:05:29.779 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.SourceManager: org/eclipse/cdt/debug/mi/core/command/MIDataDisassemble
+[MASTER] 23:05:29.801 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.Variable: org/eclipse/cdt/debug/mi/core/event/MIVarChangedEvent
+[MASTER] 23:05:29.824 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.output.MIParser: org/eclipse/cdt/debug/mi/core/output/MIAsyncRecord
+[MASTER] 23:05:29.827 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIVarDelete: org/eclipse/cdt/debug/mi/core/output/MIVarDeleteInfo
+[MASTER] 23:05:29.851 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIBreakList: org/eclipse/cdt/debug/mi/core/output/MIBreakListInfo
+[MASTER] 23:05:29.855 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIStackListLocals: org/eclipse/cdt/debug/mi/core/output/MIStackListLocalsInfo
+[MASTER] 23:05:29.858 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIVarCreate: org/eclipse/cdt/debug/mi/core/output/MIVarCreateInfo
+[MASTER] 23:05:29.860 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.ui.plugin.AbstractUIPlugin: org/eclipse/core/runtime/preferences/IScopeContext
+[MASTER] 23:05:29.868 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIStackInfoDepth: org/eclipse/cdt/debug/mi/core/output/MIStackInfoDepthInfo
+[MASTER] 23:05:29.871 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.ThreadStorage: org/eclipse/cdt/debug/mi/core/event/MIVarChangedEvent
+[MASTER] 23:05:29.941 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.widgets.Synchronizer: org/eclipse/swt/SWT
+[MASTER] 23:05:29.948 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.SignalManager: org/eclipse/cdt/debug/mi/core/event/MISignalChangedEvent
+[MASTER] 23:05:29.993 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.graphics.GC: org/eclipse/swt/SWTException
+[MASTER] 23:05:30.051 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.widgets.Display: Could not initialize class org.eclipse.swt.widgets.Display
+[MASTER] 23:05:30.053 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.Argument: org/eclipse/cdt/debug/mi/core/event/MIVarChangedEvent
+[MASTER] 23:05:30.060 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.SessionProcess: org/eclipse/cdt/debug/mi/core/SessionProcess$1
+[MASTER] 23:05:30.069 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.core.runtime.Preferences: org/eclipse/core/runtime/preferences/IPreferencesService
+[MASTER] 23:05:30.091 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIStackListFrames: org/eclipse/cdt/debug/mi/core/output/MIStackListFramesInfo
+[MASTER] 23:05:30.177 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GdkRectangle: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:30.196 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.Target: org/eclipse/cdt/debug/mi/core/event/MIThreadExitEvent
+[MASTER] 23:05:30.199 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.core.resources.IWorkspace: org/eclipse/core/resources/team/FileModificationValidationContext
+[MASTER] 23:05:30.308 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.gtk.GtkRequisition: org/eclipse/swt/internal/gtk/OS
+[MASTER] 23:05:30.311 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIBreakWatch: org/eclipse/cdt/debug/mi/core/output/MIBreakWatchInfo
+[MASTER] 23:05:30.353 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.core.internal.registry.ExtensionRegistry: org/eclipse/core/internal/registry/RegistryObjectFactory
+[MASTER] 23:05:30.363 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.cdi.model.LocalVariable: org/eclipse/cdt/debug/mi/core/event/MIVarChangedEvent
+[MASTER] 23:05:30.379 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.cdt.debug.mi.core.command.MIStackListArguments: org/eclipse/cdt/debug/mi/core/output/MIStackListArgumentsInfo
+[MASTER] 23:05:30.379 [pool-2-thread-1] ERROR ClassStateSupport - Could not initialize org.eclipse.swt.internal.C: Could not initialize class org.eclipse.swt.internal.C
+[MASTER] 23:05:30.390 [pool-2-thread-1] ERROR ClassResetter - java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.graphics.Device
+[MASTER] 23:05:30.390 [pool-2-thread-1] ERROR ClassResetter - java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.Display
+[MASTER] 23:05:30.392 [pool-2-thread-1] ERROR ClassResetter - java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.internal.C
+[MASTER] 23:05:30.416 [pool-2-thread-1] ERROR ClassResetter - java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.core.internal.resources.FileState
+[MASTER] 23:05:30.417 [pool-2-thread-1] ERROR ClassResetter - java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.internal.Callback
+[MASTER] 23:05:30.417 [pool-2-thread-1] ERROR ClassResetter - java.lang.NoClassDefFoundError: Could not initialize class org.eclipse.swt.widgets.ToolBar
+[MASTER] 23:05:30.648 [pool-2-thread-1] ERROR JUnitAnalyzer - Ran out of time while checking tests

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ru.innopolis.lips.memvit.model.Model_ESTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 sec - in ru.innopolis.lips.memvit.model.Model_ESTest

@@ -10,10 +10,12 @@ CMemvit is based on idea of natural representation of process memory state. The 
 
 ## Installing the Plugin
 
-To install the CMemvit plugin is to download the CMemvit.zip from Outcome folder, and expand it inside the root directory of your Eclipse installation. This package contains compiled versions of plugin to run CMemvit.
+Prerequisite:
+Plugin work with Eclipse Luna with C/C++ Development Tooling installed.
+The easiest way to get this configuration is to download Eclipse IDE for C/C++ Developers:
+[http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/lunasr2](http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/lunasr2)
 
-[Download](https://raw.githubusercontent.com/MaratMingazov/CMemvit/dev/Outcome/CMemvit.zip)
-
+To install the CMemvit plugin is to download the [Memvit.jar](https://raw.githubusercontent.com/PavelSozonov/CMemvit/dev/Outcome/Memvit.jar) file from Outcome folder, and copy it in dropins folder inside the root directory of your Eclipse installation. This package contains compiled versions of plugin to run CMemvit.
 
 ## Using the Eclipse Plugin
 
@@ -29,7 +31,7 @@ Once you have installed the CMemvit and restarted Eclipse you must make the menu
 
 * Select Window -- Perspective -- Open Perspective -- Debug
 * Select Window -- Show View -- Other -- 
-* Expand MemoryVisualization in the tree
+* Expand Memory Visualization in the tree
 * Click on CMemvit then OK
 
 <img src="https://raw.githubusercontent.com/MaratMingazov/CMemvit/dev/images/CMemvitDebugPerspective.png" width="800">
@@ -39,7 +41,7 @@ Once you have installed the CMemvit and restarted Eclipse you must make the menu
 
 <img src="https://raw.githubusercontent.com/MaratMingazov/CMemvit/dev/images/CMemvitConfigurationTab.png" width="800">
 
-* Fill in the required fields
+* Fill in the required fields (default values should be acceptable)
 * Now we can start debug our C/C++ project. In CMemvit view the relevant information will be displayed.
 
 <img src="https://raw.githubusercontent.com/MaratMingazov/CMemvit/dev/images/CMemvitVisualization.png" width="800">

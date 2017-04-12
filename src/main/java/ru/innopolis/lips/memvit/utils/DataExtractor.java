@@ -234,8 +234,14 @@ public class DataExtractor {
 		// does not set rsp register properly
 
 		if (startAddress.equals(endAddress)) {
-			Long start = Long.parseLong(startAddress.substring(2), 16);
-			Long end = Long.parseLong(endAddress.substring(2), 16);
+			Long start;
+			Long end;
+			try {
+				start = Long.parseLong(startAddress.substring(2), 16);
+				end = Long.parseLong(endAddress.substring(2), 16);
+			} catch (StringIndexOutOfBoundsException e) {
+				return;
+			}
 			if (Math.abs(start - end) <= 10000) {
 				stackVars.add(varToAdd);
 				if (var != null)
