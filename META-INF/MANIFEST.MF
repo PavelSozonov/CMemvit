@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: Memvit;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: ru.innopolis.lips.memvit.Activator
+Bundle-Activator: ru.innopolis.lips.memvit.plugin.Activator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.cdt.core,
  org.eclipse.cdt.core.model,

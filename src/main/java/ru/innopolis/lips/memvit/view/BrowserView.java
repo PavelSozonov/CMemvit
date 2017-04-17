@@ -12,10 +12,10 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.part.ViewPart;
 
-import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.controller.Controller;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
+import ru.innopolis.lips.memvit.plugin.Activator;
 import ru.innopolis.lips.memvit.service.HtmlBuilder;
 
 /**

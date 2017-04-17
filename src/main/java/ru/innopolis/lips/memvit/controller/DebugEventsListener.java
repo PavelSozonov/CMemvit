@@ -6,7 +6,8 @@ import org.eclipse.cdt.debug.core.cdi.event.ICDIEventListener;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIObject;
 import org.eclipse.cdt.debug.core.cdi.model.ICDITarget;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
-import ru.innopolis.lips.memvit.Activator;
+
+import ru.innopolis.lips.memvit.plugin.Activator;
 
 /**
  * Check if state of the current thread is changed then

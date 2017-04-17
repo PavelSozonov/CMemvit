@@ -39,7 +39,7 @@
          id="plugin2.views.CDebugger"
          point="org.eclipse.cdt.debug.core.CDebugger">
       <debugger
-            class="ru.innopolis.lips.memvit.GDBCDIDebuggerMemvit"
+            class="ru.innopolis.lips.memvit.plugin.GDBCDIDebuggerMemvit"
             cpu="*"
             id="GDBCDIDebuggerMemvit"
             modes="run,core,attach"
@@ -50,7 +50,7 @@
    <extension
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
-            delegate="ru.innopolis.lips.memvit.ConfigurationDelegate"
+            delegate="ru.innopolis.lips.memvit.plugin.ConfigurationDelegate"
             id="Plugin_MemoryVisualization.launchConfigurationType"
             modes="debug"
             name="%launchConfigurationType.name"
@@ -62,7 +62,7 @@
    <extension
          point="org.eclipse.debug.ui.launchConfigurationTabGroups">
       <launchConfigurationTabGroup
-            class="ru.innopolis.lips.memvit.MemvitConfigurationTabGroup"
+            class="ru.innopolis.lips.memvit.plugin.MemvitConfigurationTabGroup"
             id="Plugin_MemoryVisualization.LipsTypeGroup"
             type="Plugin_MemoryVisualization.launchConfigurationType">
       </launchConfigurationTabGroup>

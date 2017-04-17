@@ -4,10 +4,10 @@ import org.eclipse.cdt.debug.core.cdi.CDIException;
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.eclipse.swt.widgets.Display;
 
-import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.model.Model;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
+import ru.innopolis.lips.memvit.plugin.Activator;
 import ru.innopolis.lips.memvit.service.DataExtractor;
 import ru.innopolis.lips.memvit.view.View;
 

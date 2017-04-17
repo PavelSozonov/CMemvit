@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit;
+package ru.innopolis.lips.memvit.plugin;
 
 import org.eclipse.cdt.core.CCorePlugin;
 import org.eclipse.cdt.core.model.CModelException;
