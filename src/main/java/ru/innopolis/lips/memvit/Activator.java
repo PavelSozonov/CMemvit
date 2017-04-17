@@ -34,7 +34,7 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	// Register listener, if session changed update registration
-	public DebugEventsListenerRegistrator debugEventsListenerRegistrator;
+	private DebugEventsListenerRegistrator debugEventsListenerRegistrator;
 
 	/*
 	 * (non-Javadoc)
@@ -45,9 +45,8 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
-		debugEventsListenerRegistrator = new DebugEventsListenerRegistrator(controller);
+		debugEventsListenerRegistrator = new DebugEventsListenerRegistrator();
 		super.start(context);
-		// controller = new Controller();
 		plugin = this;
 	}
 

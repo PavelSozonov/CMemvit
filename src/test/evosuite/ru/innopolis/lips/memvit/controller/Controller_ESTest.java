@@ -5,107 +5,89 @@
 
 package ru.innopolis.lips.memvit.controller;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-import static org.evosuite.runtime.EvoAssertions.*;
+import static org.evosuite.runtime.EvoAssertions.assertThrownBy;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 import org.evosuite.runtime.EvoRunner;
 import org.evosuite.runtime.EvoRunnerParameters;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.innopolis.lips.memvit.controller.Controller;
-import ru.innopolis.lips.memvit.controller.DebugEventsListener;
+
 import ru.innopolis.lips.memvit.model.Model;
 import ru.innopolis.lips.memvit.model.StateStorage;
 import ru.innopolis.lips.memvit.view.BrowserView;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true) 
+@RunWith(EvoRunner.class)
+@EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = true)
 public class Controller_ESTest extends Controller_ESTest_scaffolding {
 
-  @Test(timeout = 4000)
-  public void test0()  throws Throwable  {
-      Controller controller0 = new Controller();
-      // Undeclared exception!
-      try { 
-        controller0.handleForwardButton();
-        fail("Expecting exception: NoClassDefFoundError");
-      
-      } catch(NoClassDefFoundError e) {
-         //
-         // org/eclipse/core/runtime/preferences/IScopeContext
-         //
-         assertThrownBy("ru.innopolis.lips.memvit.controller.Controller", e);
-      }
-  }
+	@Test(timeout = 4000)
+	public void test0() throws Throwable {
+		Controller controller0 = new Controller();
+		// Undeclared exception!
+		try {
+			controller0.handleForwardButton();
+			fail("Expecting exception: NoClassDefFoundError");
 
-  @Test(timeout = 4000)
-  public void test1()  throws Throwable  {
-      Controller controller0 = new Controller();
-      // Undeclared exception!
-      try { 
-        controller0.handleEvent();
-        fail("Expecting exception: NullPointerException");
-      
-      } catch(NullPointerException e) {
-         //
-         // no message in exception (getMessage() returned null)
-         //
-         assertThrownBy("ru.innopolis.lips.memvit.utils.DataExtractor", e);
-      }
-  }
+		} catch (NoClassDefFoundError e) {
+			//
+			// org/eclipse/core/runtime/preferences/IScopeContext
+			//
+			assertThrownBy("ru.innopolis.lips.memvit.controller.Controller", e);
+		}
+	}
 
-  @Test(timeout = 4000)
-  public void test2()  throws Throwable  {
-      Controller controller0 = new Controller();
-      // Undeclared exception!
-      try { 
-        controller0.handleBackButton();
-        fail("Expecting exception: NoClassDefFoundError");
-      
-      } catch(NoClassDefFoundError e) {
-         //
-         // org/eclipse/core/runtime/preferences/IScopeContext
-         //
-         assertThrownBy("ru.innopolis.lips.memvit.controller.Controller", e);
-      }
-  }
+	@Test(timeout = 4000)
+	public void test2() throws Throwable {
+		Controller controller0 = new Controller();
+		// Undeclared exception!
+		try {
+			controller0.handleBackButton();
+			fail("Expecting exception: NoClassDefFoundError");
 
-  @Test(timeout = 4000)
-  public void test3()  throws Throwable  {
-      Controller controller0 = new Controller();
-      Model model0 = controller0.getModel();
-      assertFalse(model0.isStateManagementButtonsEnabled());
-  }
+		} catch (NoClassDefFoundError e) {
+			//
+			// org/eclipse/core/runtime/preferences/IScopeContext
+			//
+			assertThrownBy("ru.innopolis.lips.memvit.controller.Controller", e);
+		}
+	}
 
-  @Test(timeout = 4000)
-  public void test4()  throws Throwable  {
-      Controller controller0 = new Controller();
-      controller0.setCurrentThread((ICDIThread) null);
-  }
+	@Test(timeout = 4000)
+	public void test3() throws Throwable {
+		Controller controller0 = new Controller();
+		Model model0 = controller0.getModel();
+		assertFalse(model0.isStateManagementButtonsEnabled());
+	}
 
-  @Test(timeout = 4000)
-  public void test5()  throws Throwable  {
-      Controller controller0 = new Controller();
-      controller0.setBrowserView((BrowserView) null);
-  }
+	@Test(timeout = 4000)
+	public void test4() throws Throwable {
+		Controller controller0 = new Controller();
+		controller0.setCurrentThread((ICDIThread) null);
+	}
 
-  @Test(timeout = 4000)
-  public void test6()  throws Throwable  {
-      Controller controller0 = new Controller();
-      StateStorage stateStorage0 = controller0.getStateStorage();
-      assertEquals(0, stateStorage0.getCurrentStep());
-  }
+	@Test(timeout = 4000)
+	public void test5() throws Throwable {
+		Controller controller0 = new Controller();
+		controller0.setCMemvitView((BrowserView) null);
+	}
 
-  @Test(timeout = 4000)
-  public void test7()  throws Throwable  {
-      Controller controller0 = new Controller();
-      DebugEventsListener debugEventsListener0 = controller0.getDebugEventsListener();
-      assertNotNull(debugEventsListener0);
-  }
+	@Test(timeout = 4000)
+	public void test6() throws Throwable {
+		Controller controller0 = new Controller();
+		StateStorage stateStorage0 = controller0.getStateStorage();
+		assertEquals(0, stateStorage0.getCurrentStep());
+	}
 
-  @Test(timeout = 4000)
-  public void test8()  throws Throwable  {
-      Controller controller0 = new Controller();
-      BrowserView browserView0 = controller0.getBrowserView();
-      assertNull(browserView0);
-  }
+	@Test(timeout = 4000)
+	public void test7() throws Throwable {
+		Controller controller0 = new Controller();
+		DebugEventsListener debugEventsListener0 = controller0.getDebugEventsListener();
+		assertNotNull(debugEventsListener0);
+	}
+
 }

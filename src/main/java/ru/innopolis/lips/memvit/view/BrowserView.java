@@ -16,7 +16,7 @@ import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.controller.Controller;
 import ru.innopolis.lips.memvit.model.State;
 import ru.innopolis.lips.memvit.model.StateStorage;
-import ru.innopolis.lips.memvit.utils.HtmlBuilder;
+import ru.innopolis.lips.memvit.service.HtmlBuilder;
 
 /**
  * Used as an extension point
@@ -30,11 +30,8 @@ public class BrowserView extends ViewPart implements View {
 	private boolean contentChanged = false;;
 	private Label stepNumber;
 
-	// Instance of the class for HTML building
-	private HtmlBuilder htmlBuilder = new HtmlBuilder();
-
 	public BrowserView() {
-		Activator.getController().setBrowserView(this);
+		Activator.getController().setCMemvitView(this);
 	}
 
 	/*
@@ -99,6 +96,9 @@ public class BrowserView extends ViewPart implements View {
 	 */
 	@Override
 	public void update(State state) {
+
+		// Instance of the class for HTML building
+		HtmlBuilder htmlBuilder = new HtmlBuilder();
 
 		if (state != null) {
 			content = htmlBuilder.composeBrowserView(state);

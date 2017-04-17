@@ -7,35 +7,30 @@ import ru.innopolis.lips.memvit.Activator;
 import ru.innopolis.lips.memvit.GDBCDIDebuggerMemvit;
 
 /**
- * Every 1 second check session, 
- * if session is updated register the debug event listener again.
- * Instantiated by Activator
+ * Every 1 second check session, if session is updated register the debug event
+ * listener again. Instantiated by Activator
  * 
  * @author Pavel Sozonov
  */
 public class DebugEventsListenerRegistrator {
-	
+
 	// Reference to the current CDI Debug Session
 	private ICDISession cdiDebugSession;
 
-	// Reference to the unique instance of debug events listener from the Activator
-	private DebugEventsListener debugEventsListener = Activator.getController().getDebugEventsListener();
-	
 	/**
-	 * Constructor.
-	 * Create the thread for managing the CDI Debug Session changing and updating the debug event listener
+	 * Constructor. Create the thread for managing the CDI Debug Session
+	 * changing and updating the debug event listener
 	 */
-	public DebugEventsListenerRegistrator(Controller controller) {
-		debugEventsListener = controller.getDebugEventsListener();
+	public DebugEventsListenerRegistrator() {
 		Runnable runnable = new SessionChecker();
 		Thread thread2 = new Thread(runnable);
 		thread2.start();
 	}
 
 	/**
-	 * Each 1 s check if the CDI Debug Session is changed,
-	 * then update the local reference to it and add the debug events listener again
-	 *  
+	 * Each 1 s check if the CDI Debug Session is changed, then update the local
+	 * reference to it and add the debug events listener again
+	 * 
 	 * @author Pavel Sozonov
 	 */
 	private class SessionChecker implements Runnable {
@@ -55,44 +50,48 @@ public class DebugEventsListenerRegistrator {
 						resetStateStorage();
 					}
 				};
-				Display.getDefault().asyncExec(task); 
+				Display.getDefault().asyncExec(task);
 			}
 		}
 	}
-	
+
 	/**
-	 * If session is updated, 
-	 * the states from the previous session should be deleted from the storage,
-	 * and the storage counters should be reseted.   
+	 * If session is updated, the states from the previous session should be
+	 * deleted from the storage, and the storage counters should be reseted.
 	 */
 	private void resetStateStorage() {
 		Activator.getController().getStateStorage().resetStorage();
 	}
-	
+
 	/**
 	 * Check if the CDI Debug Session is updated
 	 * 
-	 * @param session - reference to the actual current CDI Debug Session (from GDBCDIDebuggerMemvit.getSession())
+	 * @param session
+	 *            - reference to the actual current CDI Debug Session (from
+	 *            GDBCDIDebuggerMemvit.getSession())
 	 */
 	private boolean isSessionUpdated(ICDISession session) {
-		if (session == null || session.equals(cdiDebugSession)) return false;
+		if (session == null || session.equals(cdiDebugSession))
+			return false;
 		return true;
 	}
-	
+
 	/**
 	 * Update the local reference to the current CDI Debug Session
 	 * 
-	 * @param session - reference to the actual current CDI Debug Session (from GDBCDIDebuggerMemvit.getSession())
+	 * @param session
+	 *            - reference to the actual current CDI Debug Session (from
+	 *            GDBCDIDebuggerMemvit.getSession())
 	 */
 	private void updateSession(ICDISession session) {
 		cdiDebugSession = session;
 	}
-	
+
 	/**
 	 * Add the debug events listener to the current CDI Debug Session
 	 */
 	private void updateListener() {
-		cdiDebugSession.getEventManager().addEventListener(debugEventsListener);
+		cdiDebugSession.getEventManager().addEventListener(Activator.getController().getDebugEventsListener());
 	}
 
 }

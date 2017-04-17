@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit.utils;
+package ru.innopolis.lips.memvit.service;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -22,8 +22,7 @@ public class JsonUtils {
 	 * 
 	 * Heap (Object name - Address - Value);
 	 */
-	public String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables,
-			String eaxValue, String eaxValueType) {
+	public String buildJson(ActivationRecord[] stack, VarDescription[] heap, VarDescription[] globalStaticVariables) {
 
 		if (stack == null || heap == null || globalStaticVariables == null) {
 			System.out.println("Stack, heap or global description equal to null. Break json build!");
@@ -37,8 +36,6 @@ public class JsonUtils {
 			json.put("stack", buildJsonStack(stack));
 			json.put("heap", buildJsonHeap(heap));
 			json.put("globalStaticVariables", buildJsonGlobalStaticVariables(globalStaticVariables));
-			json.put("eaxValue", eaxValue);
-			json.put("eaxValueType", eaxValueType);
 
 		} catch (JSONException | CDIException e) {
 			e.printStackTrace();
@@ -81,22 +78,21 @@ public class JsonUtils {
 		return heap;
 	}
 
-	public String getEaxValueFromJson(State state) {
+	public VarDescription[] getGlobalStaticFromJson(State state) {
 
 		JSONTokener tokener = new JSONTokener(state.getData());
 		JSONObject json = new JSONObject(tokener);
-		String eaxValue = json.getString("eaxValue");
+		JSONArray globalStaticVariables = json.getJSONArray("globalStatic");
 
-		return eaxValue;
-	}
+		VarDescription[] globalStatic = new VarDescription[globalStaticVariables.length()];
 
-	public String getEaxValueTypeFromJson(State state) {
+		int heapCount = 0;
+		for (Object globalStaticVariable : globalStaticVariables) {
+			JSONObject globalStaticVariableAsJson = (JSONObject) globalStaticVariable;
+			globalStatic[heapCount++] = varProcessing(globalStaticVariableAsJson);
+		}
 
-		JSONTokener tokener = new JSONTokener(state.getData());
-		JSONObject json = new JSONObject(tokener);
-		String eaxValueType = json.getString("eaxValueType");
-
-		return eaxValueType;
+		return globalStatic;
 	}
 
 	@SuppressWarnings({ "rawtypes" })

@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit.utils;
+package ru.innopolis.lips.memvit.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +32,6 @@ public class DataExtractor {
 
 	private List<VarDescription> heapVars = new ArrayList<>();
 	private ActivationRecord[] activationRecords;
-	private String eaxValueType;
-	private String eaxValue;
-
-	// Instance of the class for managing Json
-	private JsonUtils jsonUtils = new JsonUtils();
 
 	/**
 	 * Base method, extract all the information from the thread, and form the
@@ -51,6 +46,9 @@ public class DataExtractor {
 	 */
 	public State extractData(ICDIThread thread) throws CDIException {
 
+		// Instance of the class for managing Json
+		JsonUtils jsonUtils = new JsonUtils();
+
 		fillHeapVarsAndActivationRecordsLists(thread);
 
 		// Convert list to array
@@ -60,7 +58,7 @@ public class DataExtractor {
 		VarDescription[] globalStaticVariables = getGlobalStaticVariables();
 
 		// Build all data in one json
-		String json = jsonUtils.buildJson(activationRecords, heap, globalStaticVariables, eaxValue, eaxValueType);
+		String json = jsonUtils.buildJson(activationRecords, heap, globalStaticVariables);
 		if (json == null)
 			return null;
 
@@ -113,7 +111,6 @@ public class DataExtractor {
 
 	/*
 	 * Reads frame by frame, extract data and form array of activation records
-	 * On each step updates fields eaxValue and eaxValueType
 	 */
 	private ActivationRecord[] extractActivationRecordsFromFrames(ICDIStackFrame[] frames) throws CDIException {
 
@@ -135,8 +132,6 @@ public class DataExtractor {
 
 			// extra space for return value
 			VarDescription[] args = argsProcessing(argDescriptors);
-
-			updateEaxValueAndType(frame); // unused anymore
 
 			String curLineNumber = String.valueOf(frame.getLocator().getLineNumber());
 
@@ -472,24 +467,9 @@ public class DataExtractor {
 	}
 
 	/*
-	 * Updates returned value and type
+	 * private String getValueTypeName(ICDIValue value) { String valueTypeName =
+	 * ""; if (value == null) { return valueTypeName; } try { valueTypeName =
+	 * value.getTypeName(); } catch (CDIException e) { e.printStackTrace(); }
+	 * return valueTypeName; }
 	 */
-	private void updateEaxValueAndType(ICDIStackFrame frame) {
-		ICDIValue registerReturnValue = findRegisterValueByQualifiedName(frame, "$eax");
-		eaxValue = getValueString(registerReturnValue);
-		eaxValueType = getValueTypeName(registerReturnValue);
-	}
-
-	private String getValueTypeName(ICDIValue value) {
-		String valueTypeName = "";
-		if (value == null) {
-			return valueTypeName;
-		}
-		try {
-			valueTypeName = value.getTypeName();
-		} catch (CDIException e) {
-			e.printStackTrace();
-		}
-		return valueTypeName;
-	}
 }

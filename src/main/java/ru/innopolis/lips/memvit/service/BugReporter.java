@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ru.innopolis.lips.memvit.utils;
+package ru.innopolis.lips.memvit.service;
 
 /**
  * Class for communication with Bugzilla

@@ -1,4 +1,4 @@
-package ru.innopolis.lips.memvit.utils;
+package ru.innopolis.lips.memvit.service;
 
 import java.io.FileWriter;
 import java.io.IOException;
