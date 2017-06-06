@@ -316,8 +316,8 @@ public class DataExtractor {
 		try {
 			variables = value.getVariables();
 		} catch (CDIException e) {
-			System.out
-					.println("Debug: Target is not suspended[]. Class DataExtractor, getLocalVariablesFromValue(...);");
+			System.out.println(String.format("",
+					"Debug: Target is not suspended[]. Class DataExtractor, getLocalVariablesFromValue(...);"));
 			// e.printStackTrace();
 		}
 		return variables;

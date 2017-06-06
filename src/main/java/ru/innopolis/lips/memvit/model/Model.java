@@ -1,5 +1,7 @@
 package ru.innopolis.lips.memvit.model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.eclipse.cdt.debug.core.cdi.model.ICDIThread;
 
 /**
@@ -19,6 +21,9 @@ public class Model {
 	// Count how many states are equals
 	private int duplicatedStates = 0;
 
+	// Error counter
+	private AtomicInteger errorCounter = new AtomicInteger();
+
 	// State management buttons disable flag, when debug haven't started, using
 	// of buttons is disabled
 	private boolean stateManagementButtonsEnabled = false;
@@ -26,6 +31,13 @@ public class Model {
 	// Contain all the program execution states (each debug step is a separate
 	// state)
 	private StateStorage stateStorage = new StateStorage();
+
+	/**
+	 * @return the errorCouner
+	 */
+	public int incrementAndGetErrorCounter() {
+		return errorCounter.incrementAndGet();
+	}
 
 	public boolean isStateManagementButtonsEnabled() {
 		return stateManagementButtonsEnabled;
